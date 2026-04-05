@@ -4,15 +4,12 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import {
   ChevronDown, ChevronRight, ArrowUp, X, Plus, FileText,
-  Layers, Search, Crosshair, Mail, Activity, Target, ArrowRight,
+  Layers, Target, Cloud,
   Megaphone, UserCheck, Briefcase, GitBranch,
   type LucideIcon,
 } from "lucide-react";
-import Image from "next/image";
 import { initializeTemplateRegistry, getTemplatesByCategory, type Template } from "@/lib/templates";
 import { PenTool, DollarSign, Rocket } from "lucide-react";
-
-// ── Template categories ─────────────────────────────────────────────────────
 
 const TEMPLATE_CATEGORIES: { id: Template["category"]; label: string; icon: LucideIcon }[] = [
   { id: "sales", label: "Sales", icon: Target },
@@ -23,7 +20,7 @@ const TEMPLATE_CATEGORIES: { id: Template["category"]; label: string; icon: Luci
 ];
 
 const TEMPLATE_ICON_MAP: Record<string, LucideIcon> = {
-  mail: Mail, target: Target, "file-text": FileText,
+  mail: Target, target: Target, "file-text": FileText,
   layers: Layers, "bar-chart-2": Target, anchor: Target,
   "dollar-sign": DollarSign, calculator: Target, flame: Target,
   tag: Target, "pie-chart": Target, "trending-up": Target,
@@ -35,41 +32,8 @@ const TEMPLATE_ICON_MAP: Record<string, LucideIcon> = {
   columns: Target, "shield-question": Target, "check-circle": Target,
 };
 
-// ── Category pills for empty state ──────────────────────────────────────────
-
-const CATEGORY_PILLS: { icon: LucideIcon; label: string; suggestions: { label: string; prompt: string }[] }[] = [
-  { icon: Search, label: "Research", suggestions: [
-    { label: "Research competitors in my industry", prompt: "Research my top competitors." },
-    { label: "Find market trends for my niche", prompt: "Analyze current market trends in my industry." },
-    { label: "Analyze a company before outreach", prompt: "I want to research a specific company before reaching out." },
-  ]},
-  { icon: Crosshair, label: "Prospect", suggestions: [
-    { label: "Find decision-makers at target companies", prompt: "Help me identify the right decision-makers." },
-    { label: "Build a lead list for my ICP", prompt: "Build a qualified lead list of 20 companies." },
-    { label: "Identify high-intent prospects", prompt: "Find prospects most likely to buy right now." },
-  ]},
-  { icon: Mail, label: "Outreach", suggestions: [
-    { label: "Write a cold email sequence", prompt: "Write a 3-step cold email sequence for my ICP." },
-    { label: "Create a LinkedIn connection message", prompt: "Draft LinkedIn connection request messages." },
-    { label: "Draft a follow-up after no response", prompt: "Write creative follow-up emails." },
-  ]},
-  { icon: Activity, label: "Content", suggestions: [
-    { label: "Write a thought leadership post", prompt: "Write a LinkedIn post that positions me as a thought leader." },
-    { label: "Create a content calendar", prompt: "Build a 4-week content calendar for my brand." },
-    { label: "Draft a case study", prompt: "Help me write a compelling case study." },
-  ]},
-  { icon: Target, label: "Strategize", suggestions: [
-    { label: "Build a go-to-market strategy", prompt: "Help me build a comprehensive GTM strategy." },
-    { label: "Create a quarterly sales plan", prompt: "Create a detailed 90-day sales plan." },
-    { label: "Design my ideal customer profile", prompt: "Help me define my ideal customer profile." },
-  ]},
-];
-
-// ── Static Chatbox Component ────────────────────────────────────────────────
-
 export default function ChatInterface() {
   const [input, setInput] = useState("");
-  const [activePill, setActivePill] = useState<string | null>(null);
   const [profileContextExpanded, setProfileContextExpanded] = useState(false);
   const [templatesPanelOpen, setTemplatesPanelOpen] = useState(false);
   const [selectedTemplateCategory, setSelectedTemplateCategory] = useState<Template["category"]>("sales");
@@ -87,86 +51,7 @@ export default function ChatInterface() {
   useEffect(() => { autoResizeTextarea(); }, [input, autoResizeTextarea]);
 
   return (
-    <div className="w-full space-y-4">
-      {/* Spinning Ultron logo */}
-      <div className="flex justify-center mb-4">
-        <Image
-          src="/newlogo.png"
-          alt="Ultron"
-          width={64}
-          height={64}
-          className="animate-logo-spin rounded-2xl"
-        />
-      </div>
-
-      <h2 className="text-2xl font-heading font-semibold text-white tracking-tight text-center sm:text-3xl">
-        What are you working on?
-      </h2>
-
-      {/* Category pills */}
-      <div className="flex items-center justify-center gap-2 flex-wrap">
-        {CATEGORY_PILLS.map(pill => {
-          const Icon = pill.icon;
-          const isActive = activePill === pill.label;
-          return (
-            <button
-              key={pill.label}
-              onClick={() => setActivePill(isActive ? null : pill.label)}
-              className={cn(
-                "flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all text-xs",
-                isActive
-                  ? "border-[rgba(255,255,255,0.25)] text-white bg-[rgba(255,255,255,0.08)]"
-                  : "border-[rgba(255,255,255,0.12)] text-[rgba(255,255,255,0.6)] hover:text-white hover:border-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.04)]"
-              )}
-            >
-              <Icon className="w-3 h-3" />
-              {pill.label}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Suggestion dropdown */}
-      {activePill && (() => {
-        const pill = CATEGORY_PILLS.find(p => p.label === activePill);
-        if (!pill) return null;
-        const Icon = pill.icon;
-        return (
-          <div className="border border-[rgba(255,255,255,0.08)] rounded-xl bg-[rgba(255,255,255,0.02)] overflow-hidden">
-            <div className="flex items-center justify-between px-4 py-2.5">
-              <div className="flex items-center gap-2 text-[rgba(255,255,255,0.4)]">
-                <Icon className="w-3.5 h-3.5" />
-                <span className="text-xs font-medium">{pill.label}</span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setActivePill(null)}
-                className="text-[rgba(255,255,255,0.3)] hover:text-[rgba(255,255,255,0.6)] transition-colors"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </div>
-            <div className="border-t border-[rgba(255,255,255,0.06)]">
-              {pill.suggestions.map((suggestion, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => {
-                    setInput(suggestion.prompt);
-                    setActivePill(null);
-                    setTimeout(() => textareaRef.current?.focus(), 0);
-                  }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 text-left text-sm text-[rgba(255,255,255,0.6)] hover:text-white hover:bg-[rgba(255,255,255,0.04)] transition-colors group"
-                >
-                  <span>{suggestion.label}</span>
-                  <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[rgba(255,255,255,0.3)]" />
-                </button>
-              ))}
-            </div>
-          </div>
-        );
-      })()}
-
+    <div className="w-full">
       {/* ── The Chatbox ────────────────────────────────────────────────── */}
       <div className="relative">
         {/* Templates panel */}
@@ -321,18 +206,18 @@ export default function ChatInterface() {
                 type="button"
                 onClick={() => setTemplatesPanelOpen(!templatesPanelOpen)}
                 className={cn(
-                  "flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all",
+                  "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all",
                   templatesPanelOpen
                     ? "border-[rgba(255,255,255,0.25)] text-white bg-[rgba(255,255,255,0.08)]"
-                    : "border-[rgba(255,255,255,0.08)] text-[rgba(255,255,255,0.5)] hover:text-white hover:border-[rgba(255,255,255,0.15)] hover:bg-[rgba(255,255,255,0.03)]"
+                    : "text-[rgba(255,255,255,0.5)] hover:text-white hover:bg-[rgba(255,255,255,0.03)]"
                 )}
               >
                 <Layers className="w-3 h-3" />
                 Templates
               </button>
+            </div>
 
-              <div className="flex-1" />
-
+            <div className="flex items-center gap-2">
               {/* All Projects dropdown */}
               <button
                 type="button"
@@ -341,28 +226,28 @@ export default function ChatInterface() {
                 All Projects
                 <ChevronDown className="w-3 h-3" />
               </button>
-            </div>
 
-            {/* Send button */}
-            <button
-              type="button"
-              disabled={!input.trim()}
-              className={cn(
-                "flex items-center justify-center w-8 h-8 rounded-xl transition-all",
-                input.trim()
-                  ? "bg-white text-black hover:bg-white/90"
-                  : "bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.2)]"
-              )}
-            >
-              <ArrowUp className="w-4 h-4" />
-            </button>
+              {/* Send button */}
+              <button
+                type="button"
+                disabled={!input.trim()}
+                className={cn(
+                  "flex items-center justify-center w-8 h-8 rounded-xl transition-all",
+                  input.trim()
+                    ? "bg-white text-black hover:bg-white/90"
+                    : "bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.2)]"
+                )}
+              >
+                <ArrowUp className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Bottom row: workspace name + new session */}
         <div className="flex items-center justify-between mt-2 px-1">
           <div className="flex items-center gap-1.5">
-            <Image src="/newlogo.png" alt="" width={14} height={14} className="rounded-sm opacity-50" />
+            <Cloud className="w-3.5 h-3.5 text-[rgba(255,255,255,0.3)]" />
             <span className="text-xs text-[rgba(255,255,255,0.3)]">NXT Enterprises</span>
           </div>
           <button

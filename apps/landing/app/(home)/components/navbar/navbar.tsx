@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { DemoRequestModal } from '@/app/(home)/components/demo-request/demo-request-modal'
 
 interface NavbarProps {
   logoOnly?: boolean
@@ -24,25 +23,24 @@ export default function Navbar({ logoOnly = false }: NavbarProps) {
       <Link href={logoHref} aria-label='Ultron home' itemProp='url'>
         <span itemProp='name' className='sr-only'>Ultron</span>
         <Image
-          src='/logo/sim-landing.svg'
+          src='/logo/ultron-logo.svg'
           alt='Ultron'
-          width={71}
-          height={22}
-          className='h-[22px] w-auto'
+          width={28}
+          height={28}
+          className='h-[28px] w-[28px]'
           priority
         />
       </Link>
 
       {!logoOnly && (
-        <DemoRequestModal>
-          <button
-            type='button'
-            className='inline-flex h-[30px] items-center gap-[7px] rounded-[5px] border border-[var(--white)] bg-[var(--white)] px-2.5 text-[13.5px] text-black transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0]'
-            aria-label='Get a demo'
-          >
-            Get a demo
-          </button>
-        </DemoRequestModal>
+        <a
+          href='https://calendly.com/catalinfetean/30min'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='inline-flex h-[30px] items-center gap-[7px] rounded-[5px] border border-[var(--white)] bg-[var(--white)] px-2.5 text-[13.5px] text-black transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0]'
+        >
+          Get a demo
+        </a>
       )}
     </nav>
   )
