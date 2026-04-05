@@ -246,7 +246,7 @@ function MemoryVisual() {
 
 const INTEGRATION_ITEMS = [
   { name: 'Slack', logo: '/landing/integrations/slack.png' },
-  { name: 'GitHub', logo: '/landing/integrations/github.png' },
+  { name: 'Make', logo: '/landing/integrations/make.png' },
   { name: 'Figma', logo: '/landing/integrations/figma.png' },
   { name: 'Linear', logo: '/landing/integrations/linear.png' },
   { name: 'Stripe', logo: '/landing/integrations/stripe.png' },
