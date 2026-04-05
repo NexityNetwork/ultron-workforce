@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import { getNavBlogPosts } from '@/lib/blog/registry'
 import { martianMono } from '@/app/fonts/martian-mono'
 import { FooterCTA } from '@/app/(home)/components/footer/footer-cta'
 import {
@@ -14,8 +13,6 @@ import {
 } from '@/app/(home)/components'
 
 export default async function Landing() {
-  const blogPosts = await getNavBlogPosts()
-
   return (
     <div
       className={`${martianMono.variable} min-h-screen bg-[var(--landing-bg)]`}
@@ -29,7 +26,7 @@ export default async function Landing() {
       <StructuredData />
       <header>
         <Suspense fallback={<div className='h-[52px] border-[var(--landing-bg-elevated)] border-b bg-[var(--landing-bg)]' />}>
-          <Navbar blogPosts={blogPosts} />
+          <Navbar />
         </Suspense>
       </header>
       <main id='main-content'>
