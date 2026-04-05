@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sidebar-width: 0px;
+  --panel-width: 320px;
+
+  /* z-index scale */
+  --z-dropdown: 100;
+  --z-modal: 200;
+  --z-popover: 300;
+  --z-tooltip: 400;
+  --z-toast: 500;
+
+  /* Shadow scale */
+  --shadow-subtle: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.15);
+
+  --radius: 0.5rem;
+}
+
+/**
+ * Color tokens
+ */
+@layer base {
+  :root,
+  .light {
+    --bg: #fefefe;
+    --surface-1: #f9f9f9;
+    --surface-2: #ffffff;
+    --surface-3: #f7f7f7;
+    --surface-4: #f5f5f5;
+    --border: #dedede;
+    --surface-5: #f3f3f3;
+    --border-1: #e0e0e0;
+    --surface-6: #e5e5e5;
+    --surface-hover: #f2f2f2;
+    --surface-active: #ececec;
+
+    --text-primary: #1a1a1a;
+    --text-secondary: #525252;
+    --text-tertiary: #5c5c5c;
+    --text-muted: #707070;
+    --text-subtle: #8c8c8c;
+    --text-body: #3b3b3b;
+    --text-icon: #5e5e5e;
+    --text-inverse: #ffffff;
+    --text-error: #ef4444;
+
+    --divider: #ededed;
+    --border-muted: #e4e4e4;
+    --border-success: #e0e0e0;
+
+    --brand-secondary: #33b4ff;
+    --brand-accent: #33c482;
+    --white: #ffffff;
+
+    /* Landing / marketing */
+    --landing-text: #ececec;
+    --landing-text-muted: #999999;
+    --landing-text-subtle: #f6f6f6;
+    --landing-text-dark: #1c1c1c;
+    --landing-text-secondary: #666666;
+    --landing-text-body: #cdcdcd;
+    --landing-text-icon: #939393;
+
+    --landing-bg: #1c1c1c;
+    --landing-bg-elevated: #2a2a2a;
+    --landing-bg-card: #232323;
+    --landing-bg-section: #f6f6f6;
+    --landing-bg-subtle: #fafafa;
+    --landing-bg-surface: #1e1e1e;
+    --landing-bg-hover: #f0f0f0;
+    --landing-bg-skeleton: #e8e8e8;
+
+    --landing-border: #2a2a2a;
+    --landing-border-light: #e5e5e5;
+    --landing-border-strong: #3d3d3d;
+    --landing-border-subtle: #d4d4d4;
+
+    /* Legacy HSL tokens */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 99.2%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 11.2%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 11.2%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 46.9%;
+    --accent: 0 0% 92.5%;
+    --accent-foreground: 0 0% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --scrollbar-size: 8px;
+
+    --scrollbar-thumb-color: #c0c0c0;
+    --scrollbar-thumb-hover-color: #a8a8a8;
+
+    /* Badge colors */
+    --badge-blue-bg: #bfdbfe;
+    --badge-blue-text: #1d4ed8;
+  }
+
+  .dark {
+    --bg: #1b1b1b;
+    --surface-1: #1e1e1e;
+    --surface-2: #232323;
+    --border: #333333;
+    --border-1: #3d3d3d;
+    --text-primary: #e6e6e6;
+    --text-secondary: #cccccc;
+    --white: #ffffff;
+    --brand-accent: #33c482;
+    --shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.4);
+    --scrollbar-thumb-color: #5a5a5a;
+    --scrollbar-thumb-hover-color: #6a6a6a;
+
+    --badge-blue-bg: rgba(59, 130, 246, 0.2);
+    --badge-blue-text: #93c5fd;
+  }
+}
+
+/**
+ * Base styles
+ */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    letter-spacing: 0.28px;
+  }
+
+  ::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
+    border-radius: var(--radius);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover-color);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb-color) transparent;
+  }
+}
+
+/**
+ * Utilities
+ */
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gradient-text {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .loading-placeholder::placeholder {
+    animation: placeholder-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+/**
+ * Landing loop animation
+ */
+.landing-loop-animated-dash {
+  animation: dash-animation 1.5s linear infinite;
+  will-change: stroke-dashoffset;
+  transform: translateZ(0);
+}
+
+/**
+ * Prose overrides
+ */
+.prose code::before,
+.prose code::after {
+  content: none !important;
+}
+
+.prose h1 a,
+.prose h2 a,
+.prose h3 a,
+.prose h4 a,
+.prose h5 a,
+.prose h6 a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/**
+ * Reduced motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
