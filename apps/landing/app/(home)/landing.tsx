@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { getNavBlogPosts } from '@/lib/blog/registry'
 import { martianMono } from '@/app/fonts/martian-mono'
 import { season } from '@/app/fonts/season'
@@ -14,16 +15,6 @@ import {
   Testimonials,
 } from '@/app/(home)/components'
 
-/**
- * Landing page root component.
- *
- * ## SEO Architecture
- * - Single `<h1>` inside Hero (only one per page).
- * - Heading hierarchy: H1 (Hero) -> H2 (each section) -> H3 (sub-items).
- * - Semantic landmarks: `<header>`, `<main>`, `<footer>`.
- * - Every `<section>` has an `id` for anchor linking and `aria-labelledby` for accessibility.
- * - `StructuredData` emits JSON-LD before any visible content.
- */
 export default async function Landing() {
   const blogPosts = await getNavBlogPosts()
 
@@ -39,7 +30,9 @@ export default async function Landing() {
       </a>
       <StructuredData />
       <header>
-        <Navbar blogPosts={blogPosts} />
+        <Suspense fallback={<div className='h-[52px] border-[var(--landing-bg-elevated)] border-b bg-[var(--landing-bg)]' />}>
+          <Navbar blogPosts={blogPosts} />
+        </Suspense>
       </header>
       <main id='main-content'>
         <Hero />
