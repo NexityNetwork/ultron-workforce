@@ -16,7 +16,7 @@ export default function Navbar({ logoOnly = false }: NavbarProps) {
   return (
     <nav
       aria-label='Primary navigation'
-      className='relative flex h-[52px] items-center justify-between border-[var(--landing-bg-elevated)] border-b-[1px] bg-[var(--landing-bg)] px-5 font-[430] font-season text-[var(--landing-text)] text-sm lg:px-20'
+      className='relative flex h-[52px] items-center justify-between bg-[var(--landing-bg)] px-5 font-[430] font-season text-[var(--landing-text)] text-sm lg:px-20'
       itemScope
       itemType='https://schema.org/SiteNavigationElement'
     >
@@ -34,12 +34,12 @@ export default function Navbar({ logoOnly = false }: NavbarProps) {
 
       {!logoOnly && (
         <a
-          href='https://calendly.com/catalinfetean/30min'
+          href='https://app.51ultron.com/signup'
           target='_blank'
           rel='noopener noreferrer'
           className='inline-flex h-[30px] items-center gap-[7px] rounded-[5px] border border-[var(--white)] bg-[var(--white)] px-2.5 text-[13.5px] text-black transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0]'
         >
-          Get a demo
+          Try Ultron
         </a>
       )}
     </nav>

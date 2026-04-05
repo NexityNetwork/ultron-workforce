@@ -16,9 +16,9 @@ export default function Hero() {
     <section
       id='hero'
       aria-labelledby='hero-heading'
-      className='relative flex flex-col items-center overflow-hidden bg-[var(--landing-bg)] pt-[60px] pb-3 lg:pt-[100px]'
+      className='relative flex flex-col items-center overflow-hidden bg-[var(--landing-bg)] pt-[60px] pb-10 lg:pt-[100px]'
     >
-      <BackgroundRippleEffect rows={12} cols={30} cellSize={52} />
+      <BackgroundRippleEffect rows={16} cols={30} cellSize={52} />
 
       <p className='sr-only'>
         Ultron is the AI workforce platform that helps companies hire AI employees, set GTM goals,
@@ -38,7 +38,9 @@ export default function Hero() {
         </h1>
         <p className='max-w-[560px] text-balance text-center font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-subtle)_60%,transparent)] text-base leading-[145%] tracking-[0.02em] lg:text-lg'>
           Your team is buried in tasks humans should not be doing anymore.
-          Delegate 50% of GTM work to AI Agents within 6 months.
+          <span className='hidden lg:inline'>
+            {' '}Delegate 50% of GTM work to AI Agents within 6 months.
+          </span>
         </p>
       </div>
 
