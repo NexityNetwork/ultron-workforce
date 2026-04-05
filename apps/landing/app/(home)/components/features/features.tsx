@@ -97,30 +97,30 @@ function DotGrid({ cols, rows, width, borderLeft }: { cols: number; rows: number
 /** Command Center visual: mini prompt with quick-action pills */
 function CommandCenterVisual() {
   return (
-    <div className='flex h-full flex-col justify-center gap-4'>
-      <div className='rounded-xl border border-[#E8E8E8] bg-white p-4 shadow-sm'>
-        <div className='flex items-center gap-2 text-[13px] text-[#999]'>
+    <div className='flex h-full flex-col justify-center gap-3 lg:gap-4'>
+      <div className='rounded-xl border border-[#E8E8E8] bg-white p-3 shadow-sm lg:p-4'>
+        <div className='flex items-center gap-2 text-[12px] text-[#999] lg:text-[13px]'>
           <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/></svg>
           What are you working on?
         </div>
       </div>
-      <div className='flex flex-wrap gap-2'>
+      <div className='flex flex-wrap gap-1.5 lg:gap-2'>
         {['Research', 'Prospect', 'Outreach', 'Content', 'Strategize'].map((action) => (
-          <div key={action} className='rounded-full border border-[#E8E8E8] bg-white px-3 py-1.5 font-season text-[12px] text-[#666]'>
+          <div key={action} className='rounded-full border border-[#E8E8E8] bg-white px-2.5 py-1 font-season text-[11px] text-[#666] lg:px-3 lg:py-1.5 lg:text-[12px]'>
             {action}
           </div>
         ))}
       </div>
-      <div className='flex items-center gap-3 border-t border-[#F0F0F0] pt-3'>
-        <div className='flex items-center gap-1.5 text-[12px] text-[#999]'>
+      <div className='flex items-center gap-3 border-t border-[#F0F0F0] pt-2.5 lg:pt-3'>
+        <div className='flex items-center gap-1.5 text-[11px] text-[#999] lg:text-[12px]'>
           <svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'><rect x='3' y='3' width='7' height='7'/><rect x='14' y='3' width='7' height='7'/><rect x='14' y='14' width='7' height='7'/><rect x='3' y='14' width='7' height='7'/></svg>
           Tools (17)
         </div>
-        <div className='flex items-center gap-1.5 text-[12px] text-[#999]'>
+        <div className='flex items-center gap-1.5 text-[11px] text-[#999] lg:text-[12px]'>
           <svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/></svg>
           Memory
         </div>
-        <div className='flex items-center gap-1.5 text-[12px] text-[#999]'>
+        <div className='flex items-center gap-1.5 text-[11px] text-[#999] lg:text-[12px]'>
           <svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87'/><path d='M16 3.13a4 4 0 0 1 0 7.75'/></svg>
           Customers
         </div>
@@ -140,15 +140,15 @@ const AGENTS = [
 /** Agents visual: five agent rows */
 function AgentsVisual() {
   return (
-    <div className='flex h-full flex-col justify-center gap-2'>
+    <div className='flex h-full flex-col justify-center gap-1.5 lg:gap-2'>
       {AGENTS.map((agent) => (
-        <div key={agent.name} className='flex items-center gap-3 rounded-lg border border-[#F0F0F0] bg-white px-4 py-3'>
+        <div key={agent.name} className='flex items-center gap-2.5 rounded-lg border border-[#F0F0F0] bg-white px-3 py-2 lg:gap-3 lg:px-4 lg:py-3'>
           <div className='h-2 w-2 shrink-0 rounded-full' style={{ backgroundColor: agent.color }} />
           <div className='flex flex-col gap-0.5'>
-            <span className='font-season text-[13px] font-medium text-[#1D1D1D]'>{agent.name}</span>
-            <span className='font-season text-[11px] text-[#999]'>{agent.domain}</span>
+            <span className='font-season text-[12px] font-medium text-[#1D1D1D] lg:text-[13px]'>{agent.name}</span>
+            <span className='font-season text-[10px] text-[#999] lg:text-[11px]'>{agent.domain}</span>
           </div>
-          <div className='ml-auto font-season text-[10px] text-[#CCC] uppercase tracking-[0.05em]'>Active</div>
+          <div className='ml-auto font-season text-[9px] text-[#CCC] uppercase tracking-[0.05em] lg:text-[10px]'>Active</div>
         </div>
       ))}
     </div>
@@ -158,18 +158,18 @@ function AgentsVisual() {
 /** Skills visual: execution panel showing active skills with modes */
 function SkillsVisual() {
   return (
-    <div className='flex h-full flex-col justify-center gap-2.5'>
+    <div className='flex h-full flex-col justify-center gap-2'>
       {/* Active skill - inline mode */}
-      <div className='rounded-xl border border-[#F0F0F0] bg-white p-4'>
+      <div className='rounded-xl border border-[#F0F0F0] bg-white p-3 lg:p-4'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
             <div className='h-2 w-2 animate-pulse rounded-full bg-[#EAB308]' />
-            <span className='font-season text-[13px] font-medium text-[#1D1D1D]'>Competitive Analysis</span>
+            <span className='font-season text-[12px] font-medium text-[#1D1D1D] lg:text-[13px]'>Competitive Analysis</span>
           </div>
           <span className='rounded-full bg-[#FEF9C3] px-2 py-0.5 font-season text-[9px] font-medium text-[#A16207] uppercase tracking-[0.04em]'>Inline</span>
         </div>
-        <p className='mt-2 font-season text-[11px] text-[#999] leading-[150%]'>Scanning 4 competitors across pricing, positioning, and feature gaps</p>
-        <div className='mt-3 flex items-center gap-3'>
+        <p className='mt-1.5 font-season text-[10px] text-[#999] leading-[150%] lg:mt-2 lg:text-[11px]'>Scanning 4 competitors across pricing, positioning, and feature gaps</p>
+        <div className='mt-2 flex items-center gap-3 lg:mt-3'>
           <div className='h-1 flex-1 overflow-hidden rounded-full bg-[#F5F5F5]'>
             <div className='h-full w-[72%] rounded-full bg-[#EAB308]' />
           </div>
@@ -178,16 +178,16 @@ function SkillsVisual() {
       </div>
 
       {/* Active skill - fork mode */}
-      <div className='rounded-xl border border-[#F0F0F0] bg-white p-4'>
+      <div className='rounded-xl border border-[#F0F0F0] bg-white p-3 lg:p-4'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
             <div className='h-2 w-2 animate-pulse rounded-full bg-[#8B5CF6]' />
-            <span className='font-season text-[13px] font-medium text-[#1D1D1D]'>Lead Enrichment</span>
+            <span className='font-season text-[12px] font-medium text-[#1D1D1D] lg:text-[13px]'>Lead Enrichment</span>
           </div>
           <span className='rounded-full bg-[#EDE9FE] px-2 py-0.5 font-season text-[9px] font-medium text-[#6D28D9] uppercase tracking-[0.04em]'>Fork</span>
         </div>
-        <p className='mt-2 font-season text-[11px] text-[#999] leading-[150%]'>Enriching 48 leads via Apollo, LinkedIn, and company data</p>
-        <div className='mt-3 flex items-center gap-3'>
+        <p className='mt-1.5 font-season text-[10px] text-[#999] leading-[150%] lg:mt-2 lg:text-[11px]'>Enriching 48 leads via Apollo, LinkedIn, and company data</p>
+        <div className='mt-2 flex items-center gap-3 lg:mt-3'>
           <div className='h-1 flex-1 overflow-hidden rounded-full bg-[#F5F5F5]'>
             <div className='h-full w-[35%] rounded-full bg-[#8B5CF6]' />
           </div>
@@ -196,19 +196,19 @@ function SkillsVisual() {
       </div>
 
       {/* Queued skills */}
-      <div className='flex items-center gap-2 rounded-xl border border-dashed border-[#E8E8E8] bg-[#FAFAFA] px-4 py-3'>
-        <span className='font-season text-[11px] text-[#BBB]'>Queue:</span>
-        {['Cold Outreach Draft', 'Meeting Prep', 'Pipeline Review'].map((skill, i) => (
-          <span key={skill} className='rounded-full border border-[#ECECEC] bg-white px-2 py-0.5 font-season text-[10px] text-[#999]'>
+      <div className='flex flex-wrap items-center gap-1.5 rounded-xl border border-dashed border-[#E8E8E8] bg-[#FAFAFA] px-3 py-2.5 lg:gap-2 lg:px-4 lg:py-3'>
+        <span className='font-season text-[10px] text-[#BBB] lg:text-[11px]'>Queue:</span>
+        {['Cold Outreach', 'Meeting Prep', 'Pipeline Review'].map((skill) => (
+          <span key={skill} className='rounded-full border border-[#ECECEC] bg-white px-2 py-0.5 font-season text-[9px] text-[#999] lg:text-[10px]'>
             {skill}
           </span>
         ))}
       </div>
 
       {/* Footer */}
-      <div className='flex items-center justify-between px-1 pt-1'>
-        <span className='font-season text-[10px] text-[#CCC]'>2 of 2 slots active</span>
-        <span className='font-season text-[10px] text-[#CCC]'>3 queued</span>
+      <div className='flex items-center justify-between px-1'>
+        <span className='font-season text-[9px] text-[#CCC] lg:text-[10px]'>2 of 2 slots active</span>
+        <span className='font-season text-[9px] text-[#CCC] lg:text-[10px]'>3 queued</span>
       </div>
     </div>
   )
@@ -224,20 +224,20 @@ const MEMORY_LAYERS = [
 /** Memory visual: four layer rows with retrieval indicator */
 function MemoryVisual() {
   return (
-    <div className='flex h-full flex-col justify-center gap-2'>
+    <div className='flex h-full flex-col justify-center gap-1.5 lg:gap-2'>
       {MEMORY_LAYERS.map((mem) => (
-        <div key={mem.layer} className='flex items-start gap-3 rounded-lg border border-[#F0F0F0] bg-white px-4 py-3'>
+        <div key={mem.layer} className='flex items-start gap-2.5 rounded-lg border border-[#F0F0F0] bg-white px-3 py-2 lg:gap-3 lg:px-4 lg:py-3'>
           <span className='mt-0.5 font-mono text-[10px] text-[#CCC]'>{mem.icon}</span>
           <div className='flex flex-col gap-0.5'>
-            <span className='font-season text-[13px] font-medium text-[#1D1D1D]'>{mem.layer}</span>
-            <span className='font-season text-[11px] text-[#999] leading-[140%]'>{mem.description}</span>
+            <span className='font-season text-[12px] font-medium text-[#1D1D1D] lg:text-[13px]'>{mem.layer}</span>
+            <span className='font-season text-[10px] text-[#999] leading-[140%] lg:text-[11px]'>{mem.description}</span>
           </div>
         </div>
       ))}
-      <div className='mt-1 rounded-lg border border-dashed border-[#E0E0E0] bg-[#FAFAFA] px-4 py-2.5'>
+      <div className='mt-0.5 rounded-lg border border-dashed border-[#E0E0E0] bg-[#FAFAFA] px-3 py-2 lg:mt-1 lg:px-4 lg:py-2.5'>
         <div className='flex items-center gap-2'>
           <svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='#BBB' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>
-          <span className='font-season text-[11px] text-[#BBB]'>Top 5 entries retrieved per turn via Sonnet</span>
+          <span className='font-season text-[10px] text-[#BBB] lg:text-[11px]'>Top 5 entries retrieved per turn via Sonnet</span>
         </div>
       </div>
     </div>
@@ -269,23 +269,23 @@ const INTEGRATION_ITEMS = [
 function IntegrationsVisual() {
   return (
     <div className='flex h-full flex-col justify-center'>
-      <div className='grid grid-cols-3 gap-2'>
+      <div className='grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:gap-2'>
         {INTEGRATION_ITEMS.map((item) => (
-          <div key={item.name} className='flex items-center gap-2.5 rounded-lg border border-[#F0F0F0] bg-white px-3 py-2.5'>
+          <div key={item.name} className='flex items-center gap-2 rounded-lg border border-[#F0F0F0] bg-white px-2.5 py-2 lg:gap-2.5 lg:px-3 lg:py-2.5'>
             <Image
               src={item.logo}
               alt={item.name}
               width={20}
               height={20}
-              className='h-5 w-5 shrink-0 object-contain'
+              className='h-4 w-4 shrink-0 object-contain lg:h-5 lg:w-5'
             />
-            <span className='truncate font-season text-[11px] text-[#666]'>{item.name}</span>
+            <span className='truncate font-season text-[10px] text-[#666] lg:text-[11px]'>{item.name}</span>
           </div>
         ))}
       </div>
-      <div className='mt-3 flex items-center gap-2'>
+      <div className='mt-2.5 flex items-center gap-2 lg:mt-3'>
         <div className='h-px flex-1 bg-[#F0F0F0]' />
-        <span className='font-season text-[10px] text-[#CCC] uppercase tracking-[0.05em]'>50 MCP servers preloaded</span>
+        <span className='font-season text-[9px] text-[#CCC] uppercase tracking-[0.05em] lg:text-[10px]'>50 MCP servers preloaded</span>
         <div className='h-px flex-1 bg-[#F0F0F0]' />
       </div>
     </div>
@@ -413,7 +413,7 @@ export default function Features() {
 
           {/* Content: left text + right visual */}
           <div className='relative mx-6 mt-10 overflow-hidden lg:mx-[120px] lg:mt-[60px]'>
-            <div className='relative h-[280px] sm:h-[260px] lg:h-[340px]'>
+            <div className='relative h-[520px] sm:h-[500px] lg:h-[340px]'>
               <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                   key={activeTab}
@@ -422,7 +422,7 @@ export default function Features() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: direction * -60 }}
                   transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                  className='absolute inset-0 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12'
+                  className='absolute inset-0 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-12'
                 >
                   {/* Left: text */}
                   <div className='flex flex-col justify-center'>
@@ -450,7 +450,7 @@ export default function Features() {
                   </div>
 
                   {/* Right: visual */}
-                  <div className='hidden lg:block'>
+                  <div>
                     <Visual />
                   </div>
                 </motion.div>
