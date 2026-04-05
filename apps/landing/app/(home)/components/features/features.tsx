@@ -298,6 +298,8 @@ export default function Features() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [activeTab, setActiveTab] = useState(0)
   const [direction, setDirection] = useState(1)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -309,7 +311,24 @@ export default function Features() {
     setActiveTab(index)
   }, [activeTab])
 
-  /** Auto-scroll removed intentionally. Users control tab navigation manually. */
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }, [])
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].clientX
+    const diff = touchStartX.current - touchEndX.current
+    const threshold = 50
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0 && activeTab < FEATURE_TABS.length - 1) {
+        setDirection(1)
+        setActiveTab(activeTab + 1)
+      } else if (diff < 0 && activeTab > 0) {
+        setDirection(-1)
+        setActiveTab(activeTab - 1)
+      }
+    }
+  }, [activeTab])
 
   const tab = FEATURE_TABS[activeTab]
   const Visual = TAB_VISUALS[activeTab]
@@ -412,7 +431,11 @@ export default function Features() {
           </div>
 
           {/* Content: left text + right visual */}
-          <div className='relative mx-6 mt-10 overflow-hidden lg:mx-[120px] lg:mt-[60px]'>
+          <div
+            className='relative mx-6 mt-10 overflow-hidden lg:mx-[120px] lg:mt-[60px]'
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <div className='relative h-[520px] sm:h-[500px] lg:h-[340px]'>
               <AnimatePresence initial={false} custom={direction}>
                 <motion.div
