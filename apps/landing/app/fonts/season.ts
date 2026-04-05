@@ -1,17 +1,14 @@
-import localFont from 'next/font/local'
+import { Inter } from 'next/font/google'
 
 /**
- * Season Sans variable font configuration
- * Uses variable font file to support any weight from 300-800
+ * Season Sans substitute using Google Inter
+ * Inter is a clean geometric sans-serif — visually close to Season Sans.
+ * Uses the same CSS variable --font-season so all existing font-season classes work.
  */
-export const season = localFont({
-  src: [
-    // Variable font - supports all weights from 300 to 800
-    { path: './season/SeasonSansUprightsVF.woff2', weight: '300 800', style: 'normal' },
-  ],
+export const season = Inter({
+  subsets: ['latin'],
   display: 'swap',
-  preload: true,
   variable: '--font-season',
+  weight: ['300', '400', '500', '600', '700', '800'],
   fallback: ['system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans'],
-  adjustFontFallback: 'Arial',
 })
