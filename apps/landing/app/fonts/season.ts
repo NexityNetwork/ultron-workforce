@@ -1,14 +1,16 @@
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 
 /**
- * Season Sans substitute using Google Inter
- * Inter is a clean geometric sans-serif — visually close to Season Sans.
- * Uses the same CSS variable --font-season so all existing font-season classes work.
+ * Season Sans variable font — supports weights 300–800.
+ * File copied from apps/sim/app/_styles/fonts/season/SeasonSansUprightsVF.woff2
  */
-export const season = Inter({
-  subsets: ['latin'],
+export const season = localFont({
+  src: [
+    { path: './season/SeasonSansUprightsVF.woff2', weight: '300 800', style: 'normal' },
+  ],
   display: 'swap',
+  preload: true,
   variable: '--font-season',
-  weight: ['300', '400', '500', '600', '700', '800'],
   fallback: ['system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans'],
+  adjustFontFallback: 'Arial',
 })
