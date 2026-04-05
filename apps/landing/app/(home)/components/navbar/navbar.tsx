@@ -23,11 +23,11 @@ export default function Navbar({ logoOnly = false }: NavbarProps) {
       <Link href={logoHref} aria-label='Ultron home' itemProp='url'>
         <span itemProp='name' className='sr-only'>Ultron</span>
         <Image
-          src='/logo/ultron-logo.svg'
+          src='/newlogo.png'
           alt='Ultron'
           width={28}
           height={28}
-          className='h-[28px] w-[28px]'
+          className='h-[28px] w-[28px] rounded-md'
           priority
         />
       </Link>
