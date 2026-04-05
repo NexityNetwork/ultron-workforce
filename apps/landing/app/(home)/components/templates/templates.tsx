@@ -1,9 +1,15 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Badge, ChevronDown } from '@/components/emcn'
 import { TEMPLATE_WORKFLOWS } from '@/app/(home)/components/templates/template-workflows'
+import { CANVAS_TEMPLATES } from '@/app/(home)/components/templates/canvas-mock-data'
+
+const CanvasBlock = dynamic(() => import('@/components/canvas/CanvasBlock'), {
+  ssr: false,
+  loading: () => <div className='flex min-h-[400px] items-center justify-center'><div className='h-5 w-5 animate-spin rounded-full border-2 border-white/10 border-t-white/40' /></div>,
+})
 
 function hexToRgba(hex: string, alpha: number): string {
   const r = Number.parseInt(hex.slice(1, 3), 16)
@@ -38,38 +44,6 @@ function DotGrid({ className, cols, rows, gap = 0 }: DotGridProps) {
   )
 }
 
-/** Simple static preview for a template workflow */
-function TemplatePreview({ color, name }: { color: string; name: string }) {
-  return (
-    <div
-      className='flex h-full w-full flex-col items-center justify-center gap-4 p-8'
-      style={{ background: `radial-gradient(ellipse at center, ${hexToRgba(color, 0.08)} 0%, transparent 70%)` }}
-    >
-      <div
-        className='flex h-14 w-14 items-center justify-center rounded-xl'
-        style={{ backgroundColor: hexToRgba(color, 0.15), border: `1px solid ${hexToRgba(color, 0.3)}` }}
-      >
-        <div className='h-3 w-3 rounded-full' style={{ backgroundColor: color }} />
-      </div>
-      <p
-        className='text-center font-[430] font-season text-base leading-tight tracking-[-0.01em]'
-        style={{ color: hexToRgba(color, 0.9) }}
-      >
-        {name}
-      </p>
-      <div className='flex items-center gap-2 opacity-50'>
-        <div className='h-px w-8' style={{ backgroundColor: color }} />
-        <div className='h-2 w-2 rounded-full' style={{ backgroundColor: color }} />
-        <div className='h-px w-8' style={{ backgroundColor: color }} />
-        <div className='h-2 w-2 rounded-full' style={{ backgroundColor: color }} />
-        <div className='h-px w-8' style={{ backgroundColor: color }} />
-      </div>
-      <p className='text-center font-[430] font-season text-[#F6F6F0]/40 text-xs leading-[150%] tracking-[0.02em]'>
-        Open Ultron to preview this canvas
-      </p>
-    </div>
-  )
-}
 
 const TEMPLATES_PANEL_ID = 'templates-panel'
 
@@ -230,9 +204,16 @@ export default function Templates() {
                 id={TEMPLATES_PANEL_ID}
                 role='tabpanel'
                 aria-labelledby={`template-tab-${activeIndex}`}
-                className='relative hidden min-h-[400px] flex-1 lg:block'
+                className='relative hidden min-h-[400px] flex-1 overflow-hidden lg:block'
               >
-                <TemplatePreview color={activeWorkflow.color} name={activeWorkflow.name} />
+                <div className='h-[600px] overflow-y-auto overflow-x-hidden p-4 scrollbar-none'>
+                  <CanvasBlock
+                    key={activeIndex}
+                    type={CANVAS_TEMPLATES[activeIndex].type}
+                    data={CANVAS_TEMPLATES[activeIndex].data}
+                    className='pointer-events-none'
+                  />
+                </div>
                 <button
                   type='button'
                   onClick={handleUseTemplate}

@@ -48,5 +48,8 @@
   },
   "trustedDependencies": [
     "sharp"
-  ]
+  ],
+  "dependencies": {
+    "recharts": "3.8.1"
+  }
 }
