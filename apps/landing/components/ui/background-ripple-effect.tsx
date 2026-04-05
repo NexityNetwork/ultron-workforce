@@ -24,19 +24,19 @@ export function BackgroundRippleEffect({
       ref={ref}
       className="absolute inset-0 h-full w-full"
       style={{
-        ["--cell-border-color" as string]: "rgba(255,255,255,0.06)",
-        ["--cell-fill-color" as string]: "rgba(255,255,255,0.02)",
-        ["--cell-shadow-color" as string]: "rgba(255,255,255,0.03)",
+        ["--cell-border-color" as string]: "rgba(255,255,255,0.12)",
+        ["--cell-fill-color" as string]: "rgba(255,255,255,0.03)",
+        ["--cell-shadow-color" as string]: "rgba(255,255,255,0.05)",
       }}
     >
       <div className="relative h-auto w-auto overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-[2] h-full w-full overflow-hidden" />
         <DivGrid
           key={`base-${rippleKey}`}
-          className="opacity-60"
+          className=""
           style={{
-            maskImage: "radial-gradient(ellipse at top, black 20%, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(ellipse at top, black 20%, transparent 70%)",
+            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
+            WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
           }}
           rows={rows}
           cols={cols}
@@ -122,7 +122,7 @@ function DivGrid({
           <div
             key={idx}
             className={cn(
-              "cell relative border-[0.5px] opacity-40 transition-opacity duration-150 will-change-transform hover:opacity-80",
+              "cell relative border-[0.5px] transition-opacity duration-150 will-change-transform hover:opacity-100",
               clickedCell && "animate-cell-ripple",
               !interactive && "pointer-events-none",
             )}
