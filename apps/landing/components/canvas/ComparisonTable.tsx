@@ -45,7 +45,6 @@ function initial(name: string): string {
   return name.charAt(0).toUpperCase();
 }
 
-/** Neutral monochrome initials — no rainbow */
 function initialBg(name: string): string {
   const opacities = [
     "bg-white/[0.06] text-white/50",
@@ -65,35 +64,35 @@ function initialBg(name: string): string {
 // ---------------------------------------------------------------------------
 
 function EntityHeader({ entity }: { entity: Entity }) {
-  // Auto-resolve logo: static map → Hunter.io by guessed domain → null
   const logo = entity.logo || getBrandLogo(entity.name) || (() => {
-    // Guess domain from brand name (e.g. "Gumloop" → "gumloop.com")
     const slug = entity.name.toLowerCase().replace(/[^a-z0-9]/g, "");
     return getBrandLogoByDomain(`${slug}.com`);
   })();
   const [imgFailed, setImgFailed] = React.useState(false);
 
   return (
-    <div className="flex flex-col items-center gap-3 px-2">
-      {logo && !imgFailed ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={logo}
-          alt={entity.name}
-          className="h-11 w-11 rounded-xl object-contain shadow-[0_2px_8px_rgba(0,0,0,0.2)]"
-          onError={() => setImgFailed(true)}
-        />
-      ) : (
-        <div
-          className={cn(
-            "flex h-11 w-11 items-center justify-center rounded-xl text-base font-bold shadow-[0_2px_8px_rgba(0,0,0,0.2)]",
-            initialBg(entity.name),
-          )}
-        >
-          {initial(entity.name)}
-        </div>
-      )}
-      <span className="text-center text-[13px] font-semibold text-white">
+    <div className="flex flex-col items-center">
+      <div className="flex h-11 w-11 items-center justify-center">
+        {logo && !imgFailed ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={logo}
+            alt={entity.name}
+            className="h-11 w-11 rounded-xl object-contain"
+            onError={() => setImgFailed(true)}
+          />
+        ) : (
+          <div
+            className={cn(
+              "flex h-11 w-11 items-center justify-center rounded-xl text-base font-bold",
+              initialBg(entity.name),
+            )}
+          >
+            {initial(entity.name)}
+          </div>
+        )}
+      </div>
+      <span className="mt-2.5 text-center text-[13px] font-semibold text-white leading-tight">
         {entity.name}
       </span>
     </div>
@@ -112,8 +111,8 @@ function ScoreBar({
   const pct = Math.min(Math.max((score / 10) * 100, 0), 100);
 
   return (
-    <div className="mt-2.5 flex items-center gap-2">
-      <div className="relative h-[5px] w-full overflow-hidden rounded-full bg-white/[0.05]">
+    <div className="mt-2 flex items-center gap-2">
+      <div className="relative h-[4px] flex-1 overflow-hidden rounded-full bg-white/[0.05]">
         <motion.div
           className={cn("absolute inset-y-0 left-0 rounded-full", scoreColor(score))}
           initial={{ width: 0 }}
@@ -141,14 +140,14 @@ function CellValue({
 }) {
   if (!dimValue) {
     return (
-      <div className="p-5 text-sm text-white/50">&mdash;</div>
+      <div className="px-4 py-4 text-[13px] text-white/30">&mdash;</div>
     );
   }
 
   return (
-    <div className="group relative p-5">
+    <div className="group relative px-4 py-4">
       <div className="flex items-start gap-1.5">
-        <span className="text-sm leading-relaxed text-white/70">
+        <span className="text-[13px] leading-relaxed text-white/70">
           {dimValue.value}
         </span>
         {dimValue.source_url && (
@@ -178,8 +177,6 @@ export default function ComparisonTable({
   insights,
   recommendations,
 }: ComparisonTableProps) {
-  // Normalize entities: AI may send dimensions as an array [{label, value, score}]
-  // but we need Record<string, DimensionValue>
   const entities = React.useMemo(() => {
     return rawEntities.map((entity) => {
       if (Array.isArray(entity.dimensions)) {
@@ -226,7 +223,6 @@ export default function ComparisonTable({
     return map;
   }, [entities, dimensionKeys]);
 
-  // Count how many "Best" badges each entity has
   const winsPerEntity = React.useMemo(() => {
     const wins = new Array(entities.length).fill(0);
     for (const dim of dimensionKeys) {
@@ -236,9 +232,8 @@ export default function ComparisonTable({
     return wins;
   }, [entities, dimensionKeys, bestPerDimension]);
 
-  const entityColStyle: React.CSSProperties = {
-    minWidth: entities.length > 3 ? 220 : undefined,
-  };
+  // Calculate column width percentage: label column gets fixed share, rest split equally
+  const entityCount = entities.length;
 
   return (
     <div className="w-full">
@@ -250,7 +245,7 @@ export default function ComparisonTable({
           </div>
           <h2 className="text-[15px] font-semibold text-white">Comparison</h2>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <span className="text-[10px] font-bold tabular-nums text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
             {entities.length} entities
           </span>
@@ -260,18 +255,25 @@ export default function ComparisonTable({
         </div>
       </div>
 
-      {/* Scrollable wrapper */}
+      {/* Table */}
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
-          {/* Header row: entity cards */}
+        <table className="w-full border-collapse" style={{ tableLayout: "fixed" }}>
+          <colgroup>
+            <col style={{ width: `${100 / (entityCount + 1)}%` }} />
+            {entities.map((_, i) => (
+              <col key={i} style={{ width: `${100 / (entityCount + 1)}%` }} />
+            ))}
+          </colgroup>
+
+          {/* Entity headers */}
           <thead>
-            <tr>
-              <th className="min-w-[180px] p-5" />
+            <tr className={cn("border-b", surface.normal.border)}>
+              <th className="p-4" />
               {entities.map((entity, i) => (
-                <th key={i} className="p-5" style={entityColStyle}>
+                <th key={i} className="p-4 align-bottom">
                   <EntityHeader entity={entity} />
                   {winsPerEntity[i] > 0 && (
-                    <div className="mt-2 text-center">
+                    <div className="mt-1.5 text-center">
                       <span className="text-[9px] font-bold text-emerald-400/60 tabular-nums">
                         {winsPerEntity[i]} best
                       </span>
@@ -294,19 +296,19 @@ export default function ComparisonTable({
                   ease: "easeOut",
                   delay: rowIdx * 0.03,
                 }}
-                className={cn("border-t", surface.subtle.border, "hover:bg-white/[0.015] transition-colors")}
+                className={cn(
+                  rowIdx > 0 && "border-t",
+                  surface.subtle.border,
+                  "hover:bg-white/[0.015] transition-colors",
+                )}
               >
-                <td className="min-w-[180px] p-5 align-top">
+                <td className="px-4 py-4 align-top">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-white/50">
                     {dim.replace(/_/g, " ")}
                   </span>
                 </td>
                 {entities.map((entity, eIdx) => (
-                  <td
-                    key={eIdx}
-                    className="align-top"
-                    style={entityColStyle}
-                  >
+                  <td key={eIdx} className="align-top">
                     <CellValue
                       dimValue={entity.dimensions[dim]}
                       delay={rowIdx * 0.03 + 0.15}
