@@ -267,83 +267,83 @@ export default function Collaboration() {
           </div>
 
           <figure className='pointer-events-none relative h-[280px] w-full sm:h-[350px] md:h-[600px]'>
-            <div className='absolute inset-0 flex items-center justify-center p-4 md:p-8'>
-              <div className='relative flex h-full w-full max-w-[900px] gap-3 md:gap-4'>
+            <div className='absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-8'>
+              <div className='relative flex h-full w-full max-w-[900px] gap-2 sm:gap-3 md:gap-4'>
                 {/* Left panel — mock chat */}
-                <div className='flex w-[45%] flex-col rounded-lg border border-white/[0.08] bg-white/[0.03]'>
-                  <div className='flex items-center gap-2 border-b border-white/[0.06] px-3 py-2 md:px-4 md:py-2.5'>
-                    <div className='h-2 w-2 rounded-full bg-[#33C482]' />
-                    <span className='font-season text-[10px] text-white/60 md:text-xs'>Team Chat</span>
+                <div className='flex w-[48%] flex-col rounded-lg border border-white/[0.08] bg-white/[0.03] md:w-[45%]'>
+                  <div className='flex items-center gap-1.5 border-b border-white/[0.06] px-2.5 py-1.5 sm:gap-2 sm:px-3 sm:py-2 md:px-4 md:py-2.5'>
+                    <div className='h-1.5 w-1.5 rounded-full bg-[#33C482] sm:h-2 sm:w-2' />
+                    <span className='font-season text-[10px] text-white/60 sm:text-[11px] md:text-xs'>Team Chat</span>
                   </div>
-                  <div className='flex flex-1 flex-col gap-2 overflow-hidden p-2 md:gap-3 md:p-3'>
-                    <div className='flex items-start gap-2'>
-                      <div className='mt-0.5 h-4 w-4 shrink-0 rounded-full bg-[#2ABBF8]/30 md:h-5 md:w-5' />
-                      <div className='flex flex-col gap-1'>
-                        <span className='font-season text-[9px] text-[#2ABBF8] md:text-[11px]'>Marcus</span>
-                        <div className='rounded-md bg-white/[0.05] px-2 py-1.5 font-season text-[9px] text-white/70 leading-[140%] md:text-[11px]'>
-                          Can we automate the outreach sequence for Q2?
+                  <div className='flex flex-1 flex-col gap-2.5 overflow-hidden p-2.5 sm:gap-3 sm:p-3'>
+                    <div className='flex items-start gap-1.5 sm:gap-2'>
+                      <div className='mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2ABBF8]/20 font-season text-[7px] text-[#2ABBF8] sm:text-[8px] md:h-6 md:w-6'>M</div>
+                      <div className='flex min-w-0 flex-col gap-0.5'>
+                        <span className='font-season text-[10px] font-medium text-[#2ABBF8] sm:text-[11px]'>Marcus</span>
+                        <div className='rounded-md bg-white/[0.05] px-2 py-1.5 font-season text-[10px] text-white/70 leading-[150%] sm:text-[11px]'>
+                          Automate outreach for Q2?
                         </div>
                       </div>
                     </div>
-                    <div className='flex items-start gap-2'>
-                      <div className='mt-0.5 h-4 w-4 shrink-0 rounded-full bg-[#FFCC02]/30 md:h-5 md:w-5' />
-                      <div className='flex flex-col gap-1'>
-                        <span className='font-season text-[9px] text-[#FFCC02] md:text-[11px]'>Alexa</span>
-                        <div className='rounded-md bg-white/[0.05] px-2 py-1.5 font-season text-[9px] text-white/70 leading-[140%] md:text-[11px]'>
-                          Already on it. Striker is drafting 3 variants now.
+                    <div className='flex items-start gap-1.5 sm:gap-2'>
+                      <div className='mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FFCC02]/20 font-season text-[7px] text-[#FFCC02] sm:text-[8px] md:h-6 md:w-6'>A</div>
+                      <div className='flex min-w-0 flex-col gap-0.5'>
+                        <span className='font-season text-[10px] font-medium text-[#FFCC02] sm:text-[11px]'>Alexa</span>
+                        <div className='rounded-md bg-white/[0.05] px-2 py-1.5 font-season text-[10px] text-white/70 leading-[150%] sm:text-[11px]'>
+                          On it. Striker is drafting 3 variants.
                         </div>
                       </div>
                     </div>
-                    <div className='flex items-start gap-2'>
-                      <div className='mt-0.5 h-4 w-4 shrink-0 rounded-full bg-[#33C482]/30 md:h-5 md:w-5' />
-                      <div className='flex flex-col gap-1'>
-                        <span className='font-season text-[9px] text-[#33C482] md:text-[11px]'>You</span>
-                        <div className='rounded-md bg-white/[0.05] px-2 py-1.5 font-season text-[9px] text-white/70 leading-[140%] md:text-[11px]'>
-                          Perfect. Let's review before EOD.
+                    <div className='flex items-start gap-1.5 sm:gap-2'>
+                      <div className='mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#33C482]/20 font-season text-[7px] text-[#33C482] sm:text-[8px] md:h-6 md:w-6'>Y</div>
+                      <div className='flex min-w-0 flex-col gap-0.5'>
+                        <span className='font-season text-[10px] font-medium text-[#33C482] sm:text-[11px]'>You</span>
+                        <div className='rounded-md bg-white/[0.05] px-2 py-1.5 font-season text-[10px] text-white/70 leading-[150%] sm:text-[11px]'>
+                          Let&apos;s review before EOD.
                         </div>
                       </div>
                     </div>
-                    <div className='mt-auto border-t border-white/[0.06] pt-2'>
+                    <div className='mt-auto hidden border-t border-white/[0.06] pt-2 md:block'>
                       <div className='flex items-center rounded-md bg-white/[0.03] px-2 py-1.5'>
-                        <span className='font-season text-[9px] text-white/30 md:text-[11px]'>Type a message...</span>
+                        <span className='font-season text-[11px] text-white/30'>Type a message...</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Right panel — agent workflow */}
-                <div className='flex w-[55%] flex-col rounded-lg border border-white/[0.08] bg-white/[0.03]'>
-                  <div className='flex items-center gap-2 border-b border-white/[0.06] px-3 py-2 md:px-4 md:py-2.5'>
-                    <div className='h-2 w-2 rounded-full bg-[#FA4EDF]' />
-                    <span className='font-season text-[10px] text-white/60 md:text-xs'>Agent Workspace</span>
+                <div className='flex w-[52%] flex-col rounded-lg border border-white/[0.08] bg-white/[0.03] md:w-[55%]'>
+                  <div className='flex items-center gap-1.5 border-b border-white/[0.06] px-2.5 py-1.5 sm:gap-2 sm:px-3 sm:py-2 md:px-4 md:py-2.5'>
+                    <div className='h-1.5 w-1.5 rounded-full bg-[#FA4EDF] sm:h-2 sm:w-2' />
+                    <span className='font-season text-[10px] text-white/60 sm:text-[11px] md:text-xs'>Agent Workspace</span>
                   </div>
-                  <div className='flex flex-1 flex-col gap-2 overflow-hidden p-2 md:gap-3 md:p-3'>
+                  <div className='flex flex-1 flex-col gap-2 overflow-hidden p-2.5 sm:gap-2.5 sm:p-3 md:gap-3'>
                     {/* Active agent card */}
-                    <div className='rounded-md border border-[#FA4EDF]/20 bg-[#FA4EDF]/[0.04] p-2 md:p-3'>
+                    <div className='rounded-md border border-[#FA4EDF]/20 bg-[#FA4EDF]/[0.04] p-2 sm:p-2.5 md:p-3'>
                       <div className='flex items-center gap-1.5'>
                         <div className='h-1.5 w-1.5 animate-pulse rounded-full bg-[#FA4EDF]' />
-                        <span className='font-season text-[9px] font-medium text-white/80 md:text-[11px]'>Striker — Cold Outreach</span>
+                        <span className='font-season text-[10px] font-medium text-white/80 sm:text-[11px]'>Striker — Outreach</span>
                       </div>
-                      <p className='mt-1 font-season text-[8px] text-white/40 leading-[140%] md:text-[10px]'>Drafting 3 email variants for Q2 campaign...</p>
-                      <div className='mt-2 h-1 overflow-hidden rounded-full bg-white/[0.06]'>
+                      <p className='mt-1 font-season text-[9px] text-white/40 leading-[140%] sm:text-[10px]'>Drafting 3 email variants...</p>
+                      <div className='mt-1.5 h-1 overflow-hidden rounded-full bg-white/[0.06] sm:mt-2'>
                         <div className='h-full w-[65%] rounded-full bg-[#FA4EDF]/60' />
                       </div>
                     </div>
                     {/* Completed task */}
-                    <div className='rounded-md border border-white/[0.06] bg-white/[0.02] p-2 md:p-3'>
+                    <div className='rounded-md border border-white/[0.06] bg-white/[0.02] p-2 sm:p-2.5 md:p-3'>
                       <div className='flex items-center gap-1.5'>
-                        <svg width='10' height='10' viewBox='0 0 10 10' className='text-[#33C482]'><circle cx='5' cy='5' r='4' fill='none' stroke='currentColor' strokeWidth='1' /><path d='M3 5L4.5 6.5L7 3.5' stroke='currentColor' strokeWidth='1' strokeLinecap='round' strokeLinejoin='round' fill='none' /></svg>
-                        <span className='font-season text-[9px] text-white/60 md:text-[11px]'>Cortex — Market Research</span>
+                        <svg width='10' height='10' viewBox='0 0 10 10' className='shrink-0 text-[#33C482]'><circle cx='5' cy='5' r='4' fill='none' stroke='currentColor' strokeWidth='1' /><path d='M3 5L4.5 6.5L7 3.5' stroke='currentColor' strokeWidth='1' strokeLinecap='round' strokeLinejoin='round' fill='none' /></svg>
+                        <span className='font-season text-[10px] text-white/60 sm:text-[11px]'>Cortex — Research</span>
                       </div>
-                      <p className='mt-1 font-season text-[8px] text-white/30 leading-[140%] md:text-[10px]'>Competitor analysis complete. 12 insights found.</p>
+                      <p className='mt-1 font-season text-[9px] text-white/30 leading-[140%] sm:text-[10px]'>12 insights found.</p>
                     </div>
                     {/* Queued task */}
-                    <div className='rounded-md border border-white/[0.06] bg-white/[0.02] p-2 md:p-3'>
+                    <div className='rounded-md border border-white/[0.06] bg-white/[0.02] p-2 sm:p-2.5 md:p-3'>
                       <div className='flex items-center gap-1.5'>
-                        <div className='h-2.5 w-2.5 rounded-full border border-white/20' />
-                        <span className='font-season text-[9px] text-white/40 md:text-[11px]'>Pulse — LinkedIn Posts</span>
+                        <div className='h-2.5 w-2.5 shrink-0 rounded-full border border-white/20' />
+                        <span className='font-season text-[10px] text-white/40 sm:text-[11px]'>Pulse — LinkedIn</span>
                       </div>
-                      <p className='mt-1 font-season text-[8px] text-white/25 leading-[140%] md:text-[10px]'>Queued — waiting for outreach draft</p>
+                      <p className='mt-1 font-season text-[9px] text-white/25 leading-[140%] sm:text-[10px]'>Queued — waiting on draft</p>
                     </div>
                   </div>
                 </div>
