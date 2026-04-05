@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import { martianMono } from '@/app/fonts/martian-mono'
-import { season } from '@/app/fonts/season'
 import './globals.css'
 
 export const viewport: Viewport = {
@@ -75,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name='format-detection' content='telephone=no' />
       </head>
       <body
-        className={`${season.variable} ${martianMono.variable} font-season`}
+        className={`${martianMono.variable} font-season`}
         suppressHydrationWarning
       >
         {children}

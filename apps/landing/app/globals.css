@@ -1,8 +1,18 @@
+@font-face {
+  font-family: 'Season Sans';
+  src: url('./fonts/season/SeasonSansUprightsVF.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  --font-season: 'Season Sans', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    sans-serif;
   --sidebar-width: 0px;
   --panel-width: 320px;
 

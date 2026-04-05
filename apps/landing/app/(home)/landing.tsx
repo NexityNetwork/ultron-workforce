@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
 import { getNavBlogPosts } from '@/lib/blog/registry'
 import { martianMono } from '@/app/fonts/martian-mono'
-import { season } from '@/app/fonts/season'
 import {
   Collaboration,
   Enterprise,
@@ -20,7 +19,7 @@ export default async function Landing() {
 
   return (
     <div
-      className={`${season.variable} ${martianMono.variable} min-h-screen bg-[var(--landing-bg)]`}
+      className={`${martianMono.variable} min-h-screen bg-[var(--landing-bg)]`}
     >
       <a
         href='#main-content'
