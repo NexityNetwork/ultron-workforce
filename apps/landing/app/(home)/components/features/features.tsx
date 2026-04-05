@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { type MotionValue, motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { Badge } from '@/components/emcn'
@@ -61,7 +61,6 @@ const ALL_LETTERS_COUNT = HEADING_LETTERS.length + HEADING_LETTERS_2.length
 const LETTER_REVEAL_SPAN = 0.85
 const LETTER_FADE_IN = 0.04
 
-const AUTO_PLAY_INTERVAL = 5000
 
 interface ScrollLetterProps {
   scrollYProgress: MotionValue<number>
@@ -280,7 +279,6 @@ export default function Features() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [activeTab, setActiveTab] = useState(0)
   const [direction, setDirection] = useState(1)
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -292,15 +290,7 @@ export default function Features() {
     setActiveTab(index)
   }, [activeTab])
 
-  useEffect(() => {
-    timerRef.current = setInterval(() => {
-      setDirection(1)
-      setActiveTab((prev) => (prev + 1) % FEATURE_TABS.length)
-    }, AUTO_PLAY_INTERVAL)
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-    }
-  }, [activeTab])
+  /** Auto-scroll removed intentionally. Users control tab navigation manually. */
 
   const tab = FEATURE_TABS[activeTab]
   const Visual = TAB_VISUALS[activeTab]
@@ -458,26 +448,10 @@ export default function Features() {
                   onClick={() => goToTab(i)}
                   className='relative h-1.5 overflow-hidden rounded-full transition-all duration-300'
                   style={{
-                    width: i === activeTab ? 32 : 8,
-                    backgroundColor: i === activeTab ? 'transparent' : '#D4D4D4',
+                    width: i === activeTab ? 20 : 8,
+                    backgroundColor: i === activeTab ? tab.color : '#D4D4D4',
                   }}
                 >
-                  {i === activeTab && (
-                    <>
-                      <div
-                        className='absolute inset-0 rounded-full opacity-25'
-                        style={{ backgroundColor: tab.color }}
-                      />
-                      <motion.div
-                        className='absolute inset-y-0 left-0 rounded-full'
-                        style={{ backgroundColor: tab.color }}
-                        initial={{ width: '0%' }}
-                        animate={{ width: '100%' }}
-                        transition={{ duration: AUTO_PLAY_INTERVAL / 1000, ease: 'linear' }}
-                        key={`progress-${activeTab}`}
-                      />
-                    </>
-                  )}
                 </button>
               ))}
             </div>

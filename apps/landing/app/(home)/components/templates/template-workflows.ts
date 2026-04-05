@@ -29,13 +29,6 @@ export const TEMPLATE_WORKFLOWS: TemplateWorkflow[] = [
       'Generate personalized sequences for every prospect in minutes. Ready to send, tracked, and optimized from one place.',
   },
   {
-    id: 'canvas-competitor-map',
-    name: 'Competitor Intelligence Map',
-    color: '#FA4EDF',
-    description:
-      'Monitor positioning, pricing, and messaging across rivals. Know every move before your team has to find out.',
-  },
-  {
     id: 'canvas-lead-pipeline',
     name: 'Lead Pipeline Tracker',
     color: '#FF6B2C',

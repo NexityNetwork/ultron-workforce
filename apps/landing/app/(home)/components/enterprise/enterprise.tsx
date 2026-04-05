@@ -19,7 +19,7 @@ const ENTERPRISE_FEATURE_MARQUEE_STYLES = `
 `
 
 const FEATURE_TAGS = [
-  'Access Control', 'Self-Hosting', 'Bring Your Own Key', 'Credential Sharing',
+  'Access Control', 'Self-Hosting', 'Credential Sharing',
   'Custom Limits', 'Admin API', 'White Labeling', 'Dedicated Support',
   '99.99% Uptime SLA', 'Workflow Versioning', 'On-Premise', 'Organizations',
   'Workspace Export', 'Audit Logs',
