@@ -25,12 +25,12 @@ export default function Timeline({ events = [], insights, recommendations }: Tim
   return (
     <div className="w-full">
       {/* Summary header */}
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-2.5">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
           <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center", brand.iconBox)}>
             <Clock className="w-4 h-4 text-[#DA4E24]" />
           </div>
-          <h2 className="text-sm font-semibold text-white">Timeline</h2>
+          <h2 className="text-[15px] font-semibold text-white">Timeline</h2>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-[10px] font-bold tabular-nums text-white/60">
@@ -91,9 +91,10 @@ export default function Timeline({ events = [], insights, recommendations }: Tim
                 <div
                   className={cn(
                     "rounded-xl border p-4",
-                    surface.subtle.border,
-                    "bg-gradient-to-r from-white/[0.03] to-transparent",
-                    "group-hover:border-white/[0.12] group-hover:shadow-lg group-hover:shadow-black/20",
+                    surface.normal.border,
+                    "bg-gradient-to-r from-white/[0.04] to-white/[0.01]",
+                    "shadow-[0_1px_4px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.04)]",
+                    "group-hover:border-white/[0.14] group-hover:shadow-lg group-hover:shadow-black/20",
                     "transition-all duration-200",
                   )}
                 >

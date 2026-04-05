@@ -125,8 +125,8 @@ export default function RadarChart({
   return (
     <div className="w-full">
       {/* Summary header */}
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-2.5">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
           <div
             className={cn(
               "w-8 h-8 rounded-lg flex items-center justify-center",
@@ -137,17 +137,17 @@ export default function RadarChart({
           >
             <Radar className={cn("w-4 h-4", status[avgStatus].text)} />
           </div>
-          <h2 className="text-sm font-semibold text-white">
+          <h2 className="text-[15px] font-semibold text-white">
             {title || "Radar Chart"}
           </h2>
         </div>
         {isMultiEntity && (
-          <span className="text-[10px] text-white/60 font-medium">
+          <span className="text-[10px] text-white/50 font-medium rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
             {entities.length} entities &middot; {count} dimensions
           </span>
         )}
         {!isMultiEntity && (
-          <span className={cn("text-[10px] font-bold tabular-nums", status[avgStatus].text)}>
+          <span className={cn("text-[10px] font-bold tabular-nums rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1", status[avgStatus].text)}>
             {avgScore} avg
           </span>
         )}

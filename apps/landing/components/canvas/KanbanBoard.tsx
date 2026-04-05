@@ -124,8 +124,8 @@ export default function KanbanBoard({ columns = [], insights, recommendations }:
   return (
     <div className="w-full">
       {/* Summary header */}
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-2.5">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
           <div
             className={cn(
               "w-8 h-8 rounded-lg flex items-center justify-center",
@@ -134,23 +134,19 @@ export default function KanbanBoard({ columns = [], insights, recommendations }:
           >
             <Columns3 className="w-4 h-4 text-[#DA4E24]" />
           </div>
-          <h2 className="text-sm font-semibold text-white">Pipeline</h2>
+          <h2 className="text-[15px] font-semibold text-white">Pipeline</h2>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="text-[10px] font-bold tabular-nums text-white/70">
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-bold tabular-nums text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
             {totalCards} cards
           </span>
-          <div className={cn("h-3 w-px", surface.subtle.border)} />
-          <span className="text-[10px] font-bold tabular-nums text-white/70">
+          <span className="text-[10px] font-bold tabular-nums text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
             {columns.length} stages
           </span>
           {conversionRate !== null && (
-            <>
-              <div className={cn("h-3 w-px", surface.subtle.border)} />
-              <span className="text-[10px] font-bold tabular-nums text-white/60">
-                {conversionRate}% throughput
-              </span>
-            </>
+            <span className="text-[10px] font-bold tabular-nums text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
+              {conversionRate}% throughput
+            </span>
           )}
         </div>
       </div>
@@ -226,9 +222,10 @@ export default function KanbanBoard({ columns = [], insights, recommendations }:
                       }}
                       className={cn(
                         "group relative rounded-xl border",
-                        surface.subtle.border,
-                        "bg-gradient-to-b from-white/[0.03] to-transparent",
+                        surface.normal.border,
+                        "bg-gradient-to-b from-white/[0.04] to-white/[0.01]",
                         "p-4 min-h-[100px] flex flex-col gap-2.5",
+                        "shadow-[0_1px_4px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.04)]",
                         hoverCard,
                         "cursor-default",
                       )}

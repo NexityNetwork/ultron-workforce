@@ -104,10 +104,10 @@ export default function SequenceBuilder({
             <Mail className="w-4 h-4 text-[#DA4E24]" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-white">
+            <h2 className="text-[15px] font-semibold text-white">
               {sequence_name}
             </h2>
-            <p className="text-[10px] text-white/60 mt-0.5">
+            <p className="text-[11px] text-white/50 mt-0.5">
               {steps.length} step{steps.length !== 1 ? "s" : ""} over{" "}
               {totalDays} days
             </p>
@@ -152,10 +152,11 @@ export default function SequenceBuilder({
                 }}
                 className={cn(
                   "min-w-[260px] max-w-[280px] rounded-xl border overflow-hidden",
-                  surface.subtle.border,
+                  surface.normal.border,
                   "bg-gradient-to-br",
                   st.bg,
-                  "hover:border-white/[0.12] hover:shadow-xl hover:shadow-black/20 transition-all duration-200 group",
+                  "shadow-[0_2px_8px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.04)]",
+                  "hover:border-white/[0.14] hover:shadow-xl hover:shadow-black/25 transition-all duration-200 group",
                   step.body && "cursor-pointer",
                 )}
                 style={{ borderTopWidth: 3, borderTopColor: st.color }}
@@ -200,8 +201,8 @@ export default function SequenceBuilder({
                 </div>
 
                 {/* Step content */}
-                <div className="px-4 py-4 space-y-2">
-                  <p className="text-[12px] font-semibold text-white leading-snug group-hover:text-white transition-colors">
+                <div className="px-4 py-4 space-y-2.5">
+                  <p className="text-[13px] font-semibold text-white leading-snug group-hover:text-white transition-colors">
                     {step.subject}
                   </p>
                   <p

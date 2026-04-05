@@ -104,7 +104,7 @@ function SwotQuadrant({
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.35, ease: "easeOut", delay }}
       className={cn(
-        "relative flex flex-col gap-3 rounded-xl border p-4 min-h-[140px] overflow-hidden",
+        "relative flex flex-col gap-3 rounded-xl border p-4 min-h-[140px] overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]",
         config.bg,
         config.border,
       )}
@@ -206,25 +206,21 @@ export default function SwotGrid({
   return (
     <div className="w-full">
       {/* Summary header */}
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-2.5">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
           <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center", brand.iconBox)}>
             <BarChart3 className="w-4 h-4 text-[#DA4E24]" />
           </div>
-          <h2 className="text-sm font-semibold text-white">
+          <h2 className="text-[15px] font-semibold text-white">
             {title || "SWOT Analysis"}
           </h2>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="text-[10px] font-bold tabular-nums text-white/60">
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-bold tabular-nums text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
             {totalItems} factors
           </span>
-          <div className={cn("h-3 w-px", surface.subtle.border)} />
-          <span className="text-[10px] text-white/60">
-            {internalCount} internal
-          </span>
-          <span className="text-[10px] text-white/60">
-            {externalCount} external
+          <span className="text-[10px] text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
+            {internalCount} int · {externalCount} ext
           </span>
         </div>
       </div>

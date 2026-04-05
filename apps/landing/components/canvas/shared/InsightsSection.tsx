@@ -25,7 +25,7 @@ export default function InsightsSection({
   const recDelay = hasInsights ? delay + 0.08 + insights.length * 0.05 + 0.1 : delay;
 
   return (
-    <div className="mt-6 flex flex-col gap-3">
+    <div className="mt-8 flex flex-col gap-3">
       {/* ── Key Insights ─────────────────────────────────── */}
       {hasInsights && (
         <motion.div

@@ -135,21 +135,21 @@ function KPICard({ kpi, index }: { kpi: KPI; index: number }) {
       transition={{ duration: 0.3, delay: index * 0.06 }}
       className={cn(
         tpl.cardHover,
-        "border-l-2 p-4",
+        "border-l-2 p-5",
         statusBorder(kpi.status),
       )}
     >
-      <p className={cn(text.micro, "text-white/40")}>
+      <p className={cn(text.micro, "text-white/50")}>
         {kpi.label}
       </p>
-      <p className={cn(text.value, "mt-1.5")}>
+      <p className={cn(text.value, "mt-2")}>
         {kpi.value}
       </p>
       {kpi.change && (
-        <div className="mt-2 flex items-center gap-1.5">
+        <div className="mt-3 flex items-center gap-1.5">
           {TrendIcon && (
             <TrendIcon
-              className={cn("h-3 w-3", trendColor(kpi.trend, kpi.status))}
+              className={cn("h-3.5 w-3.5", trendColor(kpi.trend, kpi.status))}
             />
           )}
           <span
@@ -173,9 +173,9 @@ function StagesTimeline({ stages }: { stages: Stage[] }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.2 }}
-      className="mt-6"
+      className="mt-8"
     >
-      <p className={cn(text.sectionLabel, "mb-4")}>
+      <p className={cn(text.sectionLabel, "mb-5")}>
         Stages
       </p>
       <div className="flex items-start gap-0">
@@ -322,11 +322,11 @@ function ChartSection({ chart }: { chart: ChartConfig }) {
       transition={{ duration: 0.4, delay: 0.3 }}
       className="mt-6"
     >
-      <p className={cn(text.sectionLabel, "mb-3")}>
+      <p className={cn(text.sectionLabel, "mb-4")}>
         Trend
       </p>
-      <div className={cn(tpl.card, "p-4")}>
-        <ResponsiveContainer width="100%" height={200}>
+      <div className={cn(tpl.card, "p-5")}>
+        <ResponsiveContainer width="100%" height={220}>
           {chartContent()}
         </ResponsiveContainer>
       </div>
@@ -342,10 +342,10 @@ function BreakdownSection({ breakdown }: { breakdown: BreakdownItem[] }) {
       transition={{ duration: 0.4, delay: 0.35 }}
       className="mt-6"
     >
-      <p className={cn(text.sectionLabel, "mb-3")}>
+      <p className={cn(text.sectionLabel, "mb-4")}>
         Breakdown
       </p>
-      <div className="space-y-2.5">
+      <div className="space-y-2">
         {breakdown.map((item, i) => (
           <motion.div
             key={i}
@@ -354,12 +354,12 @@ function BreakdownSection({ breakdown }: { breakdown: BreakdownItem[] }) {
             transition={{ delay: 0.4 + i * 0.04 }}
             className={cn(
               tpl.card,
-              "flex items-center gap-3 px-3 py-2.5",
+              "flex items-center gap-4 px-4 py-3",
             )}
           >
-            <span className={cn(text.body, "flex-1")}>{item.label}</span>
+            <span className={cn(text.body, "flex-1 font-medium")}>{item.label}</span>
             {item.percentage !== undefined && (
-              <div className="w-20 h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+              <div className="w-24 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
                 <motion.div
                   className={cn("h-full rounded-full", brand.bgSolid)}
                   initial={{ width: 0 }}
@@ -368,7 +368,7 @@ function BreakdownSection({ breakdown }: { breakdown: BreakdownItem[] }) {
                 />
               </div>
             )}
-            <span className={cn(text.detail, "font-semibold tabular-nums text-white/60")}>
+            <span className={cn(text.detail, "font-semibold tabular-nums text-white/70")}>
               {item.value}
             </span>
           </motion.div>
@@ -397,15 +397,15 @@ export default function MetricsDashboard({
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="mb-5 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
+      <div className="mb-6 flex items-center justify-between">
+        <div className="flex items-center gap-3">
           <div className={tpl.iconBox}>
             <BarChart3 className={cn("h-4 w-4", brand.text)} />
           </div>
-          <h2 className={text.title}>{title}</h2>
+          <h2 className={cn(text.title, "text-[15px]")}>{title}</h2>
         </div>
         {period && (
-          <span className={cn(text.micro, "text-white/60")}>
+          <span className={cn(text.micro, "text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1")}>
             {period}
           </span>
         )}

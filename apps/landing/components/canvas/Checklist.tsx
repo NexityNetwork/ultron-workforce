@@ -127,7 +127,7 @@ function SectionHeader({
         {name}
       </span>
       <div className="flex items-center gap-2">
-        <div className="w-20 h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+        <div className="w-24 h-[5px] rounded-full bg-white/[0.06] overflow-hidden">
           <motion.div
             className={cn("h-full rounded-full", barColor)}
             initial={{ width: 0 }}
@@ -215,8 +215,8 @@ export default function Checklist({
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="flex items-center justify-between mb-5">
-        <h2 className="text-sm font-semibold text-white">{title}</h2>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-[15px] font-semibold text-white">{title}</h2>
         <div className="flex items-center gap-2">
           <NumberTicker
             value={overall.pct}

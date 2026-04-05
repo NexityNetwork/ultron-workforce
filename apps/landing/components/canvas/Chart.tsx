@@ -242,7 +242,7 @@ export default function Chart({
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-        className="h-[300px] w-full"
+        className="h-[320px] w-full rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
       >
         {type === "line" ? (
           <LineChart data={data} xKey={xKey} yKey={yKey} colors={colors} />

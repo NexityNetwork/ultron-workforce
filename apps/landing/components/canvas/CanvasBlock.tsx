@@ -80,7 +80,7 @@ export default function CanvasBlock({ type, data, className }: CanvasBlockProps)
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b from-white/[0.02] to-transparent p-5",
+        "relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-6 shadow-[0_2px_16px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.05)]",
         className,
       )}
     >

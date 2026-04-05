@@ -207,7 +207,7 @@ export default function TextCards({
   return (
     <div className="w-full">
       {/* Header */}
-      <h2 className={cn(text.title, "mb-5")}>{title}</h2>
+      <h2 className={cn(text.title, "mb-6 text-[15px]")}>{title}</h2>
 
       {safeCards.length === 0 && (
         <div className="flex items-center justify-center py-10">

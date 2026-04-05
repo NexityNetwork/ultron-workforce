@@ -206,7 +206,7 @@ export default function Templates() {
                 aria-labelledby={`template-tab-${activeIndex}`}
                 className='relative hidden min-h-[400px] flex-1 overflow-hidden lg:block'
               >
-                <div className='h-[600px] overflow-y-auto overflow-x-hidden p-4 scrollbar-none'>
+                <div className='h-[620px] overflow-y-auto overflow-x-hidden p-5 scrollbar-none'>
                   <CanvasBlock
                     key={activeIndex}
                     type={CANVAS_TEMPLATES[activeIndex].type}

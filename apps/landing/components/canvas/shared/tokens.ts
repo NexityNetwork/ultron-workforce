@@ -17,12 +17,12 @@ export const brand = {
   text: "text-[#DA4E24]",
   bg: "bg-[#DA4E24]/[0.06]",
   bgSolid: "bg-[#DA4E24]",
-  border: "border-[#DA4E24]/[0.12]",
+  border: "border-[#DA4E24]/[0.14]",
   borderSolid: "border-[#DA4E24]",
   dot: "bg-[#DA4E24]",
   line: "bg-[#DA4E24]/40",
   /** For icon containers in summary headers */
-  iconBox: "bg-[#DA4E24]/[0.08] border border-[#DA4E24]/[0.12]",
+  iconBox: "bg-[#DA4E24]/[0.08] border border-[#DA4E24]/[0.14]",
 } as const;
 
 // ─── BORDER + SURFACE TIERS ────────────────────────────────
@@ -31,18 +31,18 @@ export const brand = {
 export const surface = {
   /** Barely visible — nested cards, inner items */
   subtle: {
-    border: "border-white/[0.06]",
-    bg: "bg-white/[0.02]",
+    border: "border-white/[0.07]",
+    bg: "bg-white/[0.025]",
   },
   /** Default — cards, rows, cells */
   normal: {
-    border: "border-white/[0.08]",
-    bg: "bg-white/[0.03]",
+    border: "border-white/[0.10]",
+    bg: "bg-white/[0.035]",
   },
   /** Highlighted — hover states, active items, emphasis */
   emphasis: {
-    border: "border-white/[0.12]",
-    bg: "bg-white/[0.05]",
+    border: "border-white/[0.14]",
+    bg: "bg-white/[0.06]",
   },
 } as const;
 
@@ -50,7 +50,7 @@ export const surface = {
 // Standard hover class string to append on interactive cards.
 
 export const hoverCard =
-  "transition-all duration-200 hover:border-white/[0.12] hover:bg-white/[0.04]";
+  "transition-all duration-200 hover:border-white/[0.14] hover:bg-white/[0.05]";
 
 // ─── STATUS COLORS ─────────────────────────────────────────
 // These are the ONLY colors besides brand. Use ONLY for semantic status.
@@ -140,18 +140,18 @@ export const text = {
 // Import and use with cn() to compose.
 
 export const tpl = {
-  /** Standard card — border + bg + rounded */
-  card: `rounded-xl border ${surface.normal.border} ${surface.normal.bg}`,
+  /** Standard card — border + bg + rounded + subtle inner shadow */
+  card: `rounded-xl border ${surface.normal.border} ${surface.normal.bg} shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]`,
   /** Card with hover interaction */
-  cardHover: `rounded-xl border ${surface.normal.border} ${surface.normal.bg} ${hoverCard}`,
+  cardHover: `rounded-xl border ${surface.normal.border} ${surface.normal.bg} shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] ${hoverCard}`,
   /** Subtle inner card (nested inside another card) */
   cardSubtle: `rounded-lg border ${surface.subtle.border} ${surface.subtle.bg}`,
   /** Emphasis card — highlighted, active */
-  cardEmphasis: `rounded-xl border ${surface.emphasis.border} ${surface.emphasis.bg}`,
+  cardEmphasis: `rounded-xl border ${surface.emphasis.border} ${surface.emphasis.bg} shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]`,
   /** Brand callout — left accent border with faint brand background */
   callout: `rounded-lg border-l-2 ${brand.border} ${brand.bg} p-4`,
   /** Section divider line */
-  divider: `h-px bg-white/[0.06]`,
+  divider: `h-px bg-white/[0.07]`,
   /** Icon box — brand-colored container for header icons */
   iconBox: `w-8 h-8 rounded-lg flex items-center justify-center ${brand.iconBox}`,
   /** Brand accent bar — thin vertical bar before headings */

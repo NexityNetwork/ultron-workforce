@@ -156,7 +156,7 @@ function MetricCard({ metric, index }: { metric: Metric; index: number }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: "easeOut", delay: 0.2 + index * 0.04 }}
       className={cn(
-        "relative flex min-h-[120px] flex-col justify-between overflow-hidden rounded-xl border p-4",
+        "relative flex min-h-[120px] flex-col justify-between overflow-hidden rounded-xl border p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]",
         config.border,
         config.bg,
       )}
@@ -220,7 +220,7 @@ export default function ScoreCard({
   return (
     <div className="w-full">
       {/* ---- Hero section ---- */}
-      <div className="relative flex items-center gap-6 pb-6">
+      <div className="relative flex items-center gap-8 pb-7">
         {/* Glow */}
         <div
           className="pointer-events-none absolute -left-4 -top-4 h-32 w-32 rounded-full blur-3xl"
@@ -249,7 +249,7 @@ export default function ScoreCard({
         {/* Title + grade + summary */}
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <h2 className="text-lg font-semibold text-white">{title}</h2>
+            <h2 className="text-lg font-bold text-white">{title}</h2>
             <span
               className={cn(
                 "rounded-md px-2 py-0.5 text-xs font-bold",
@@ -280,7 +280,7 @@ export default function ScoreCard({
       </div>
 
       {/* ---- Divider ---- */}
-      <div className="mb-5 h-px bg-white/[0.06]" />
+      <div className="mb-6 h-px bg-white/[0.07]" />
 
       {/* ---- Metric grid ---- */}
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3">

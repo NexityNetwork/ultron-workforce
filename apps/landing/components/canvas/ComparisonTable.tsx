@@ -74,26 +74,26 @@ function EntityHeader({ entity }: { entity: Entity }) {
   const [imgFailed, setImgFailed] = React.useState(false);
 
   return (
-    <div className="flex flex-col items-center gap-2.5 px-2">
+    <div className="flex flex-col items-center gap-3 px-2">
       {logo && !imgFailed ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={logo}
           alt={entity.name}
-          className="h-10 w-10 rounded-xl object-contain"
+          className="h-11 w-11 rounded-xl object-contain shadow-[0_2px_8px_rgba(0,0,0,0.2)]"
           onError={() => setImgFailed(true)}
         />
       ) : (
         <div
           className={cn(
-            "flex h-10 w-10 items-center justify-center rounded-xl text-base font-bold",
+            "flex h-11 w-11 items-center justify-center rounded-xl text-base font-bold shadow-[0_2px_8px_rgba(0,0,0,0.2)]",
             initialBg(entity.name),
           )}
         >
           {initial(entity.name)}
         </div>
       )}
-      <span className="text-center text-sm font-semibold text-white">
+      <span className="text-center text-[13px] font-semibold text-white">
         {entity.name}
       </span>
     </div>
@@ -112,8 +112,8 @@ function ScoreBar({
   const pct = Math.min(Math.max((score / 10) * 100, 0), 100);
 
   return (
-    <div className="mt-2 flex items-center gap-2">
-      <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-white/[0.04]">
+    <div className="mt-2.5 flex items-center gap-2">
+      <div className="relative h-[5px] w-full overflow-hidden rounded-full bg-white/[0.05]">
         <motion.div
           className={cn("absolute inset-y-0 left-0 rounded-full", scoreColor(score))}
           initial={{ width: 0 }}
@@ -243,19 +243,18 @@ export default function ComparisonTable({
   return (
     <div className="w-full">
       {/* Summary header */}
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-2.5">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
           <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center", brand.iconBox)}>
             <Scale className="w-4 h-4 text-[#DA4E24]" />
           </div>
-          <h2 className="text-sm font-semibold text-white">Comparison</h2>
+          <h2 className="text-[15px] font-semibold text-white">Comparison</h2>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-[10px] font-bold tabular-nums text-white/60">
+          <span className="text-[10px] font-bold tabular-nums text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
             {entities.length} entities
           </span>
-          <div className={cn("h-3 w-px", surface.subtle.border)} />
-          <span className="text-[10px] font-bold tabular-nums text-white/60">
+          <span className="text-[10px] font-bold tabular-nums text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1">
             {dimensionKeys.length} dimensions
           </span>
         </div>
@@ -295,10 +294,10 @@ export default function ComparisonTable({
                   ease: "easeOut",
                   delay: rowIdx * 0.03,
                 }}
-                className={cn("border-t", surface.subtle.border)}
+                className={cn("border-t", surface.subtle.border, "hover:bg-white/[0.015] transition-colors")}
               >
                 <td className="min-w-[180px] p-5 align-top">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-white/60">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-white/50">
                     {dim.replace(/_/g, " ")}
                   </span>
                 </td>
