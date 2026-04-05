@@ -3,7 +3,6 @@
 import { useCallback, useRef, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 import { useAnimatedPlaceholder } from '@/hooks/use-animated-placeholder'
-import { BackgroundRippleEffect } from '@/components/ui/background-ripple-effect'
 
 const MAX_HEIGHT = 120
 
@@ -41,7 +40,13 @@ export function FooterCTA() {
 
   return (
     <div className='relative overflow-hidden bg-[var(--landing-bg)]'>
-      <BackgroundRippleEffect rows={14} cols={30} cellSize={52} />
+      <div
+        aria-hidden='true'
+        className='pointer-events-none absolute inset-0'
+        style={{
+          background: 'radial-gradient(ellipse at center top, rgba(218,78,36,0.06) 0%, transparent 60%)',
+        }}
+      />
 
       <div className='relative z-10 flex flex-col items-center px-4 pt-[120px] pb-[100px] sm:px-8 md:px-20'>
         <h2 className='text-balance text-center font-[430] font-season text-[28px] text-white leading-[100%] tracking-[-0.02em] sm:text-[32px] md:text-[36px]'>

@@ -1,7 +1,6 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { BackgroundRippleEffect } from '@/components/ui/background-ripple-effect'
 
 const ChatInterface = dynamic(
   () => import('@/components/ChatInterface'),
@@ -18,7 +17,14 @@ export default function Hero() {
       aria-labelledby='hero-heading'
       className='relative flex flex-col items-center overflow-hidden bg-[var(--landing-bg)] pt-[60px] pb-10 lg:pt-[100px]'
     >
-      <BackgroundRippleEffect rows={16} cols={30} cellSize={52} />
+      {/* Subtle radial glow behind hero content */}
+      <div
+        aria-hidden='true'
+        className='pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[600px] w-[900px] opacity-[0.07]'
+        style={{
+          background: 'radial-gradient(ellipse at center, #DA4E24 0%, transparent 70%)',
+        }}
+      />
 
       <p className='sr-only'>
         Ultron is the AI workforce platform that helps companies hire AI employees, set GTM goals,
