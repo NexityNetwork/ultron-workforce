@@ -12,11 +12,8 @@ import {
   useBlockCycle,
 } from '@/app/(home)/components/hero/components/animated-blocks'
 
-const LandingPreview = dynamic(
-  () =>
-    import('@/app/(home)/components/landing-preview/landing-preview').then(
-      (mod) => mod.LandingPreview
-    ),
+const ChatInterface = dynamic(
+  () => import('@/components/ChatInterface'),
   {
     ssr: false,
     loading: () => <div className='aspect-[1116/549] w-full rounded bg-[var(--landing-bg)]' />,
@@ -113,8 +110,8 @@ export default function Hero() {
           <BlocksRightSideAnimated animState={blockStates.rightSide} />
         </div>
 
-        <div className='relative z-10 overflow-hidden rounded border border-[var(--landing-bg-elevated)]'>
-          <LandingPreview />
+        <div className='relative z-10 overflow-hidden rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[#0A0A0A] p-6 sm:p-8'>
+          <ChatInterface />
         </div>
       </div>
 

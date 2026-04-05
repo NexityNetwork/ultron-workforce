@@ -1,0 +1,96 @@
+import { Template } from '../registry';
+
+export const pricingOptimizer: Template = {
+  id: 'financials-pricing-optimizer',
+  name: 'Pricing Optimizer',
+  description:
+    'Design and compare pricing tiers with a clear value ladder. 3-tier structure with feature breakdown, anchoring, and conversion drivers.',
+  category: 'financials',
+  icon: 'tag',
+  canvasType: 'pricing_cards',
+  variables: [
+    {
+      key: 'product_name',
+      label: 'Product Name',
+      type: 'text_input',
+      default: 'Your Product',
+    },
+  ],
+  defaultData: {
+    title: '[product_name] Pricing',
+    subtitle: 'Simple, transparent pricing that scales with your team.',
+    billing_toggle: { monthly: true, annual: true, discount: '20%' },
+    tiers: [
+      {
+        name: 'Starter',
+        price_monthly: 29,
+        price_annual: 24,
+        description: 'For individuals and small teams getting started.',
+        highlighted: false,
+        cta: 'Start Free Trial',
+        features: [
+          { name: 'Up to 3 team members', included: true },
+          { name: '5 projects', included: true },
+          { name: '10GB storage', included: true },
+          { name: 'Basic analytics', included: true },
+          { name: 'Email support', included: true },
+          { name: 'API access', included: false },
+          { name: 'Custom integrations', included: false },
+          { name: 'SSO / SAML', included: false },
+          { name: 'Dedicated account manager', included: false },
+          { name: 'Custom SLA', included: false },
+        ],
+      },
+      {
+        name: 'Growth',
+        price_monthly: 79,
+        price_annual: 64,
+        description: 'For growing teams that need more power and collaboration.',
+        highlighted: true,
+        badge: 'Most Popular',
+        cta: 'Start Free Trial',
+        features: [
+          { name: 'Up to 20 team members', included: true },
+          { name: 'Unlimited projects', included: true },
+          { name: '100GB storage', included: true },
+          { name: 'Advanced analytics', included: true },
+          { name: 'Priority email & chat support', included: true },
+          { name: 'API access', included: true },
+          { name: 'Custom integrations (up to 5)', included: true },
+          { name: 'SSO / SAML', included: false },
+          { name: 'Dedicated account manager', included: false },
+          { name: 'Custom SLA', included: false },
+        ],
+      },
+      {
+        name: 'Enterprise',
+        price_monthly: null,
+        price_annual: null,
+        description: 'For organizations that need security, control, and scale.',
+        highlighted: false,
+        cta: 'Contact Sales',
+        price_label: 'Custom',
+        features: [
+          { name: 'Unlimited team members', included: true },
+          { name: 'Unlimited projects', included: true },
+          { name: 'Unlimited storage', included: true },
+          { name: 'Custom analytics & reporting', included: true },
+          { name: 'Dedicated support with 1-hour SLA', included: true },
+          { name: 'Full API access', included: true },
+          { name: 'Unlimited custom integrations', included: true },
+          { name: 'SSO / SAML', included: true },
+          { name: 'Dedicated account manager', included: true },
+          { name: 'Custom SLA & BAA', included: true },
+        ],
+      },
+    ],
+    insights: [
+      'The Growth tier should be the primary conversion target -highlight it visually and position it as best value',
+      'Annual billing discount of 20% encourages commitment and improves cash flow predictability',
+      'Enterprise tier with "Contact Sales" creates anchoring and qualifies high-value leads',
+      'Consider adding a usage-based component (API calls, seats) to drive natural expansion revenue',
+    ],
+  },
+};
+
+export default pricingOptimizer;

@@ -1,0 +1,40 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sphereBase" cx="50%" cy="45%" r="50%" fx="50%" fy="40%">
+      <stop offset="0%" stop-color="#151A24"/>
+      <stop offset="50%" stop-color="#0A0E14"/>
+      <stop offset="100%" stop-color="#050508"/>
+    </radialGradient>
+    <radialGradient id="blueTint" cx="50%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="#0098F3" stop-opacity="0.2"/>
+      <stop offset="60%" stop-color="#0066AA" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#003366" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orangeGlow" cx="50%" cy="80%" r="50%">
+      <stop offset="0%" stop-color="#FF8918" stop-opacity="0.7"/>
+      <stop offset="30%" stop-color="#DA4E24" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#A22904" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ambientGlow" cx="50%" cy="75%" r="55%">
+      <stop offset="60%" stop-color="#DA4E24" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#FF8918" stop-opacity="0.12"/>
+    </radialGradient>
+    <radialGradient id="highlight" cx="45%" cy="30%" r="30%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Outer ambient glow -->
+  <circle cx="20" cy="22" r="19" fill="url(#ambientGlow)"/>
+  <!-- Main sphere -->
+  <circle cx="20" cy="20" r="16" fill="url(#sphereBase)"/>
+  <!-- Blue reflection -->
+  <circle cx="20" cy="20" r="16" fill="url(#blueTint)"/>
+  <!-- Orange glow -->
+  <circle cx="20" cy="20" r="16" fill="url(#orangeGlow)"/>
+  <!-- Top highlight -->
+  <circle cx="20" cy="20" r="16" fill="url(#highlight)"/>
+  <!-- Subtle rim -->
+  <circle cx="20" cy="20" r="16" stroke="url(#blueTint)" stroke-width="0.5" stroke-opacity="0.3" fill="none"/>
+</svg>

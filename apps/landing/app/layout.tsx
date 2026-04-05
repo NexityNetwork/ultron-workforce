@@ -6,52 +6,39 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#1c1c1c' },
-    { media: '(prefers-color-scheme: dark)', color: '#1c1c1c' },
+    { media: '(prefers-color-scheme: light)', color: '#0A0A0A' },
+    { media: '(prefers-color-scheme: dark)', color: '#0A0A0A' },
   ],
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sim.ai'),
+  metadataBase: new URL('https://ultron.nexity.dev'),
   title: {
-    absolute: 'Sim — Build AI Agents & Run Your Agentic Workforce',
+    absolute: 'Ultron - AI Business Operating System',
   },
   description:
-    'Sim is the open-source platform to build AI agents and run your agentic workforce. Connect 1,000+ integrations and LLMs to orchestrate agentic workflows.',
+    'Run your entire business with AI agents. Sales, content, and operations on autopilot.',
   keywords:
-    'AI agents, agentic workforce, open-source AI agent platform, agentic workflows, LLM orchestration, AI automation, knowledge base, workflow builder, AI integrations, SOC2 compliant, enterprise AI',
-  authors: [{ name: 'Sim' }],
-  creator: 'Sim',
-  publisher: 'Sim',
+    'AI agents, business operating system, AI automation, sales AI, content AI, operations AI, Ultron',
+  authors: [{ name: 'Ultron' }],
+  creator: 'Ultron',
+  publisher: 'Ultron',
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
-    title: 'Sim — Build AI Agents & Run Your Agentic Workforce',
+    title: 'Ultron - AI Business Operating System',
     description:
-      'Sim is the open-source platform to build AI agents and run your agentic workforce. Connect 1,000+ integrations and LLMs to orchestrate agentic workflows.',
+      'Run your entire business with AI agents. Sales, content, and operations on autopilot.',
     type: 'website',
-    url: 'https://sim.ai',
-    siteName: 'Sim',
+    siteName: 'Ultron',
     locale: 'en_US',
-    images: [
-      {
-        url: '/logo/426-240/primary/small.png',
-        width: 2130,
-        height: 1200,
-        alt: 'Sim — Build AI Agents & Run Your Agentic Workforce',
-        type: 'image/png',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@simdotai',
-    creator: '@simdotai',
-    title: 'Sim — Build AI Agents & Run Your Agentic Workforce',
+    title: 'Ultron - AI Business Operating System',
     description:
-      'Sim is the open-source platform to build AI agents and run your agentic workforce.',
-    images: {
-      url: '/logo/426-240/primary/small.png',
-      alt: 'Sim — Build AI Agents & Run Your Agentic Workforce',
-    },
+      'Run your entire business with AI agents. Sales, content, and operations on autopilot.',
   },
   robots: {
     index: true,
@@ -68,13 +55,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en' className='dark' suppressHydrationWarning>
       <head>
-        <meta name='color-scheme' content='light dark' />
+        <meta name='color-scheme' content='dark' />
         <meta name='format-detection' content='telephone=no' />
+        <link rel='icon' href='/favicon.ico' />
       </head>
       <body
-        className={`${martianMono.variable} font-season`}
+        className={`${martianMono.variable} font-body bg-[#0A0A0A] text-white antialiased min-h-screen`}
         suppressHydrationWarning
       >
         {children}

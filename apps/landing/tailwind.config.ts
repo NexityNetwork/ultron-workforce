@@ -11,8 +11,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        heading: ['Outfit', 'sans-serif'],
+        body: ['IBM Plex Sans', 'sans-serif'],
         season: ['var(--font-season)'],
-        body: [
+        'body-fallback': [
           'ui-sans-serif',
           '-apple-system',
           'system-ui',
@@ -47,6 +49,29 @@ export default {
         '4.5': '18px',
       },
       colors: {
+        // Ultron dark theme tokens
+        'surface': '#0A0A0A',
+        'surface-elevated': '#0A0A0A',
+        'surface-hover': '#141414',
+        'border-ultron': 'rgba(255, 255, 255, 0.08)',
+        'border-light': 'rgba(255, 255, 255, 0.12)',
+        'primary-ultron': '#DA4E24',
+        'primary-hover': '#E8622C',
+        'primary-muted': 'rgba(218, 78, 36, 0.12)',
+        'secondary-ultron': '#0098F3',
+        'secondary-muted': 'rgba(0, 152, 243, 0.12)',
+        'accent-ultron': '#FF8918',
+        'success-ultron': '#34C759',
+        'success-muted': 'rgba(52, 199, 89, 0.12)',
+        'warning-ultron': '#FFD60A',
+        'warning-muted': 'rgba(255, 214, 10, 0.12)',
+        'danger': '#FF453A',
+        'danger-muted': 'rgba(255, 69, 58, 0.12)',
+        'text-primary': '#FFFFFF',
+        'text-secondary': 'rgba(255, 255, 255, 0.5)',
+        'text-tertiary': 'rgba(255, 255, 255, 0.3)',
+        'text-ghost': 'rgba(255, 255, 255, 0.08)',
+        // Existing HSL-based tokens
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -134,6 +159,10 @@ export default {
           from: { height: 'var(--radix-collapsible-content-height)' },
           to: { height: '0' },
         },
+        logoSpin: {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
       },
       animation: {
         'caret-blink': 'caret-blink 1.25s ease-out infinite',
@@ -143,6 +172,7 @@ export default {
         'placeholder-pulse': 'placeholder-pulse 1.5s ease-in-out infinite',
         'collapsible-down': 'collapsible-down 300ms cubic-bezier(0.4, 0, 0.2, 1)',
         'collapsible-up': 'collapsible-up 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+        'logo-spin': 'logoSpin 8s linear infinite',
       },
     },
   },
