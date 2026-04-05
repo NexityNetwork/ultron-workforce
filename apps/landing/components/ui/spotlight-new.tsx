@@ -32,6 +32,10 @@ export function Spotlight({
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       className="pointer-events-none absolute inset-0 h-full w-full"
+      style={{
+        maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+      }}
     >
       <motion.div
         animate={{ x: [0, xOffset, 0] }}
