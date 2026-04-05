@@ -245,22 +245,41 @@ function MemoryVisual() {
 }
 
 const INTEGRATION_ITEMS = [
-  'Slack', 'HubSpot', 'GitHub', 'Notion', 'Linear', 'Gmail',
-  'Google Drive', 'Stripe', 'Discord', 'Apollo', 'Figma', 'Vercel',
-  'Brave Search', 'Tavily', 'Puppeteer', 'Apify', 'Supabase', 'Sentry',
+  { name: 'Slack', logo: '/landing/integrations/slack.png' },
+  { name: 'GitHub', logo: '/landing/integrations/github.png' },
+  { name: 'Figma', logo: '/landing/integrations/figma.png' },
+  { name: 'Linear', logo: '/landing/integrations/linear.png' },
+  { name: 'Stripe', logo: '/landing/integrations/stripe.png' },
+  { name: 'Vercel', logo: '/landing/integrations/vercel.png' },
+  { name: 'Supabase', logo: '/landing/integrations/supabase.png' },
+  { name: 'Sentry', logo: '/landing/integrations/sentry.png' },
+  { name: 'Salesforce', logo: '/landing/integrations/salesforce.png' },
+  { name: 'Intercom', logo: '/landing/integrations/intercom.png' },
+  { name: 'Miro', logo: '/landing/integrations/miro.png' },
+  { name: 'Monday', logo: '/landing/integrations/monday.png' },
+  { name: 'Asana', logo: '/landing/integrations/asana.png' },
+  { name: 'PostHog', logo: '/landing/integrations/posthog.png' },
+  { name: 'Cloudflare', logo: '/landing/integrations/cloudflare.png' },
+  { name: 'Webflow', logo: '/landing/integrations/webflow.png' },
+  { name: 'Reddit', logo: '/landing/integrations/reddit.png' },
+  { name: 'Canva', logo: '/landing/integrations/canva.png' },
 ] as const
 
-/** Integrations visual: clean grid of service names */
+/** Integrations visual: logo grid */
 function IntegrationsVisual() {
   return (
     <div className='flex h-full flex-col justify-center'>
       <div className='grid grid-cols-3 gap-2'>
-        {INTEGRATION_ITEMS.map((name) => (
-          <div key={name} className='flex items-center gap-2 rounded-lg border border-[#F0F0F0] bg-white px-3 py-2.5'>
-            <div className='flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#F5F5F5] font-season text-[9px] font-medium text-[#999]'>
-              {name.charAt(0)}
-            </div>
-            <span className='truncate font-season text-[11px] text-[#666]'>{name}</span>
+        {INTEGRATION_ITEMS.map((item) => (
+          <div key={item.name} className='flex items-center gap-2.5 rounded-lg border border-[#F0F0F0] bg-white px-3 py-2.5'>
+            <Image
+              src={item.logo}
+              alt={item.name}
+              width={20}
+              height={20}
+              className='h-5 w-5 shrink-0 object-contain'
+            />
+            <span className='truncate font-season text-[11px] text-[#666]'>{item.name}</span>
           </div>
         ))}
       </div>
