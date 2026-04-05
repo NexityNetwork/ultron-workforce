@@ -22,7 +22,7 @@ export function BackgroundRippleEffect({
   return (
     <div
       ref={ref}
-      className="absolute inset-0 h-full w-full"
+      className="absolute inset-0 h-full w-full overflow-hidden"
       style={{
         ["--cell-border-color" as string]: "rgba(255,255,255,0.12)",
         ["--cell-fill-color" as string]: "rgba(255,255,255,0.03)",
@@ -35,8 +35,8 @@ export function BackgroundRippleEffect({
           key={`base-${rippleKey}`}
           className=""
           style={{
-            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
-            WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
+            maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
           }}
           rows={rows}
           cols={cols}

@@ -22,10 +22,10 @@ function UnlockModal({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-[18px] font-semibold text-white leading-tight">
-          Unlock more features
+          Unlock everything you'd hire for already built.
         </h3>
         <p className="mt-2 text-[14px] text-[rgba(255,255,255,0.5)] leading-[150%]">
-          Put your business on autopilot by signing in
+          Put your business on autopilot by signing in.
         </p>
         <a
           href="https://app.51ultron.com/login"
@@ -151,7 +151,7 @@ export default function ChatInterface() {
           )}
 
           {/* Textarea */}
-          <div className="px-4 pt-2 pb-2">
+          <div className="px-4 pt-3 pb-3">
             <textarea
               ref={textareaRef}
               value={input}
@@ -159,7 +159,7 @@ export default function ChatInterface() {
               onKeyDown={handleKeyDown}
               placeholder="Message Ultron or type / to assign agents"
               rows={1}
-              className="w-full bg-transparent text-[13px] text-white placeholder-[rgba(255,255,255,0.45)] resize-none outline-none min-h-[32px] max-h-[160px] leading-relaxed font-body"
+              className="w-full bg-transparent text-[14px] text-white placeholder-[rgba(255,255,255,0.5)] resize-none outline-none min-h-[36px] max-h-[160px] leading-relaxed font-body"
             />
           </div>
 

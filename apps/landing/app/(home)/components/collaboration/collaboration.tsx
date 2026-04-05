@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Badge, ChevronDown } from '@/components/emcn'
 
 interface DotGridProps {
@@ -240,8 +239,10 @@ export default function Collaboration() {
               in real-time inside your workspace.
             </p>
 
-            <Link
-              href='/signup'
+            <a
+              href='https://app.51ultron.com/login'
+              target='_blank'
+              rel='noopener noreferrer'
               className='group/cta mt-3 inline-flex h-[32px] cursor-none items-center gap-1.5 rounded-[5px] border border-white bg-white px-2.5 font-[430] font-season text-black text-sm transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0]'
             >
               Build together
@@ -263,7 +264,7 @@ export default function Collaboration() {
                   />
                 </svg>
               </span>
-            </Link>
+            </a>
           </div>
 
           <figure className='pointer-events-none relative h-[220px] w-full md:h-[600px]'>
@@ -287,8 +288,8 @@ export default function Collaboration() {
           </figure>
         </div>
 
-        <Link
-          href='/blog/multiplayer'
+        <a
+          href='https://docs.51ultron.com/'
           target='_blank'
           rel='noopener noreferrer'
           className='relative mx-4 mb-6 flex cursor-none items-center gap-3.5 rounded-[5px] border border-[var(--landing-bg-elevated)] bg-[var(--landing-bg)] px-3 py-2.5 transition-colors hover:border-[var(--landing-border-strong)] hover:bg-[var(--landing-bg-card)] sm:mx-8 md:absolute md:bottom-10 md:left-20 md:z-20 md:mx-0 md:mb-0'
@@ -298,13 +299,13 @@ export default function Collaboration() {
           </div>
           <div className='flex flex-col gap-0.5'>
             <span className='font-[430] font-season text-[#F6F6F0]/50 text-[12px] uppercase leading-[100%] tracking-[0.08em]'>
-              Blog
+              Docs
             </span>
             <span className='font-[430] font-season text-[#F6F6F0] text-sm leading-[125%] tracking-[0.02em]'>
-              How we built realtime collaboration
+              The five-layer architecture that powers Ultron.
             </span>
           </div>
-        </Link>
+        </a>
       </div>
 
       <DotGrid

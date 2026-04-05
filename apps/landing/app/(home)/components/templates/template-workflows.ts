@@ -77,11 +77,4 @@ export const TEMPLATE_WORKFLOWS: TemplateWorkflow[] = [
     description:
       'Launch new products or markets with a clear, structured plan. Assign owners, set milestones, and track every dependency.',
   },
-  {
-    id: 'canvas-investor-brief',
-    name: 'Investor Brief',
-    color: '#84CC16',
-    description:
-      'Package your traction, metrics, and narrative for any stakeholder. Always current, never scrambled at the last minute.',
-  },
 ]

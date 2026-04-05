@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 import { useAnimatedPlaceholder } from '@/hooks/use-animated-placeholder'
+import { BackgroundRippleEffect } from '@/components/ui/background-ripple-effect'
 
 const MAX_HEIGHT = 120
 
@@ -39,62 +40,66 @@ export function FooterCTA() {
   }, [])
 
   return (
-    <div className='flex flex-col items-center px-4 pt-[120px] pb-[100px] sm:px-8 md:px-20'>
-      <h2 className='text-balance text-center font-[430] font-season text-[28px] text-[var(--landing-text-dark)] leading-[100%] tracking-[-0.02em] sm:text-[32px] md:text-[36px]'>
-        Ready to delegate?
-      </h2>
+    <div className='relative overflow-hidden bg-[var(--landing-bg)]'>
+      <BackgroundRippleEffect rows={14} cols={30} cellSize={52} />
 
-      <div className='mt-8 w-full max-w-[42rem]'>
-        <div
-          className='cursor-text rounded-[20px] border border-[var(--landing-bg-skeleton)] bg-white px-2.5 py-2 shadow-sm'
-          onClick={() => textareaRef.current?.focus()}
-        >
-          <textarea
-            ref={textareaRef}
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onInput={handleInput}
-            placeholder={animatedPlaceholder}
-            rows={2}
-            className='m-0 box-border min-h-[48px] w-full resize-none border-0 bg-transparent px-1 py-1 font-body text-[var(--landing-text-dark)] text-base leading-[24px] tracking-[-0.015em] outline-none placeholder:font-[380] placeholder:text-[var(--landing-text-muted)] focus-visible:ring-0'
-            style={{ caretColor: '#1C1C1C', maxHeight: `${MAX_HEIGHT}px` }}
-          />
-          <div className='flex items-center justify-end'>
-            <button
-              type='button'
-              onClick={handleSubmit}
-              disabled={isEmpty}
-              aria-label='Submit message'
-              className='flex h-[28px] w-[28px] items-center justify-center rounded-full border-0 p-0 transition-colors'
-              style={{
-                background: isEmpty ? '#C0C0C0' : '#1C1C1C',
-                cursor: isEmpty ? 'not-allowed' : 'pointer',
-              }}
-            >
-              <ArrowUp size={16} strokeWidth={2.25} color='#FFFFFF' />
-            </button>
+      <div className='relative z-10 flex flex-col items-center px-4 pt-[120px] pb-[100px] sm:px-8 md:px-20'>
+        <h2 className='text-balance text-center font-[430] font-season text-[28px] text-white leading-[100%] tracking-[-0.02em] sm:text-[32px] md:text-[36px]'>
+          Ready to delegate?
+        </h2>
+
+        <div className='mt-8 w-full max-w-[42rem]'>
+          <div
+            className='cursor-text rounded-[20px] border border-[rgba(255,255,255,0.15)] bg-white px-2.5 py-2 shadow-sm'
+            onClick={() => textareaRef.current?.focus()}
+          >
+            <textarea
+              ref={textareaRef}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onInput={handleInput}
+              placeholder={animatedPlaceholder}
+              rows={2}
+              className='m-0 box-border min-h-[48px] w-full resize-none border-0 bg-transparent px-1 py-1 font-body text-[var(--landing-text-dark)] text-base leading-[24px] tracking-[-0.015em] outline-none placeholder:font-[380] placeholder:text-[var(--landing-text-muted)] focus-visible:ring-0'
+              style={{ caretColor: '#1C1C1C', maxHeight: `${MAX_HEIGHT}px` }}
+            />
+            <div className='flex items-center justify-end'>
+              <button
+                type='button'
+                onClick={handleSubmit}
+                disabled={isEmpty}
+                aria-label='Submit message'
+                className='flex h-[28px] w-[28px] items-center justify-center rounded-full border-0 p-0 transition-colors'
+                style={{
+                  background: isEmpty ? '#C0C0C0' : '#1C1C1C',
+                  cursor: isEmpty ? 'not-allowed' : 'pointer',
+                }}
+              >
+                <ArrowUp size={16} strokeWidth={2.25} color='#FFFFFF' />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className='mt-8 flex gap-2'>
-        <a
-          href='https://docs.51ultron.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-          className={`${CTA_BUTTON} border-[var(--landing-border-subtle)] text-[var(--landing-text-dark)] transition-colors hover:bg-[var(--landing-bg-skeleton)]`}
-        >
-          Docs
-        </a>
-        <a
-          href='https://app.51ultron.com/signup'
-          target='_blank'
-          rel='noopener noreferrer'
-          className={`${CTA_BUTTON} gap-2 border-[var(--landing-bg)] bg-[var(--landing-bg)] text-white transition-colors hover:border-[var(--landing-bg-elevated)] hover:bg-[var(--landing-bg-elevated)]`}
-        >
-          Get started
-        </a>
+        <div className='mt-8 flex gap-2'>
+          <a
+            href='https://docs.51ultron.com/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className={`${CTA_BUTTON} border-[rgba(255,255,255,0.2)] text-white transition-colors hover:border-[rgba(255,255,255,0.4)] hover:bg-[rgba(255,255,255,0.05)]`}
+          >
+            Docs
+          </a>
+          <a
+            href='https://app.51ultron.com/signup'
+            target='_blank'
+            rel='noopener noreferrer'
+            className={`${CTA_BUTTON} gap-2 border-white bg-white text-black transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0]`}
+          >
+            Get started
+          </a>
+        </div>
       </div>
     </div>
   )

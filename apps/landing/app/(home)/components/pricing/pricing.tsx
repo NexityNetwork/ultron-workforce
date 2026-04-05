@@ -1,6 +1,3 @@
-import Link from 'next/link'
-import { DemoRequestModal } from '@/app/(home)/components/demo-request/demo-request-modal'
-
 interface PricingTier {
   id: string
   name: string
@@ -9,7 +6,7 @@ interface PricingTier {
   billingPeriod?: string
   color: string
   features: string[]
-  cta: { label: string; href?: string; action?: 'demo-request' }
+  cta: { label: string; href: string }
 }
 
 const PRICING_TIERS: PricingTier[] = [
@@ -17,9 +14,9 @@ const PRICING_TIERS: PricingTier[] = [
     id: 'max',
     name: 'Max',
     description: 'For teams ready to put AI to work',
-    price: '$25',
+    price: '$19',
     billingPeriod: 'per month',
-    color: '#00F701',
+    color: '#DA4E24',
     features: [
       '6,000 credits/mo · +50/day',
       '50GB file storage',
@@ -29,7 +26,7 @@ const PRICING_TIERS: PricingTier[] = [
       'Unlimited log retention',
       'CLI/SDK/MCP Access',
     ],
-    cta: { label: 'Get started', href: 'https://app.51ultron.com/signup' },
+    cta: { label: 'Get started', href: 'https://app.51ultron.com/login' },
   },
   {
     id: 'ultra',
@@ -37,7 +34,7 @@ const PRICING_TIERS: PricingTier[] = [
     description: 'For companies running GTM at full scale',
     price: '$100',
     billingPeriod: 'per month',
-    color: '#FA4EDF',
+    color: '#DA4E24',
     features: [
       '25,000 credits/mo · +200/day',
       '500GB file storage',
@@ -47,14 +44,14 @@ const PRICING_TIERS: PricingTier[] = [
       'Unlimited log retention',
       'CLI/SDK/MCP Access',
     ],
-    cta: { label: 'Get started', href: 'https://app.51ultron.com/signup' },
+    cta: { label: 'Get started', href: 'https://app.51ultron.com/login' },
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
     description: 'For organizations that need complete control',
     price: 'Custom',
-    color: '#FFCC02',
+    color: '#DA4E24',
     features: [
       'Custom credits & infra limits',
       'Custom file storage',
@@ -65,7 +62,7 @@ const PRICING_TIERS: PricingTier[] = [
       'SSO & SCIM · SOC2',
       'Self hosting · Dedicated support',
     ],
-    cta: { label: 'Book a demo', action: 'demo-request' },
+    cta: { label: 'Book a demo', href: 'https://www.51ultron.com/contact/' },
   },
 ]
 
@@ -96,7 +93,6 @@ function Badge({ children, className, style }: { children: React.ReactNode; clas
 }
 
 function PricingCard({ tier }: { tier: PricingTier }) {
-  const isDemoRequest = tier.cta.action === 'demo-request'
   const isPro = tier.id === 'max'
 
   return (
@@ -119,29 +115,24 @@ function PricingCard({ tier }: { tier: PricingTier }) {
             )}
           </p>
           <div className='mt-4'>
-            {isDemoRequest ? (
-              <DemoRequestModal theme='light'>
-                <button
-                  type='button'
-                  className='flex h-[32px] w-full items-center justify-center rounded-[5px] border border-[var(--landing-border-light)] bg-transparent px-2.5 font-[430] font-season text-[14px] text-[var(--landing-text-dark)] transition-colors hover:bg-[var(--landing-bg-hover)]'
-                >
-                  {tier.cta.label}
-                </button>
-              </DemoRequestModal>
-            ) : isPro ? (
-              <Link
-                href={tier.cta.href || '/signup'}
+            {isPro ? (
+              <a
+                href={tier.cta.href}
+                target='_blank'
+                rel='noopener noreferrer'
                 className='flex h-[32px] w-full items-center justify-center rounded-[5px] border border-[#1D1D1D] bg-[#1D1D1D] px-2.5 font-[430] font-season text-[14px] text-white transition-colors hover:border-[var(--landing-border)] hover:bg-[var(--landing-bg-elevated)]'
               >
                 {tier.cta.label}
-              </Link>
+              </a>
             ) : (
-              <Link
-                href={tier.cta.href || '/signup'}
+              <a
+                href={tier.cta.href}
+                target='_blank'
+                rel='noopener noreferrer'
                 className='flex h-[32px] w-full items-center justify-center rounded-[5px] border border-[var(--landing-border-light)] px-2.5 font-[430] font-season text-[14px] text-[var(--landing-text-dark)] transition-colors hover:bg-[var(--landing-bg-hover)]'
               >
                 {tier.cta.label}
-              </Link>
+              </a>
             )}
           </div>
         </div>
@@ -186,7 +177,7 @@ export default function Pricing() {
       <div className='px-4 pt-[60px] pb-10 sm:px-8 sm:pt-20 sm:pb-0 md:px-20 md:pt-[100px]'>
         <div className='flex flex-col items-start gap-3 sm:gap-4 md:gap-5'>
           <Badge
-            className='bg-[#2ABBF8]/10 font-season text-[#2ABBF8] uppercase tracking-[0.02em]'
+            className='bg-[#DA4E24]/10 font-season text-[#DA4E24] uppercase tracking-[0.02em]'
           >
             Pricing
           </Badge>

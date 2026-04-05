@@ -214,24 +214,6 @@ export default function Templates() {
                     className='pointer-events-none'
                   />
                 </div>
-                <button
-                  type='button'
-                  onClick={handleUseTemplate}
-                  disabled={isPreparingTemplate}
-                  className='group/cta absolute top-4 right-[16px] z-10 inline-flex h-[32px] cursor-pointer items-center gap-1.5 rounded-[5px] border border-white bg-white px-2.5 font-[430] font-season text-black text-sm transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0] disabled:opacity-60'
-                >
-                  {isPreparingTemplate ? 'Preparing...' : 'View canvas'}
-                  <span className='relative h-[10px] w-[10px] shrink-0'>
-                    <ChevronDown className='-rotate-90 absolute inset-0 h-[10px] w-[10px] transition-opacity duration-150 group-hover/cta:opacity-0' />
-                    <svg
-                      className='absolute inset-0 h-[10px] w-[10px] opacity-0 transition-opacity duration-150 group-hover/cta:opacity-100'
-                      viewBox='0 0 10 10'
-                      fill='none'
-                    >
-                      <path d='M1 5H8M5.5 2L8.5 5L5.5 8' stroke='currentColor' strokeWidth='1.33' strokeLinecap='square' strokeLinejoin='miter' fill='none' />
-                    </svg>
-                  </span>
-                </button>
               </div>
             </div>
 
