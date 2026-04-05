@@ -12,5 +12,4 @@ export const season = localFont({
   preload: true,
   variable: '--font-season',
   fallback: ['system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans'],
-  adjustFontFallback: 'Arial',
 })
