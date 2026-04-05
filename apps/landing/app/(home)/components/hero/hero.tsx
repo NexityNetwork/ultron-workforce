@@ -15,7 +15,7 @@ export default function Hero() {
     <section
       id='hero'
       aria-labelledby='hero-heading'
-      className='relative flex flex-col items-center overflow-hidden bg-[var(--landing-bg)] pt-[60px] pb-10 lg:pt-[100px]'
+      className='relative flex flex-col items-center overflow-hidden bg-[#0A0A0A] pt-[60px] pb-10 lg:pt-[100px]'
     >
       {/* Subtle radial glow behind hero content */}
       <div

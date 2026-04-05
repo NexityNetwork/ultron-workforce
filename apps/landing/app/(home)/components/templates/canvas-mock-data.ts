@@ -356,15 +356,15 @@ const gtmPlan: CanvasTemplate = {
   type: 'timeline',
   data: {
     events: [
-      { date: 'Mar 2024', title: 'Seed Round', description: 'Raised $2.5M seed led by Gradient Ventures. Core AI agent infrastructure.', color: '#22c55e' },
-      { date: 'Jul 2024', title: 'Product Launch', description: 'Launched v1.0 with 5 AI agents. Onboarded first 50 beta customers.', color: '#3b82f6' },
-      { date: 'Nov 2024', title: 'Series A', description: 'Closed $12M Series A at $60M valuation. Expanding to 25 people.', color: '#a855f7' },
-      { date: 'Feb 2025', title: 'Enterprise Launch', description: 'Deployed for 3 Fortune 500 companies. SOC2 compliance, SSO, analytics.', color: '#f59e0b' },
-      { date: 'Mar 2026', title: 'Platform v3.0', description: 'Canvas components, client portal, composable agent architecture. 500+ active teams.', color: '#DA4E24' },
+      { date: 'Mar 2025', title: 'Seed Round', description: 'Raised $2.5M seed led by Gradient Ventures. Core AI agent infrastructure.', color: '#22c55e' },
+      { date: 'Jul 2025', title: 'Product Launch', description: 'Launched v1.0 with 5 AI agents. Onboarded first 50 beta customers.', color: '#3b82f6' },
+      { date: 'Nov 2025', title: 'Series A', description: 'Closed $12M Series A at $60M valuation. Expanding to 25 people.', color: '#a855f7' },
+      { date: 'Feb 2026', title: 'Enterprise Launch', description: 'Deployed for 3 Fortune 500 companies. SOC2 compliance, SSO, analytics.', color: '#f59e0b' },
+      { date: 'Jun 2026', title: 'Platform v3.0', description: 'Canvas components, client portal, composable agent architecture. 500+ active teams.', color: '#DA4E24' },
     ],
     insights: [
-      '18 months from seed to enterprise deployment — faster than industry average of 24 months.',
-      'Revenue milestone: $0 to $500K ARR in first 8 months post-launch.',
+      '11 months from seed to enterprise deployment — faster than industry average of 24 months.',
+      'Revenue milestone: $0 to $500K ARR in first 4 months post-launch.',
     ],
   },
 }

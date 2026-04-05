@@ -49,6 +49,7 @@ const FEATURE_TABS = [
   },
   {
     label: 'Integrations',
+    hideOnMobile: true,
     color: '#FF6B35',
     title: 'Plug in what you already use',
     description:
@@ -57,8 +58,11 @@ const FEATURE_TABS = [
   },
 ]
 
-const HEADING_TEXT = 'Everything you need to run an autonomous company.'
+const HEADING_TEXT = 'Everything you need to run'
+const HEADING_TEXT_2 = 'an autonomous company.'
 const HEADING_LETTERS = HEADING_TEXT.split('')
+const HEADING_LETTERS_2 = HEADING_TEXT_2.split('')
+const ALL_LETTERS_COUNT = HEADING_LETTERS.length + HEADING_LETTERS_2.length
 const LETTER_REVEAL_SPAN = 0.85
 const LETTER_FADE_IN = 0.04
 
@@ -71,7 +75,7 @@ interface ScrollLetterProps {
 }
 
 function ScrollLetter({ scrollYProgress, charIndex, children }: ScrollLetterProps) {
-  const threshold = (charIndex / HEADING_LETTERS.length) * LETTER_REVEAL_SPAN
+  const threshold = (charIndex / ALL_LETTERS_COUNT) * LETTER_REVEAL_SPAN
   const opacity = useTransform(scrollYProgress, [threshold, threshold + LETTER_FADE_IN], [0.4, 1])
   return <motion.span style={{ opacity }}>{children}</motion.span>
 }
@@ -159,10 +163,16 @@ export default function Features() {
           </Badge>
           <h2
             id='features-heading'
-            className='max-w-[900px] text-balance font-[430] font-season text-[28px] text-[var(--landing-text-dark)] leading-[110%] tracking-[-0.02em] md:text-[40px]'
+            className='max-w-[900px] font-[430] font-season text-[28px] text-[var(--landing-text-dark)] leading-[110%] tracking-[-0.02em] md:text-[40px]'
           >
             {HEADING_LETTERS.map((char, i) => (
               <ScrollLetter key={i} scrollYProgress={scrollYProgress} charIndex={i}>
+                {char}
+              </ScrollLetter>
+            ))}
+            <br />
+            {HEADING_LETTERS_2.map((char, i) => (
+              <ScrollLetter key={`l2-${i}`} scrollYProgress={scrollYProgress} charIndex={HEADING_LETTERS.length + i}>
                 {char}
               </ScrollLetter>
             ))}
@@ -188,7 +198,7 @@ export default function Features() {
                   role='tab'
                   aria-selected={index === activeTab}
                   onClick={() => goToTab(index)}
-                  className={`relative flex h-full flex-1 items-center justify-center whitespace-nowrap px-3 font-medium font-season text-[var(--landing-text-dark)] text-[12px] uppercase lg:px-0 lg:text-sm${index > 0 ? ' border-[var(--divider)] border-l' : ''}`}
+                  className={`relative h-full flex-1 items-center justify-center whitespace-nowrap px-3 font-medium font-season text-[var(--landing-text-dark)] text-[12px] uppercase lg:px-0 lg:text-sm${(t as typeof t & { hideOnMobile?: boolean }).hideOnMobile ? ' hidden lg:flex' : ' flex'}${index > 0 ? ' border-[var(--divider)] border-l' : ''}`}
                   style={{ backgroundColor: index === activeTab ? '#FDFDFD' : '#F6F6F6' }}
                 >
                   {(t as typeof t & { mobileLabel?: string }).mobileLabel ? (
