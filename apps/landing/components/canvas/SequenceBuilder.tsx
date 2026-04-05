@@ -130,8 +130,8 @@ export default function SequenceBuilder({
         </div>
       </div>
 
-      {/* Steps flow */}
-      <div className="flex flex-wrap items-center justify-center gap-y-4 pb-2">
+      {/* Steps flow — single horizontal row */}
+      <div className="flex items-start overflow-x-auto pb-3 scrollbar-none">
         {steps.map((step, i) => {
           const st = STEP_STATUS[step.status || "draft"];
           const dayGap =
@@ -151,7 +151,7 @@ export default function SequenceBuilder({
                   ease: "easeOut",
                 }}
                 className={cn(
-                  "min-w-[260px] max-w-[280px] rounded-xl border overflow-hidden",
+                  "w-[240px] min-w-[240px] rounded-xl border overflow-hidden",
                   surface.normal.border,
                   "bg-gradient-to-br",
                   st.bg,
