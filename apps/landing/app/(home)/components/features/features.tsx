@@ -227,51 +227,51 @@ export default function Features() {
 
           {/* Carousel content */}
           <div className='relative mx-6 mt-10 overflow-hidden lg:mx-[120px] lg:mt-[60px]'>
-            <div className='min-h-[280px] lg:min-h-[260px]'>
-            <AnimatePresence mode='wait' initial={false} custom={direction}>
-              <motion.div
-                key={activeTab}
-                custom={direction}
-                initial={{ opacity: 0, x: direction * 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: direction * -60 }}
-                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                className='flex flex-col items-center text-center'
-              >
-                <div
-                  className='mb-6 flex h-12 w-12 items-center justify-center rounded-2xl'
-                  style={{ backgroundColor: hexToRgba(tab.color, 0.1) }}
+            <div className='relative h-[280px] lg:h-[260px]'>
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                  key={activeTab}
+                  custom={direction}
+                  initial={{ opacity: 0, x: direction * 60 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: direction * -60 }}
+                  transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                  className='absolute inset-0 flex flex-col items-center text-center'
                 >
                   <div
-                    className='h-2.5 w-2.5 rounded-full'
-                    style={{ backgroundColor: tab.color }}
-                  />
-                </div>
+                    className='mb-6 flex h-12 w-12 items-center justify-center rounded-2xl'
+                    style={{ backgroundColor: hexToRgba(tab.color, 0.1) }}
+                  >
+                    <div
+                      className='h-2.5 w-2.5 rounded-full'
+                      style={{ backgroundColor: tab.color }}
+                    />
+                  </div>
 
-                <h3 className='font-[430] font-season text-[24px] text-[var(--landing-text-dark)] leading-[120%] tracking-[-0.02em] lg:text-[32px]'>
-                  {tab.title}
-                </h3>
+                  <h3 className='font-[430] font-season text-[24px] text-[var(--landing-text-dark)] leading-[120%] tracking-[-0.02em] lg:text-[32px]'>
+                    {tab.title}
+                  </h3>
 
-                <p className='mt-4 max-w-[520px] font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-dark)_50%,transparent)] text-base leading-[160%] tracking-[0.02em] lg:text-lg'>
-                  {tab.description}
-                </p>
+                  <p className='mt-4 max-w-[520px] font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-dark)_50%,transparent)] text-base leading-[160%] tracking-[0.02em] lg:text-lg'>
+                    {tab.description}
+                  </p>
 
-                <a
-                  href='https://app.51ultron.com/signup'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='group/cta mt-8 inline-flex h-[36px] items-center gap-1.5 rounded-[5px] border border-[#1D1D1D] bg-[#1D1D1D] px-3 font-[430] font-season text-sm text-white transition-colors hover:border-[var(--landing-bg-elevated)] hover:bg-[var(--landing-bg-elevated)]'
-                >
-                  {tab.cta}
-                  <span className='relative h-[10px] w-[10px] shrink-0'>
-                    <ChevronDown className='-rotate-90 absolute inset-0 h-[10px] w-[10px] transition-opacity duration-150 group-hover/cta:opacity-0' />
-                    <svg className='absolute inset-0 h-[10px] w-[10px] opacity-0 transition-opacity duration-150 group-hover/cta:opacity-100' viewBox='0 0 10 10' fill='none'>
-                      <path d='M1 5H8M5.5 2L8.5 5L5.5 8' stroke='currentColor' strokeWidth='1.33' strokeLinecap='square' strokeLinejoin='miter' fill='none' />
-                    </svg>
-                  </span>
-                </a>
-              </motion.div>
-            </AnimatePresence>
+                  <a
+                    href='https://app.51ultron.com/signup'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='group/cta mt-8 inline-flex h-[36px] items-center gap-1.5 rounded-[5px] border border-[#1D1D1D] bg-[#1D1D1D] px-3 font-[430] font-season text-sm text-white transition-colors hover:border-[var(--landing-bg-elevated)] hover:bg-[var(--landing-bg-elevated)]'
+                  >
+                    {tab.cta}
+                    <span className='relative h-[10px] w-[10px] shrink-0'>
+                      <ChevronDown className='-rotate-90 absolute inset-0 h-[10px] w-[10px] transition-opacity duration-150 group-hover/cta:opacity-0' />
+                      <svg className='absolute inset-0 h-[10px] w-[10px] opacity-0 transition-opacity duration-150 group-hover/cta:opacity-100' viewBox='0 0 10 10' fill='none'>
+                        <path d='M1 5H8M5.5 2L8.5 5L5.5 8' stroke='currentColor' strokeWidth='1.33' strokeLinecap='square' strokeLinejoin='miter' fill='none' />
+                      </svg>
+                    </span>
+                  </a>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Progress dots */}
