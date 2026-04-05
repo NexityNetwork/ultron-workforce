@@ -163,6 +163,11 @@ export default {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
         },
+        'cell-ripple': {
+          '0%': { opacity: '0.4' },
+          '50%': { opacity: '0.8' },
+          '100%': { opacity: '0.4' },
+        },
       },
       animation: {
         'caret-blink': 'caret-blink 1.25s ease-out infinite',
@@ -173,6 +178,7 @@ export default {
         'collapsible-down': 'collapsible-down 300ms cubic-bezier(0.4, 0, 0.2, 1)',
         'collapsible-up': 'collapsible-up 300ms cubic-bezier(0.4, 0, 0.2, 1)',
         'logo-spin': 'logoSpin 8s linear infinite',
+        'cell-ripple': 'cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms)',
       },
     },
   },

@@ -1,6 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { BackgroundRippleEffect } from '@/components/ui/background-ripple-effect'
 
 const ChatInterface = dynamic(
   () => import('@/components/ChatInterface'),
@@ -17,6 +18,8 @@ export default function Hero() {
       aria-labelledby='hero-heading'
       className='relative flex flex-col items-center overflow-hidden bg-[var(--landing-bg)] pt-[60px] pb-3 lg:pt-[100px]'
     >
+      <BackgroundRippleEffect rows={12} cols={30} cellSize={52} />
+
       <p className='sr-only'>
         Ultron is the AI workforce platform that helps companies hire AI employees, set GTM goals,
         and scale results without scaling headcount. Five AI agents run in parallel, covering
