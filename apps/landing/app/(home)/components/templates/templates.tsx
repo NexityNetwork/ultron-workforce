@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { Badge, ChevronDown } from '@/components/emcn'
 import { TEMPLATE_WORKFLOWS } from '@/app/(home)/components/templates/template-workflows'
@@ -44,6 +44,64 @@ function DotGrid({ className, cols, rows, gap = 0 }: DotGridProps) {
   )
 }
 
+function MobileCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return
+    const el = scrollRef.current
+    const cardWidth = el.scrollWidth / TEMPLATE_WORKFLOWS.length
+    const idx = Math.round(el.scrollLeft / cardWidth)
+    setActiveIndex(Math.min(idx, TEMPLATE_WORKFLOWS.length - 1))
+  }
+
+  return (
+    <div className='lg:hidden'>
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className='flex snap-x snap-mandatory overflow-x-auto scrollbar-none'
+      >
+        {TEMPLATE_WORKFLOWS.map((workflow, index) => (
+          <div
+            key={workflow.id}
+            className='w-full flex-shrink-0 snap-center px-5 py-8'
+          >
+            <div className='flex flex-col gap-3'>
+              <div className='flex items-center gap-2.5'>
+                <div
+                  className='h-2 w-2 shrink-0 rounded-full'
+                  style={{ backgroundColor: workflow.color }}
+                />
+                <span className='font-[430] font-season text-[18px] text-white leading-tight'>
+                  {workflow.name}
+                </span>
+              </div>
+              <p className='font-[430] font-season text-[#F6F6F0]/45 text-sm leading-[150%] tracking-[0.02em]'>
+                {workflow.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Dots */}
+      <div className='flex items-center justify-center gap-1.5 pb-6'>
+        {TEMPLATE_WORKFLOWS.map((_, i) => (
+          <div
+            key={i}
+            className='h-1.5 rounded-full transition-all duration-300'
+            style={{
+              width: i === activeIndex ? 20 : 6,
+              backgroundColor: i === activeIndex ? TEMPLATE_WORKFLOWS[activeIndex].color : 'rgba(255,255,255,0.15)',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 const TEMPLATES_PANEL_ID = 'templates-panel'
 
@@ -131,27 +189,25 @@ export default function Templates() {
             </div>
           </div>
 
-          <div className='mt-10 flex border-[var(--landing-bg-elevated)] border-y lg:mt-[73px]'>
+          {/* Mobile: swipeable cards with title + description only */}
+          <MobileCarousel />
+
+          {/* Desktop: tab list + canvas preview */}
+          <div className='mt-[73px] hidden border-[var(--landing-bg-elevated)] border-y lg:flex'>
             <div className='shrink-0'>
               <DotGrid
-                className='h-full w-[24px] overflow-hidden border-[var(--landing-bg-elevated)] border-r p-1 lg:hidden'
-                cols={2}
-                rows={55}
-                gap={4}
-              />
-              <DotGrid
-                className='hidden h-full w-[80px] overflow-hidden border-[var(--landing-bg-elevated)] border-r p-1.5 lg:block'
+                className='h-full w-[80px] overflow-hidden border-[var(--landing-bg-elevated)] border-r p-1.5'
                 cols={8}
                 rows={55}
                 gap={6}
               />
             </div>
 
-            <div className='flex min-w-0 flex-1 flex-col lg:flex-row'>
+            <div className='flex min-w-0 flex-1'>
               <div
                 role='tablist'
                 aria-label='Workflow templates'
-                className='flex w-full shrink-0 flex-col border-[var(--landing-bg-elevated)] lg:w-[300px] lg:border-r'
+                className='flex w-[300px] shrink-0 flex-col border-[var(--landing-bg-elevated)] border-r'
               >
                 {TEMPLATE_WORKFLOWS.map((workflow, index) => {
                   const isActive = index === activeIndex
@@ -204,7 +260,7 @@ export default function Templates() {
                 id={TEMPLATES_PANEL_ID}
                 role='tabpanel'
                 aria-labelledby={`template-tab-${activeIndex}`}
-                className='relative hidden min-h-[400px] flex-1 overflow-hidden lg:block'
+                className='relative min-h-[400px] flex-1 overflow-hidden'
               >
                 <div className='h-[620px] overflow-y-auto overflow-x-hidden p-5 scrollbar-none'>
                   <CanvasBlock
@@ -219,13 +275,7 @@ export default function Templates() {
 
             <div className='shrink-0'>
               <DotGrid
-                className='h-full w-[24px] overflow-hidden border-[var(--landing-bg-elevated)] border-l p-1 lg:hidden'
-                cols={2}
-                rows={55}
-                gap={4}
-              />
-              <DotGrid
-                className='hidden h-full w-[80px] overflow-hidden border-[var(--landing-bg-elevated)] border-l p-1.5 lg:block'
+                className='h-full w-[80px] overflow-hidden border-[var(--landing-bg-elevated)] border-l p-1.5'
                 cols={8}
                 rows={55}
                 gap={6}
