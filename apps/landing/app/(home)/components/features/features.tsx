@@ -227,6 +227,7 @@ export default function Features() {
 
           {/* Carousel content */}
           <div className='relative mx-6 mt-10 overflow-hidden lg:mx-[120px] lg:mt-[60px]'>
+            <div className='min-h-[280px] lg:min-h-[260px]'>
             <AnimatePresence mode='wait' initial={false} custom={direction}>
               <motion.div
                 key={activeTab}
@@ -271,6 +272,7 @@ export default function Features() {
                 </a>
               </motion.div>
             </AnimatePresence>
+            </div>
 
             {/* Progress dots */}
             <div className='mt-10 flex items-center justify-center gap-2'>

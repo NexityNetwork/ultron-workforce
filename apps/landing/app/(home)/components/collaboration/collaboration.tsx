@@ -31,7 +31,7 @@ function DotGrid({ className, cols, rows, gap = 0 }: DotGridProps) {
 }
 
 const CURSOR_KEYFRAMES = `
-  @keyframes cursorVikhyath {
+  @keyframes cursorMarcus {
     0% { transform: translate(0, 0); }
     12% { transform: translate(120px, 10px); }
     24% { transform: translate(80px, 80px); }
@@ -53,7 +53,7 @@ const CURSOR_KEYFRAMES = `
     100% { transform: translate(0, 0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    @keyframes cursorVikhyath { 0%, 100% { transform: none; } }
+    @keyframes cursorMarcus { 0%, 100% { transform: none; } }
     @keyframes cursorAlexa { 0%, 100% { transform: none; } }
   }
 `
@@ -72,7 +72,7 @@ function CursorArrow({ fill }: { fill: string }) {
   )
 }
 
-function VikhyathCursor() {
+function MarcusCursor() {
   return (
     <div
       aria-hidden='true'
@@ -80,7 +80,7 @@ function VikhyathCursor() {
       style={{
         top: '27.47%',
         left: '25%',
-        animation: 'cursorVikhyath 16s ease-in-out infinite',
+        animation: 'cursorMarcus 16s ease-in-out infinite',
         willChange: 'transform',
       }}
     >
@@ -89,7 +89,7 @@ function VikhyathCursor() {
           <CursorArrow fill='#2ABBF8' />
         </div>
         <div className='-left-[4px] absolute top-[18px] flex items-center rounded bg-[#2ABBF8] px-[5px] py-[3px] font-[420] font-season text-[var(--landing-text-dark)] text-sm leading-[100%] tracking-[-0.02em]'>
-          Vikhyath
+          Marcus
         </div>
       </div>
     </div>
@@ -278,7 +278,7 @@ export default function Collaboration() {
               />
             </div>
             <div className='hidden lg:block'>
-              <VikhyathCursor />
+              <MarcusCursor />
               <AlexaCursor />
             </div>
             <figcaption className='sr-only'>
@@ -294,8 +294,14 @@ export default function Collaboration() {
           rel='noopener noreferrer'
           className='relative mx-4 mb-6 flex cursor-none items-center gap-3.5 rounded-[5px] border border-[var(--landing-bg-elevated)] bg-[var(--landing-bg)] px-3 py-2.5 transition-colors hover:border-[var(--landing-border-strong)] hover:bg-[var(--landing-bg-card)] sm:mx-8 md:absolute md:bottom-10 md:left-20 md:z-20 md:mx-0 md:mb-0'
         >
-          <div className='relative h-7 w-11 shrink-0'>
-            <Image src='/landing/multiplayer-cursors.svg' alt='' fill className='object-contain' />
+          <div className='flex h-7 w-7 shrink-0 items-center justify-center'>
+            <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' className='text-[#F6F6F0]/50'>
+              <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
+              <polyline points='14 2 14 8 20 8' />
+              <line x1='16' y1='13' x2='8' y2='13' />
+              <line x1='16' y1='17' x2='8' y2='17' />
+              <line x1='10' y1='9' x2='8' y2='9' />
+            </svg>
           </div>
           <div className='flex flex-col gap-0.5'>
             <span className='font-[430] font-season text-[#F6F6F0]/50 text-[12px] uppercase leading-[100%] tracking-[0.08em]'>

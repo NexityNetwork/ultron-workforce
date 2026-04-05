@@ -22,10 +22,13 @@ function UnlockModal({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-[18px] font-semibold text-white leading-tight">
-          Unlock everything you'd hire for already built.
+          Everything you'd hire for.
+          <br />
+          Already built.
         </h3>
         <p className="mt-2 text-[14px] text-[rgba(255,255,255,0.5)] leading-[150%]">
-          Put your business on autopilot by signing in.
+          Put your business on autopilot by signing
+          {' '}in to unlock the engine.
         </p>
         <a
           href="https://app.51ultron.com/login"
