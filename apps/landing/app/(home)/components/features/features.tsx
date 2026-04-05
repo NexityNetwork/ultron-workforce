@@ -3,7 +3,6 @@
 import { useRef, useState } from 'react'
 import { type MotionValue, motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Badge, ChevronDown } from '@/components/emcn'
 import { FeaturesPreview } from '@/app/(home)/components/features/components/features-preview'
 
@@ -16,56 +15,56 @@ function hexToRgba(hex: string, alpha: number): string {
 
 const FEATURE_TABS = [
   {
-    label: 'Mothership',
+    label: 'Command Center',
+    mobileLabel: 'Command',
     color: '#FA4EDF',
-    title: 'Your AI command center',
+    title: 'Your command center',
     description:
-      'Direct your entire AI workforce from one place. Build agents, spin up workflows, query tables, and manage every resource across your workspace — in natural language.',
-    cta: 'Explore mothership',
+      'Every agent, skill, and canvas lives here. Manage work, review outputs, and direct your workforce without leaving the interface.',
+    cta: 'Explore command center',
     segments: [[0.3,8],[0.25,10],[0.45,12],[0.5,8],[0.65,10],[0.8,12],[0.75,8],[0.95,10],[1,12],[0.85,10]] as [number,number][],
   },
   {
-    label: 'Tables',
+    label: 'Agents',
     color: '#2ABBF8',
-    title: 'A database, built in',
+    title: 'Five agents. Always running.',
     description:
-      'Filter, sort, and edit data inline, then wire it directly into your workflows. Agents query, insert, and update rows on every run — no external database needed.',
-    cta: 'Explore tables',
+      'Cortex, Specter, Striker, Pulse, and Sentinel. Each owns a domain. Each runs in parallel. Each gets sharper over time.',
+    cta: 'Explore agents',
     segments: [[0.25,12],[0.4,10],[0.35,8],[0.55,12],[0.7,10],[0.85,8],[1,14],[0.9,12],[1,14]] as [number,number][],
   },
   {
-    label: 'Files',
+    label: 'Skills',
     color: '#FFCC02',
     badgeColor: '#EAB308',
-    title: 'Upload, create, and share',
+    title: '35 plus specialized sub-agents',
     description:
-      'Create or upload documents, spreadsheets, and media that agents can read, write, and reference across workflows.',
-    cta: 'Explore files',
+      'Triggered by a single command. Research, lead generation, cold outreach, content, and operations. Ready to deploy out of the box.',
+    cta: 'Explore skills',
     segments: [[0.25,10],[0.4,8],[0.35,12],[0.5,10],[0.65,8],[0.75,10],[0.9,12],[1,10],[0.85,10],[1,10]] as [number,number][],
   },
   {
-    label: 'Knowledge Base',
-    mobileLabel: 'Knowledge',
+    label: 'Memory',
     color: '#8B5CF6',
-    title: 'Your context engine',
+    title: 'A brain that compounds',
     description:
-      'Sync institutional knowledge from 30+ live connectors — Notion, Drive, Slack, Confluence, and more — so every agent draws from the same truth.',
-    cta: 'Explore knowledge base',
+      'Brain Graph maps every session. 3-layer compression. Lessons system. Your agents get sharper with every run.',
+    cta: 'Explore memory',
     segments: [[0.3,10],[0.25,8],[0.4,10],[0.5,10],[0.65,10],[0.8,10],[0.9,12],[1,10],[0.95,10],[1,10]] as [number,number][],
   },
   {
-    label: 'Logs',
+    label: 'Integrations',
     hideOnMobile: true,
     color: '#FF6B35',
-    title: 'Full visibility, every run',
+    title: 'Plug in what you already use',
     description:
-      'Trace every execution block by block — inputs, outputs, cost, and duration. Filter by status or workflow, replay snapshots, and export reports.',
-    cta: 'Explore logs',
+      '250 plus integrations via Composio. 50 plus MCP servers preloaded. Connect your CRM, inbox, calendar, and more in minutes.',
+    cta: 'Explore integrations',
     segments: [[0.25,10],[0.35,8],[0.3,10],[0.5,10],[0.65,8],[0.8,12],[0.9,10],[1,10],[0.85,12],[1,10]] as [number,number][],
   },
 ]
 
-const HEADING_TEXT = 'Everything you need to build, deploy, and manage AI agents. '
+const HEADING_TEXT = 'Everything you need to run an autonomous company. '
 const HEADING_LETTERS = HEADING_TEXT.split('')
 const LETTER_REVEAL_SPAN = 0.85
 const LETTER_FADE_IN = 0.04
@@ -142,7 +141,7 @@ export default function Features() {
               ),
             }}
           >
-            Workspace
+            Platform
           </Badge>
           <h2
             id='features-heading'
@@ -154,7 +153,7 @@ export default function Features() {
               </ScrollLetter>
             ))}
             <span className='text-[color-mix(in_srgb,var(--landing-text-dark)_40%,transparent)]'>
-              Design powerful workflows, connect your data, and monitor every run — all in one platform.
+              Five layers. One interface. Always on.
             </span>
           </h2>
         </div>
@@ -217,8 +216,10 @@ export default function Features() {
                   {FEATURE_TABS[activeTab].description}
                 </p>
               </div>
-              <Link
-                href='/signup'
+              <a
+                href='https://app.51ultron.com/signup'
+                target='_blank'
+                rel='noopener noreferrer'
                 className='group/cta inline-flex h-[32px] items-center gap-1.5 rounded-[5px] border border-[#1D1D1D] bg-[#1D1D1D] px-2.5 font-[430] font-season text-sm text-white transition-colors hover:border-[var(--landing-bg-elevated)] hover:bg-[var(--landing-bg-elevated)]'
               >
                 {FEATURE_TABS[activeTab].cta}
@@ -228,7 +229,7 @@ export default function Features() {
                     <path d='M1 5H8M5.5 2L8.5 5L5.5 8' stroke='currentColor' strokeWidth='1.33' strokeLinecap='square' strokeLinejoin='miter' fill='none' />
                   </svg>
                 </span>
-              </Link>
+              </a>
             </div>
 
             <FeaturesPreview activeTab={activeTab} />

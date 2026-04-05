@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
-const PLACEHOLDER_PREFIX = 'Ask Sim to '
+const PLACEHOLDER_PREFIX = 'Ask Ultron to '
 const PLACEHOLDER_SUFFIXES = [
   'respond to my emails...',
   'find and track leads...',
-  'DM me Linear updates on Slack...',
-  'track GitHub commits...',
+  'build my outreach sequence...',
+  'map my competitor landscape...',
 ] as const
 
 const TYPE_SPEED_MS = 60

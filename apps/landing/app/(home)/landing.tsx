@@ -1,17 +1,16 @@
 import { Suspense } from 'react'
 import { getNavBlogPosts } from '@/lib/blog/registry'
 import { martianMono } from '@/app/fonts/martian-mono'
+import { FooterCTA } from '@/app/(home)/components/footer/footer-cta'
 import {
   Collaboration,
   Enterprise,
   Features,
-  Footer,
   Hero,
   Navbar,
   Pricing,
   StructuredData,
   Templates,
-  Testimonials,
 } from '@/app/(home)/components'
 
 export default async function Landing() {
@@ -40,9 +39,8 @@ export default async function Landing() {
         <Collaboration />
         <Enterprise />
         <Pricing />
-        <Testimonials />
+        <FooterCTA />
       </main>
-      <Footer />
     </div>
   )
 }

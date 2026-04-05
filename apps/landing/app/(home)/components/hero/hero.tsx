@@ -2,7 +2,6 @@
 
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import Link from 'next/link'
 import { DemoRequestModal } from '@/app/(home)/components/demo-request/demo-request-modal'
 import {
   BlocksLeftAnimated,
@@ -38,11 +37,10 @@ export default function Hero() {
       className='relative flex flex-col items-center overflow-hidden bg-[var(--landing-bg)] pt-[60px] pb-3 lg:pt-[100px]'
     >
       <p className='sr-only'>
-        Sim is the open-source platform to build AI agents and run your agentic workforce. Connect
-        1,000+ integrations and LLMs — including OpenAI, Claude, Gemini, Mistral, and xAI — to
-        deploy and orchestrate agentic workflows. Create agents, workflows, knowledge bases, tables,
-        and docs. Trusted by over 100,000 builders at startups and Fortune 500 companies. SOC2
-        compliant.
+        Ultron is the AI workforce platform that helps companies hire AI employees, set GTM goals,
+        and scale results without scaling headcount. Five AI agents run in parallel, covering
+        research, outreach, content, operations, and intelligence. 250 plus integrations, 35 plus
+        specialized skills, and a memory system that gets smarter every run.
       </p>
 
       <div
@@ -62,31 +60,27 @@ export default function Hero() {
       <div className='relative z-10 flex flex-col items-center gap-3'>
         <h1
           id='hero-heading'
-          className='text-balance font-[430] font-season text-[36px] text-white leading-[100%] tracking-[-0.02em] sm:text-[48px] lg:text-[72px]'
+          className='text-balance text-center font-[430] font-season text-[36px] text-white leading-[105%] tracking-[-0.02em] sm:text-[48px] lg:text-[64px]'
         >
-          Build AI Agents
+          Hire AI Employees.
+          <br />
+          Scale GTM without scaling headcount.
         </h1>
-        <p className='font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-subtle)_60%,transparent)] text-base leading-[125%] tracking-[0.02em] lg:text-lg'>
-          Sim is the AI Workspace for Agent Builders.
+        <p className='max-w-[560px] text-balance text-center font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-subtle)_60%,transparent)] text-base leading-[145%] tracking-[0.02em] lg:text-lg'>
+          Your team is buried in tasks humans should not be doing anymore.
+          Delegate 50% of GTM work to AI Agents within 6 months.
         </p>
 
         <div className='mt-3 flex items-center gap-2'>
           <DemoRequestModal>
             <button
               type='button'
-              className={`${CTA_BASE} border-[var(--landing-border-strong)] bg-transparent text-[var(--landing-text)] transition-colors hover:bg-[var(--landing-bg-elevated)]`}
+              className={`${CTA_BASE} gap-2 border-white bg-white text-black transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0]`}
               aria-label='Get a demo'
             >
               Get a demo
             </button>
           </DemoRequestModal>
-          <Link
-            href='/signup'
-            className={`${CTA_BASE} gap-2 border-white bg-white text-black transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0]`}
-            aria-label='Get started with Sim'
-          >
-            Get started
-          </Link>
         </div>
       </div>
 

@@ -20,7 +20,7 @@ const PERMISSION_CATEGORIES: PermissionCategory[] = [
     label: 'Providers',
     color: '#FA4EDF',
     features: [
-      { key: 'openai', name: 'OpenAI', defaultEnabled: true },
+      { key: 'kimi-k2', name: 'Kimi K2', defaultEnabled: true },
       { key: 'anthropic', name: 'Anthropic', defaultEnabled: true },
       { key: 'google', name: 'Google', defaultEnabled: false },
       { key: 'xai', name: 'xAI', defaultEnabled: true },

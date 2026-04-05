@@ -2,7 +2,6 @@
 
 import { useCallback, useRef, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
-import Link from 'next/link'
 import { useAnimatedPlaceholder } from '@/hooks/use-animated-placeholder'
 
 const MAX_HEIGHT = 120
@@ -19,9 +18,8 @@ export function FooterCTA() {
 
   const handleSubmit = useCallback(() => {
     if (isEmpty) return
-    // In the standalone landing, route the user to signup with a prompt pre-filled
     const params = new URLSearchParams({ prompt: inputValue })
-    window.location.href = `/signup?${params.toString()}`
+    window.location.href = `https://app.51ultron.com/signup?${params.toString()}`
   }, [isEmpty, inputValue])
 
   const handleKeyDown = useCallback(
@@ -43,7 +41,7 @@ export function FooterCTA() {
   return (
     <div className='flex flex-col items-center px-4 pt-[120px] pb-[100px] sm:px-8 md:px-20'>
       <h2 className='text-balance text-center font-[430] font-season text-[28px] text-[var(--landing-text-dark)] leading-[100%] tracking-[-0.02em] sm:text-[32px] md:text-[36px]'>
-        What should we get done?
+        Ready to delegate?
       </h2>
 
       <div className='mt-8 w-full max-w-[42rem]'>
@@ -82,19 +80,21 @@ export function FooterCTA() {
 
       <div className='mt-8 flex gap-2'>
         <a
-          href='https://docs.sim.ai'
+          href='https://docs.51ultron.com/'
           target='_blank'
           rel='noopener noreferrer'
           className={`${CTA_BUTTON} border-[var(--landing-border-subtle)] text-[var(--landing-text-dark)] transition-colors hover:bg-[var(--landing-bg-skeleton)]`}
         >
           Docs
         </a>
-        <Link
-          href='/signup'
+        <a
+          href='https://app.51ultron.com/signup'
+          target='_blank'
+          rel='noopener noreferrer'
           className={`${CTA_BUTTON} gap-2 border-[var(--landing-bg)] bg-[var(--landing-bg)] text-white transition-colors hover:border-[var(--landing-bg-elevated)] hover:bg-[var(--landing-bg-elevated)]`}
         >
           Get started
-        </Link>
+        </a>
       </div>
     </div>
   )

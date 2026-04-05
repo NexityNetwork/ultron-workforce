@@ -1,8 +1,4 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import { Badge, ChevronDown } from '@/components/emcn'
-import { Lock } from '@/components/emcn/icons'
-import { GithubIcon } from '@/components/icons'
 import { DemoRequestModal } from '@/app/(home)/components/demo-request/demo-request-modal'
 import { AccessControlPanel } from '@/app/(home)/components/enterprise/components/access-control-panel'
 import { AuditLogPreview } from '@/app/(home)/components/enterprise/components/audit-log-preview'
@@ -30,62 +26,6 @@ const FEATURE_TAGS = [
   'Workspace Export', 'Audit Logs',
 ] as const
 
-function TrustStrip() {
-  return (
-    <div className='mx-6 mt-4 grid grid-cols-1 overflow-hidden rounded-lg border border-[var(--landing-bg-elevated)] sm:grid-cols-3 md:mx-8'>
-      <Link
-        href='https://app.vanta.com/sim.ai/trust/v35ia0jil4l7dteqjgaktn'
-        target='_blank'
-        rel='noopener noreferrer'
-        className='group flex items-center gap-3 border-[var(--landing-bg-elevated)] border-b px-4 py-3.5 transition-colors hover:bg-[#212121] sm:border-r sm:border-b-0'
-      >
-        <Image
-          src='/footer/soc2.png'
-          alt='SOC 2 Type II'
-          width={22}
-          height={22}
-          className='shrink-0 object-contain'
-          unoptimized
-        />
-        <div className='flex flex-col gap-[3px]'>
-          <strong className='font-[430] font-season text-[13px] text-white leading-none'>SOC 2</strong>
-          <span className='font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-subtle)_55%,transparent)] text-xs leading-none tracking-[0.02em] transition-colors group-hover:text-[color-mix(in_srgb,var(--landing-text-subtle)_75%,transparent)]'>
-            Type II →
-          </span>
-        </div>
-      </Link>
-
-      <Link
-        href='https://github.com/simstudioai/sim'
-        target='_blank'
-        rel='noopener noreferrer'
-        className='group flex items-center gap-3 border-[var(--landing-bg-elevated)] border-b px-4 py-3.5 transition-colors hover:bg-[#212121] sm:border-r sm:border-b-0'
-      >
-        <div className='flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-[#FFCC02]/10'>
-          <GithubIcon width={11} height={11} className='text-[#FFCC02]/75' />
-        </div>
-        <div className='flex flex-col gap-[3px]'>
-          <strong className='font-[430] font-season text-[13px] text-white leading-none'>Open Source</strong>
-          <span className='font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-subtle)_55%,transparent)] text-xs leading-none tracking-[0.02em] transition-colors group-hover:text-[color-mix(in_srgb,var(--landing-text-subtle)_75%,transparent)]'>
-            View on GitHub →
-          </span>
-        </div>
-      </Link>
-
-      <div className='flex items-center gap-3 px-4 py-3.5'>
-        <div className='flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-[#2ABBF8]/10'>
-          <Lock className='h-[14px] w-[14px] text-[#2ABBF8]/75' />
-        </div>
-        <div className='flex flex-col gap-[3px]'>
-          <strong className='font-[430] font-season text-[13px] text-white leading-none'>SSO & SCIM</strong>
-          <span className='font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-subtle)_55%,transparent)] text-xs leading-none tracking-[0.02em]'>
-            Okta, Azure AD, Google
-          </span>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default function Enterprise() {
   return (
@@ -144,8 +84,6 @@ export default function Enterprise() {
               </div>
             </div>
           </div>
-
-          <TrustStrip />
 
           <div className='enterprise-feature-marquee relative mt-6 overflow-hidden border-[var(--landing-bg-elevated)] border-t'>
             <style dangerouslySetInnerHTML={{ __html: ENTERPRISE_FEATURE_MARQUEE_STYLES }} />

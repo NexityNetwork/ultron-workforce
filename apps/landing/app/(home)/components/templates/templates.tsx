@@ -65,7 +65,7 @@ function TemplatePreview({ color, name }: { color: string; name: string }) {
         <div className='h-px w-8' style={{ backgroundColor: color }} />
       </div>
       <p className='text-center font-[430] font-season text-[#F6F6F0]/40 text-xs leading-[150%] tracking-[0.02em]'>
-        Open Sim to preview this template
+        Open Ultron to preview this canvas
       </p>
     </div>
   )
@@ -111,10 +111,9 @@ export default function Templates() {
   return (
     <section id='templates' aria-labelledby='templates-heading' className='mt-10 mb-20'>
       <p className='sr-only'>
-        Sim includes {TEMPLATE_WORKFLOWS.length} pre-built workflow templates covering OCR
-        processing, release management, meeting follow-ups, resume scanning, email triage,
-        competitor monitoring, social listening, data enrichment, feedback analysis, code review,
-        and knowledge base Q&amp;A.
+        Ultron includes {TEMPLATE_WORKFLOWS.length} business canvases covering revenue tracking,
+        customer profiling, outreach, competitive intelligence, pipeline management, sales,
+        market analysis, and investor communications. Rendered inline inside your chat interface.
       </p>
 
       <div className='bg-[var(--landing-bg)]'>
@@ -138,20 +137,22 @@ export default function Templates() {
                   backgroundColor: hexToRgba(activeWorkflow.color, 0.1),
                 }}
               >
-                Templates
+                Canvas
               </Badge>
 
               <h2
                 id='templates-heading'
                 className='text-balance font-[430] font-season text-[28px] text-white leading-[100%] tracking-[-0.02em] lg:text-[40px]'
               >
-                Ship your agent in minutes
+                30 business canvases. Rendered inline.{' '}
+                <br className='hidden lg:inline' />
+                Ready in seconds.
               </h2>
 
               <p className='font-[430] font-season text-[#F6F6F0]/50 text-base leading-[150%] tracking-[0.02em] lg:text-lg'>
-                Pre-built templates for every use case—pick one, swap{' '}
+                Tell Ultron what you need. Get a structured, actionable{' '}
                 <br className='hidden lg:inline' />
-                models and tools to fit your stack, and deploy.
+                canvas inside your chat in seconds.
               </p>
             </div>
           </div>
@@ -238,7 +239,7 @@ export default function Templates() {
                   disabled={isPreparingTemplate}
                   className='group/cta absolute top-4 right-[16px] z-10 inline-flex h-[32px] cursor-pointer items-center gap-1.5 rounded-[5px] border border-white bg-white px-2.5 font-[430] font-season text-black text-sm transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0] disabled:opacity-60'
                 >
-                  {isPreparingTemplate ? 'Preparing...' : 'Use template'}
+                  {isPreparingTemplate ? 'Preparing...' : 'View canvas'}
                   <span className='relative h-[10px] w-[10px] shrink-0'>
                     <ChevronDown className='-rotate-90 absolute inset-0 h-[10px] w-[10px] transition-opacity duration-150 group-hover/cta:opacity-0' />
                     <svg

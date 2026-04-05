@@ -14,26 +14,9 @@ interface PricingTier {
 
 const PRICING_TIERS: PricingTier[] = [
   {
-    id: 'community',
-    name: 'Community',
-    description: 'For individuals getting started with AI agents',
-    price: 'Free',
-    color: '#2ABBF8',
-    features: [
-      '1,000 credits (trial)',
-      '5GB file storage',
-      '3 tables · 1,000 rows each',
-      '5 min execution limit',
-      '5 concurrent/workspace',
-      '7-day log retention',
-      'CLI/SDK/MCP Access',
-    ],
-    cta: { label: 'Get started', href: '/signup' },
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    description: 'For professionals building production workflows',
+    id: 'max',
+    name: 'Max',
+    description: 'For teams ready to put AI to work',
     price: '$25',
     billingPeriod: 'per month',
     color: '#00F701',
@@ -46,12 +29,12 @@ const PRICING_TIERS: PricingTier[] = [
       'Unlimited log retention',
       'CLI/SDK/MCP Access',
     ],
-    cta: { label: 'Get started', href: '/signup' },
+    cta: { label: 'Get started', href: 'https://app.51ultron.com/signup' },
   },
   {
-    id: 'max',
-    name: 'Max',
-    description: 'For power users and teams building at scale',
+    id: 'ultra',
+    name: 'Ultra',
+    description: 'For companies running GTM at full scale',
     price: '$100',
     billingPeriod: 'per month',
     color: '#FA4EDF',
@@ -64,12 +47,12 @@ const PRICING_TIERS: PricingTier[] = [
       'Unlimited log retention',
       'CLI/SDK/MCP Access',
     ],
-    cta: { label: 'Get started', href: '/signup' },
+    cta: { label: 'Get started', href: 'https://app.51ultron.com/signup' },
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    description: 'For organizations needing security and scale',
+    description: 'For organizations that need complete control',
     price: 'Custom',
     color: '#FFCC02',
     features: [
@@ -114,7 +97,7 @@ function Badge({ children, className, style }: { children: React.ReactNode; clas
 
 function PricingCard({ tier }: { tier: PricingTier }) {
   const isDemoRequest = tier.cta.action === 'demo-request'
-  const isPro = tier.id === 'pro'
+  const isPro = tier.id === 'max'
 
   return (
     <article className='flex flex-1 flex-col' aria-labelledby={`${tier.id}-heading`}>
@@ -216,7 +199,7 @@ export default function Pricing() {
           </h2>
         </div>
 
-        <div className='mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 md:mt-12 lg:grid-cols-4'>
+        <div className='mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 md:mt-12 lg:grid-cols-3'>
           {PRICING_TIERS.map((tier) => (
             <PricingCard key={tier.id} tier={tier} />
           ))}
