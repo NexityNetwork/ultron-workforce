@@ -156,38 +156,60 @@ function AgentsVisual() {
   )
 }
 
-const SKILL_CATEGORIES = [
-  { category: 'Research', count: 6, examples: ['Competitive analysis', 'Company deep-dive', 'Market sizing'] },
-  { category: 'Lead Gen', count: 7, examples: ['ICP matching', 'Decision-maker lookup', 'Trigger events'] },
-  { category: 'Sales', count: 8, examples: ['Cold email drafts', 'Follow-up sequences', 'Objection handling'] },
-  { category: 'Content', count: 5, examples: ['LinkedIn posts', 'Thought leadership', 'Multi-platform'] },
-  { category: 'Operations', count: 4, examples: ['Daily briefings', 'Pipeline reviews', 'Status reports'] },
-  { category: 'Strategy', count: 5, examples: ['Pricing analysis', 'SWOT generation', 'GTM planning'] },
-] as const
-
-/** Skills visual: category cards with example skills */
+/** Skills visual: execution panel showing active skills with modes */
 function SkillsVisual() {
   return (
-    <div className='flex h-full flex-col justify-center'>
-      <div className='grid grid-cols-2 gap-2'>
-        {SKILL_CATEGORIES.map((cat) => (
-          <div key={cat.category} className='rounded-lg border border-[#F0F0F0] bg-white p-3'>
-            <div className='flex items-center justify-between'>
-              <span className='font-season text-[12px] font-medium text-[#1D1D1D]'>{cat.category}</span>
-              <span className='font-season text-[10px] text-[#BBB]'>{cat.count}</span>
-            </div>
-            <div className='mt-2 flex flex-col gap-1'>
-              {cat.examples.map((ex) => (
-                <span key={ex} className='font-season text-[10px] text-[#999] leading-[140%]'>{ex}</span>
-              ))}
-            </div>
+    <div className='flex h-full flex-col justify-center gap-2.5'>
+      {/* Active skill - inline mode */}
+      <div className='rounded-xl border border-[#F0F0F0] bg-white p-4'>
+        <div className='flex items-center justify-between'>
+          <div className='flex items-center gap-2'>
+            <div className='h-2 w-2 animate-pulse rounded-full bg-[#EAB308]' />
+            <span className='font-season text-[13px] font-medium text-[#1D1D1D]'>Competitive Analysis</span>
           </div>
+          <span className='rounded-full bg-[#FEF9C3] px-2 py-0.5 font-season text-[9px] font-medium text-[#A16207] uppercase tracking-[0.04em]'>Inline</span>
+        </div>
+        <p className='mt-2 font-season text-[11px] text-[#999] leading-[150%]'>Scanning 4 competitors across pricing, positioning, and feature gaps</p>
+        <div className='mt-3 flex items-center gap-3'>
+          <div className='h-1 flex-1 overflow-hidden rounded-full bg-[#F5F5F5]'>
+            <div className='h-full w-[72%] rounded-full bg-[#EAB308]' />
+          </div>
+          <span className='font-mono text-[10px] text-[#BBB]'>72%</span>
+        </div>
+      </div>
+
+      {/* Active skill - fork mode */}
+      <div className='rounded-xl border border-[#F0F0F0] bg-white p-4'>
+        <div className='flex items-center justify-between'>
+          <div className='flex items-center gap-2'>
+            <div className='h-2 w-2 animate-pulse rounded-full bg-[#8B5CF6]' />
+            <span className='font-season text-[13px] font-medium text-[#1D1D1D]'>Lead Enrichment</span>
+          </div>
+          <span className='rounded-full bg-[#EDE9FE] px-2 py-0.5 font-season text-[9px] font-medium text-[#6D28D9] uppercase tracking-[0.04em]'>Fork</span>
+        </div>
+        <p className='mt-2 font-season text-[11px] text-[#999] leading-[150%]'>Enriching 48 leads via Apollo, LinkedIn, and company data</p>
+        <div className='mt-3 flex items-center gap-3'>
+          <div className='h-1 flex-1 overflow-hidden rounded-full bg-[#F5F5F5]'>
+            <div className='h-full w-[35%] rounded-full bg-[#8B5CF6]' />
+          </div>
+          <span className='font-mono text-[10px] text-[#BBB]'>35%</span>
+        </div>
+      </div>
+
+      {/* Queued skills */}
+      <div className='flex items-center gap-2 rounded-xl border border-dashed border-[#E8E8E8] bg-[#FAFAFA] px-4 py-3'>
+        <span className='font-season text-[11px] text-[#BBB]'>Queue:</span>
+        {['Cold Outreach Draft', 'Meeting Prep', 'Pipeline Review'].map((skill, i) => (
+          <span key={skill} className='rounded-full border border-[#ECECEC] bg-white px-2 py-0.5 font-season text-[10px] text-[#999]'>
+            {skill}
+          </span>
         ))}
       </div>
-      <div className='mt-3 flex items-center gap-2'>
-        <div className='h-px flex-1 bg-[#F0F0F0]' />
-        <span className='font-season text-[10px] text-[#CCC] uppercase tracking-[0.05em]'>2 concurrent per session</span>
-        <div className='h-px flex-1 bg-[#F0F0F0]' />
+
+      {/* Footer */}
+      <div className='flex items-center justify-between px-1 pt-1'>
+        <span className='font-season text-[10px] text-[#CCC]'>2 of 2 slots active</span>
+        <span className='font-season text-[10px] text-[#CCC]'>3 queued</span>
       </div>
     </div>
   )
@@ -382,7 +404,7 @@ export default function Features() {
 
           {/* Content: left text + right visual */}
           <div className='relative mx-6 mt-10 overflow-hidden lg:mx-[120px] lg:mt-[60px]'>
-            <div className='relative h-[380px] sm:h-[340px] lg:h-[320px]'>
+            <div className='relative h-[280px] sm:h-[260px] lg:h-[340px]'>
               <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                   key={activeTab}
@@ -395,15 +417,19 @@ export default function Features() {
                 >
                   {/* Left: text */}
                   <div className='flex flex-col justify-center'>
-                    <div
-                      className='mb-4 flex h-10 w-10 items-center justify-center rounded-xl'
-                      style={{ backgroundColor: hexToRgba(tab.color, 0.1) }}
+                    <span
+                      className='mb-4 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 font-season text-[11px] uppercase tracking-[0.05em]'
+                      style={{
+                        color: (tab as typeof tab & { badgeColor?: string }).badgeColor ?? tab.color,
+                        backgroundColor: hexToRgba(
+                          (tab as typeof tab & { badgeColor?: string }).badgeColor ?? tab.color,
+                          0.08
+                        ),
+                      }}
                     >
-                      <div
-                        className='h-2 w-2 rounded-full'
-                        style={{ backgroundColor: tab.color }}
-                      />
-                    </div>
+                      <span className='h-1.5 w-1.5 rounded-full' style={{ backgroundColor: (tab as typeof tab & { badgeColor?: string }).badgeColor ?? tab.color }} />
+                      {tab.label}
+                    </span>
 
                     <h3 className='font-[430] font-season text-[22px] text-[var(--landing-text-dark)] leading-[120%] tracking-[-0.02em] lg:text-[28px]'>
                       {tab.title}
