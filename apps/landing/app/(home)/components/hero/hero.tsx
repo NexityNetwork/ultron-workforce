@@ -1,6 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { Spotlight } from '@/components/ui/spotlight-new'
 
 const ChatInterface = dynamic(
   () => import('@/components/ChatInterface'),
@@ -17,6 +18,7 @@ export default function Hero() {
       aria-labelledby='hero-heading'
       className='relative flex flex-col items-center overflow-hidden bg-[var(--landing-bg)] pt-[60px] pb-10 lg:pt-[100px]'
     >
+      <Spotlight />
       <p className='sr-only'>
         Ultron is the AI workforce platform that helps companies hire AI employees, set GTM goals,
         and scale results without scaling headcount. Five AI agents run in parallel, covering
