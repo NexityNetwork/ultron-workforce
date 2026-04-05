@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { type MotionValue, motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { Badge, ChevronDown } from '@/components/emcn'
+import { Badge } from '@/components/emcn'
 
 function hexToRgba(hex: string, alpha: number): string {
   const r = Number.parseInt(hex.slice(1, 3), 16)
@@ -17,46 +17,41 @@ const FEATURE_TABS = [
     label: 'Command Center',
     mobileLabel: 'Command',
     color: '#FA4EDF',
-    title: 'Your command center',
+    title: 'One interface for everything',
     description:
-      'Every agent, skill, and canvas lives here. Manage work, review outputs, and direct your workforce without leaving the interface.',
-    cta: 'Explore command center',
+      'Assign tasks, review outputs, trigger skills, and manage all five agents from a single conversational workspace.',
   },
   {
     label: 'Agents',
     color: '#2ABBF8',
-    title: 'Five agents. Always running.',
+    title: 'Five domains. Zero overlap.',
     description:
-      'Cortex, Specter, Striker, Pulse, and Sentinel. Each owns a domain. Each runs in parallel. Each gets sharper over time.',
-    cta: 'Explore agents',
+      'Cortex handles research. Specter finds leads. Striker runs outreach. Pulse creates content. Sentinel monitors infrastructure.',
   },
   {
     label: 'Skills',
     color: '#FFCC02',
     badgeColor: '#EAB308',
-    title: '35+ specialized sub-agents',
+    title: '35+ focused sub-agents',
     description:
-      'Triggered by a single command. Research, lead generation, cold outreach, content, and operations. Ready to deploy out of the box.',
-    cta: 'Explore skills',
+      'Each skill has its own model, tools, and token budget. Two run concurrently per session. Heavy tasks fork into isolated background threads.',
   },
   {
     label: 'Memory',
     color: '#8B5CF6',
-    title: 'A brain that compounds',
+    title: 'Four layers of persistent context',
     description:
-      'Brain Graph maps every session. 3-layer compression. Lessons system. Your agents get sharper with every run.',
-    cta: 'Explore memory',
+      'User preferences, corrections, project context, and research findings. Sonnet retrieves the 5 most relevant entries before every agent turn.',
   },
   {
     label: 'Integrations',
     hideOnMobile: true,
     color: '#FF6B35',
-    title: 'Plug in what you already use',
+    title: '250+ tools. Connected in minutes.',
     description:
-      '250+ integrations via Composio. 50+ MCP servers preloaded. Connect your CRM, inbox, calendar, and more in minutes.',
-    cta: 'Explore integrations',
+      '50 MCP servers preloaded. OAuth or API key setup. Your CRM, inbox, repo, and analytics available in every session automatically.',
   },
-]
+] as const
 
 const HEADING_TEXT = 'Everything you need to run'
 const HEADING_TEXT_2 = 'an autonomous company.'
@@ -100,6 +95,165 @@ function DotGrid({ cols, rows, width, borderLeft }: { cols: number; rows: number
   )
 }
 
+/** Command Center visual: mini prompt with quick-action pills */
+function CommandCenterVisual() {
+  return (
+    <div className='flex h-full flex-col justify-center gap-4'>
+      <div className='rounded-xl border border-[#E8E8E8] bg-white p-4 shadow-sm'>
+        <div className='flex items-center gap-2 text-[13px] text-[#999]'>
+          <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/></svg>
+          What are you working on?
+        </div>
+      </div>
+      <div className='flex flex-wrap gap-2'>
+        {['Research', 'Prospect', 'Outreach', 'Content', 'Strategize'].map((action) => (
+          <div key={action} className='rounded-full border border-[#E8E8E8] bg-white px-3 py-1.5 font-season text-[12px] text-[#666]'>
+            {action}
+          </div>
+        ))}
+      </div>
+      <div className='flex items-center gap-3 border-t border-[#F0F0F0] pt-3'>
+        <div className='flex items-center gap-1.5 text-[12px] text-[#999]'>
+          <svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'><rect x='3' y='3' width='7' height='7'/><rect x='14' y='3' width='7' height='7'/><rect x='14' y='14' width='7' height='7'/><rect x='3' y='14' width='7' height='7'/></svg>
+          Tools (17)
+        </div>
+        <div className='flex items-center gap-1.5 text-[12px] text-[#999]'>
+          <svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/></svg>
+          Memory
+        </div>
+        <div className='flex items-center gap-1.5 text-[12px] text-[#999]'>
+          <svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87'/><path d='M16 3.13a4 4 0 0 1 0 7.75'/></svg>
+          Customers
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const AGENTS = [
+  { name: 'Cortex', domain: 'Research and intelligence', color: '#8B5CF6' },
+  { name: 'Specter', domain: 'Lead generation and qualification', color: '#2ABBF8' },
+  { name: 'Striker', domain: 'Sales execution and outreach', color: '#FA4EDF' },
+  { name: 'Pulse', domain: 'Content creation and distribution', color: '#FFCC02' },
+  { name: 'Sentinel', domain: 'Infrastructure and monitoring', color: '#33C482' },
+] as const
+
+/** Agents visual: five agent rows */
+function AgentsVisual() {
+  return (
+    <div className='flex h-full flex-col justify-center gap-2'>
+      {AGENTS.map((agent) => (
+        <div key={agent.name} className='flex items-center gap-3 rounded-lg border border-[#F0F0F0] bg-white px-4 py-3'>
+          <div className='h-2 w-2 shrink-0 rounded-full' style={{ backgroundColor: agent.color }} />
+          <div className='flex flex-col gap-0.5'>
+            <span className='font-season text-[13px] font-medium text-[#1D1D1D]'>{agent.name}</span>
+            <span className='font-season text-[11px] text-[#999]'>{agent.domain}</span>
+          </div>
+          <div className='ml-auto font-season text-[10px] text-[#CCC] uppercase tracking-[0.05em]'>Active</div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+const SKILL_CATEGORIES = [
+  { category: 'Research', count: 6, examples: ['Competitive analysis', 'Company deep-dive', 'Market sizing'] },
+  { category: 'Lead Gen', count: 7, examples: ['ICP matching', 'Decision-maker lookup', 'Trigger events'] },
+  { category: 'Sales', count: 8, examples: ['Cold email drafts', 'Follow-up sequences', 'Objection handling'] },
+  { category: 'Content', count: 5, examples: ['LinkedIn posts', 'Thought leadership', 'Multi-platform'] },
+  { category: 'Operations', count: 4, examples: ['Daily briefings', 'Pipeline reviews', 'Status reports'] },
+  { category: 'Strategy', count: 5, examples: ['Pricing analysis', 'SWOT generation', 'GTM planning'] },
+] as const
+
+/** Skills visual: category cards with example skills */
+function SkillsVisual() {
+  return (
+    <div className='flex h-full flex-col justify-center'>
+      <div className='grid grid-cols-2 gap-2'>
+        {SKILL_CATEGORIES.map((cat) => (
+          <div key={cat.category} className='rounded-lg border border-[#F0F0F0] bg-white p-3'>
+            <div className='flex items-center justify-between'>
+              <span className='font-season text-[12px] font-medium text-[#1D1D1D]'>{cat.category}</span>
+              <span className='font-season text-[10px] text-[#BBB]'>{cat.count}</span>
+            </div>
+            <div className='mt-2 flex flex-col gap-1'>
+              {cat.examples.map((ex) => (
+                <span key={ex} className='font-season text-[10px] text-[#999] leading-[140%]'>{ex}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className='mt-3 flex items-center gap-2'>
+        <div className='h-px flex-1 bg-[#F0F0F0]' />
+        <span className='font-season text-[10px] text-[#CCC] uppercase tracking-[0.05em]'>2 concurrent per session</span>
+        <div className='h-px flex-1 bg-[#F0F0F0]' />
+      </div>
+    </div>
+  )
+}
+
+const MEMORY_LAYERS = [
+  { layer: 'User', description: 'Role, background, preferences, working style', icon: '01' },
+  { layer: 'Feedback', description: 'Corrections, confirmations, what works and what does not', icon: '02' },
+  { layer: 'Project', description: 'Business context, timelines, constraints, goals', icon: '03' },
+  { layer: 'Reference', description: 'Research findings, external data, competitive intel', icon: '04' },
+] as const
+
+/** Memory visual: four layer rows with retrieval indicator */
+function MemoryVisual() {
+  return (
+    <div className='flex h-full flex-col justify-center gap-2'>
+      {MEMORY_LAYERS.map((mem) => (
+        <div key={mem.layer} className='flex items-start gap-3 rounded-lg border border-[#F0F0F0] bg-white px-4 py-3'>
+          <span className='mt-0.5 font-mono text-[10px] text-[#CCC]'>{mem.icon}</span>
+          <div className='flex flex-col gap-0.5'>
+            <span className='font-season text-[13px] font-medium text-[#1D1D1D]'>{mem.layer}</span>
+            <span className='font-season text-[11px] text-[#999] leading-[140%]'>{mem.description}</span>
+          </div>
+        </div>
+      ))}
+      <div className='mt-1 rounded-lg border border-dashed border-[#E0E0E0] bg-[#FAFAFA] px-4 py-2.5'>
+        <div className='flex items-center gap-2'>
+          <svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='#BBB' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>
+          <span className='font-season text-[11px] text-[#BBB]'>Top 5 entries retrieved per turn via Sonnet</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const INTEGRATION_ITEMS = [
+  'Slack', 'HubSpot', 'GitHub', 'Notion', 'Linear', 'Gmail',
+  'Google Drive', 'Stripe', 'Discord', 'Apollo', 'Figma', 'Vercel',
+  'Brave Search', 'Tavily', 'Puppeteer', 'Apify', 'Supabase', 'Sentry',
+] as const
+
+/** Integrations visual: clean grid of service names */
+function IntegrationsVisual() {
+  return (
+    <div className='flex h-full flex-col justify-center'>
+      <div className='grid grid-cols-3 gap-2'>
+        {INTEGRATION_ITEMS.map((name) => (
+          <div key={name} className='flex items-center gap-2 rounded-lg border border-[#F0F0F0] bg-white px-3 py-2.5'>
+            <div className='flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#F5F5F5] font-season text-[9px] font-medium text-[#999]'>
+              {name.charAt(0)}
+            </div>
+            <span className='truncate font-season text-[11px] text-[#666]'>{name}</span>
+          </div>
+        ))}
+      </div>
+      <div className='mt-3 flex items-center gap-2'>
+        <div className='h-px flex-1 bg-[#F0F0F0]' />
+        <span className='font-season text-[10px] text-[#CCC] uppercase tracking-[0.05em]'>50 MCP servers preloaded</span>
+        <div className='h-px flex-1 bg-[#F0F0F0]' />
+      </div>
+    </div>
+  )
+}
+
+const TAB_VISUALS = [CommandCenterVisual, AgentsVisual, SkillsVisual, MemoryVisual, IntegrationsVisual] as const
+
 export default function Features() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [activeTab, setActiveTab] = useState(0)
@@ -127,6 +281,7 @@ export default function Features() {
   }, [activeTab])
 
   const tab = FEATURE_TABS[activeTab]
+  const Visual = TAB_VISUALS[activeTab]
 
   return (
     <section
@@ -225,9 +380,9 @@ export default function Features() {
             </div>
           </div>
 
-          {/* Carousel content */}
+          {/* Content: left text + right visual */}
           <div className='relative mx-6 mt-10 overflow-hidden lg:mx-[120px] lg:mt-[60px]'>
-            <div className='relative h-[280px] lg:h-[260px]'>
+            <div className='relative h-[380px] sm:h-[340px] lg:h-[320px]'>
               <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                   key={activeTab}
@@ -236,46 +391,39 @@ export default function Features() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: direction * -60 }}
                   transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                  className='absolute inset-0 flex flex-col items-center text-center'
+                  className='absolute inset-0 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12'
                 >
-                  <div
-                    className='mb-6 flex h-12 w-12 items-center justify-center rounded-2xl'
-                    style={{ backgroundColor: hexToRgba(tab.color, 0.1) }}
-                  >
+                  {/* Left: text */}
+                  <div className='flex flex-col justify-center'>
                     <div
-                      className='h-2.5 w-2.5 rounded-full'
-                      style={{ backgroundColor: tab.color }}
-                    />
+                      className='mb-4 flex h-10 w-10 items-center justify-center rounded-xl'
+                      style={{ backgroundColor: hexToRgba(tab.color, 0.1) }}
+                    >
+                      <div
+                        className='h-2 w-2 rounded-full'
+                        style={{ backgroundColor: tab.color }}
+                      />
+                    </div>
+
+                    <h3 className='font-[430] font-season text-[22px] text-[var(--landing-text-dark)] leading-[120%] tracking-[-0.02em] lg:text-[28px]'>
+                      {tab.title}
+                    </h3>
+
+                    <p className='mt-3 max-w-[440px] font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-dark)_50%,transparent)] text-[15px] leading-[160%] tracking-[0.01em] lg:text-base'>
+                      {tab.description}
+                    </p>
                   </div>
 
-                  <h3 className='font-[430] font-season text-[24px] text-[var(--landing-text-dark)] leading-[120%] tracking-[-0.02em] lg:text-[32px]'>
-                    {tab.title}
-                  </h3>
-
-                  <p className='mt-4 max-w-[520px] font-[430] font-season text-[color-mix(in_srgb,var(--landing-text-dark)_50%,transparent)] text-base leading-[160%] tracking-[0.02em] lg:text-lg'>
-                    {tab.description}
-                  </p>
-
-                  <a
-                    href='https://app.51ultron.com/signup'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='group/cta mt-8 inline-flex h-[36px] items-center gap-1.5 rounded-[5px] border border-[#1D1D1D] bg-[#1D1D1D] px-3 font-[430] font-season text-sm text-white transition-colors hover:border-[var(--landing-bg-elevated)] hover:bg-[var(--landing-bg-elevated)]'
-                  >
-                    {tab.cta}
-                    <span className='relative h-[10px] w-[10px] shrink-0'>
-                      <ChevronDown className='-rotate-90 absolute inset-0 h-[10px] w-[10px] transition-opacity duration-150 group-hover/cta:opacity-0' />
-                      <svg className='absolute inset-0 h-[10px] w-[10px] opacity-0 transition-opacity duration-150 group-hover/cta:opacity-100' viewBox='0 0 10 10' fill='none'>
-                        <path d='M1 5H8M5.5 2L8.5 5L5.5 8' stroke='currentColor' strokeWidth='1.33' strokeLinecap='square' strokeLinejoin='miter' fill='none' />
-                      </svg>
-                    </span>
-                  </a>
+                  {/* Right: visual */}
+                  <div className='hidden lg:block'>
+                    <Visual />
+                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>
 
             {/* Progress dots */}
-            <div className='mt-10 flex items-center justify-center gap-2'>
+            <div className='mt-6 flex items-center justify-center gap-2 lg:mt-10'>
               {FEATURE_TABS.map((t, i) => (
                 <button
                   key={i}
