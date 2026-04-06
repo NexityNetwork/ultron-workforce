@@ -7,6 +7,8 @@ import {
   TrendingDown,
   Minus,
   BarChart3,
+  ArrowUpRight,
+  ArrowDownRight,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -24,10 +26,6 @@ import {
 import { cn } from "@/lib/utils";
 import InsightsSection from "./shared/InsightsSection";
 import { brand, status, text, tpl, chartTheme } from "./shared/tokens";
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
 
 interface KPI {
   label: string;
@@ -69,100 +67,66 @@ export interface MetricsDashboardProps {
   recommendations?: string[];
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-const trendIcons = {
-  up: TrendingUp,
-  down: TrendingDown,
-  flat: Minus,
+const CHART_COLORS = {
+  primary: "#DA4E24",
+  secondary: "#2dd4bf",
+  muted: "rgba(255,255,255,0.08)",
 } as const;
 
 function trendColor(trend?: string, kpiStatus?: string): string {
-  if (kpiStatus && kpiStatus in status) {
-    return status[kpiStatus as keyof typeof status].text;
-  }
+  if (kpiStatus === "good") return "text-emerald-400";
+  if (kpiStatus === "warning") return "text-amber-400";
+  if (kpiStatus === "critical") return "text-red-400";
   if (trend === "up") return "text-emerald-400";
   if (trend === "down") return "text-red-400";
   return "text-white/40";
 }
 
-function statusBorder(s?: string): string {
-  if (s === "good") return "border-l-emerald-400";
-  if (s === "warning") return "border-l-amber-400";
-  if (s === "critical") return "border-l-red-400";
-  return "border-l-transparent";
+function trendBg(trend?: string, kpiStatus?: string): string {
+  if (kpiStatus === "good" || trend === "up") return "bg-emerald-400/10";
+  if (kpiStatus === "critical" || trend === "down") return "bg-red-400/10";
+  if (kpiStatus === "warning") return "bg-amber-400/10";
+  return "bg-white/[0.04]";
 }
-
-function stageStyle(s: string) {
-  if (s === "completed")
-    return {
-      dot: "bg-emerald-400",
-      line: "bg-emerald-400",
-      text: "text-white/80",
-      bg: "bg-emerald-400/[0.06]",
-      border: "border-emerald-400/[0.10]",
-    };
-  if (s === "active")
-    return {
-      dot: brand.dot,
-      line: brand.line,
-      text: brand.text,
-      bg: brand.bg,
-      border: brand.border,
-    };
-  return {
-    dot: "bg-white/20",
-    line: "bg-white/[0.06]",
-    text: "text-white/40",
-    bg: "bg-white/[0.02]",
-    border: "border-white/[0.06]",
-  };
-}
-
-// ---------------------------------------------------------------------------
-// Sub-components
-// ---------------------------------------------------------------------------
 
 function KPICard({ kpi, index }: { kpi: KPI; index: number }) {
-  const TrendIcon = kpi.trend ? trendIcons[kpi.trend] : null;
+  const TrendIcon = kpi.trend === "up" ? ArrowUpRight : kpi.trend === "down" ? ArrowDownRight : Minus;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.06 }}
-      className={cn(
-        tpl.cardHover,
-        "border-l-2 p-5",
-        statusBorder(kpi.status),
-      )}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+      className="rounded-lg border border-white/[0.08] bg-white/[0.03] p-4"
     >
-      <p className={cn(text.micro, "text-white/50")}>
+      <p className="text-[11px] font-medium text-white/50 tracking-wide">
         {kpi.label}
       </p>
-      <p className={cn(text.value, "mt-2")}>
-        {kpi.value}
-      </p>
-      {kpi.change && (
-        <div className="mt-3 flex items-center gap-1.5">
-          {TrendIcon && (
-            <TrendIcon
-              className={cn("h-3.5 w-3.5", trendColor(kpi.trend, kpi.status))}
-            />
-          )}
-          <span
+      <div className="mt-2 flex items-end justify-between gap-2">
+        <p className="text-[22px] font-semibold font-heading tabular-nums text-white leading-none tracking-tight">
+          {kpi.value}
+        </p>
+        {kpi.change && (
+          <div
             className={cn(
-              text.micro,
-              "tabular-nums",
-              trendColor(kpi.trend, kpi.status),
+              "flex items-center gap-0.5 rounded-md px-1.5 py-0.5",
+              trendBg(kpi.trend, kpi.status),
             )}
           >
-            {kpi.change}
-          </span>
-        </div>
-      )}
+            <TrendIcon
+              className={cn("h-3 w-3", trendColor(kpi.trend, kpi.status))}
+            />
+            <span
+              className={cn(
+                "text-[10px] font-semibold tabular-nums",
+                trendColor(kpi.trend, kpi.status),
+              )}
+            >
+              {kpi.change}
+            </span>
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 }
@@ -170,62 +134,70 @@ function KPICard({ kpi, index }: { kpi: KPI; index: number }) {
 function StagesTimeline({ stages }: { stages: Stage[] }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.2 }}
-      className="mt-8"
+      transition={{ duration: 0.35, delay: 0.15 }}
+      className="mt-6"
     >
-      <p className={cn(text.sectionLabel, "mb-5")}>
+      <p className="mb-4 text-[11px] font-semibold font-heading uppercase tracking-wider text-white/50">
         Stages
       </p>
-      <div className="flex items-start gap-0">
-        {stages.map((stage, i) => {
-          const s = stageStyle(stage.status);
-          return (
-            <div key={i} className="flex flex-1 flex-col items-center">
-              {/* Connector + dot */}
-              <div className="flex w-full items-center">
-                {i > 0 && (
-                  <div className={cn("h-0.5 flex-1", stageStyle(stages[i - 1].status).line)} />
-                )}
-                <div
-                  className={cn(
-                    "h-3 w-3 shrink-0 rounded-full border-2",
-                    stage.status === "active"
-                      ? `${brand.borderSolid} ${brand.bgSolid}`
-                      : stage.status === "completed"
-                        ? "border-emerald-400 bg-emerald-400"
-                        : "border-white/20 bg-transparent",
+      <div className="relative rounded-lg border border-white/[0.08] bg-white/[0.02] p-4">
+        <div className="flex items-start gap-0">
+          {stages.map((stage, i) => {
+            const isCompleted = stage.status === "completed";
+            const isActive = stage.status === "active";
+            return (
+              <div key={i} className="flex flex-1 flex-col items-center">
+                <div className="flex w-full items-center">
+                  {i > 0 && (
+                    <div
+                      className={cn(
+                        "h-[2px] flex-1 rounded-full",
+                        stages[i - 1].status === "completed"
+                          ? "bg-emerald-400/60"
+                          : "bg-white/[0.08]",
+                      )}
+                    />
                   )}
-                />
-                {i < stages.length - 1 && (
-                  <div className={cn("h-0.5 flex-1", s.line)} />
-                )}
-              </div>
-              {/* Label */}
-              <div className="mt-3 w-full px-1 text-center">
-                <p className={cn("text-[11px] font-semibold font-heading", s.text)}>
-                  {stage.name}
-                </p>
-                <p className={cn(text.faint, "mt-0.5 text-white/50")}>
-                  {stage.range}
-                </p>
-                <p className={cn(text.body, "mt-1 text-[10px] text-white/60")}>
-                  {stage.description}
-                </p>
-                {stage.milestones.length > 0 && (
-                  <div className="mt-2 space-y-1">
-                    {stage.milestones.map((m, mi) => (
-                      <p key={mi} className={cn(text.detail, "text-white/60")}>
-                        • {m}
-                      </p>
-                    ))}
+                  <div
+                    className={cn(
+                      "relative z-10 h-2.5 w-2.5 shrink-0 rounded-full",
+                      isCompleted && "bg-emerald-400",
+                      isActive && "bg-[#DA4E24]",
+                      !isCompleted && !isActive && "bg-white/20 border border-white/10",
+                    )}
+                  >
+                    {isActive && (
+                      <div className="absolute -inset-1 rounded-full border border-[#DA4E24]/30" />
+                    )}
                   </div>
-                )}
+                  {i < stages.length - 1 && (
+                    <div
+                      className={cn(
+                        "h-[2px] flex-1 rounded-full",
+                        isCompleted ? "bg-emerald-400/60" : "bg-white/[0.08]",
+                      )}
+                    />
+                  )}
+                </div>
+                <div className="mt-3 w-full px-1 text-center">
+                  <p
+                    className={cn(
+                      "text-[11px] font-semibold font-heading",
+                      isCompleted && "text-white/70",
+                      isActive && "text-white",
+                      !isCompleted && !isActive && "text-white/35",
+                    )}
+                  >
+                    {stage.name}
+                  </p>
+                  <p className="mt-0.5 text-[9px] text-white/40">{stage.range}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </motion.div>
   );
@@ -235,80 +207,108 @@ function ChartSection({ chart }: { chart: ChartConfig }) {
   const xKey = chart.xKey ?? "name";
   const yKey = chart.yKey ?? "value";
 
+  const tooltipStyle = {
+    background: "rgba(12,12,12,0.95)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    borderRadius: 8,
+    fontSize: 11,
+    color: "rgba(255,255,255,0.9)",
+    padding: "8px 12px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
+  };
+
+  const tickStyle = { fontSize: 10, fill: "rgba(255,255,255,0.35)" };
+
   const chartContent = () => {
     switch (chart.type) {
       case "bar":
         return (
-          <BarChart data={chart.data}>
-            <CartesianGrid strokeDasharray="3 3" stroke={chartTheme.grid} />
+          <BarChart data={chart.data} barCategoryGap="20%">
+            <CartesianGrid
+              strokeDasharray="none"
+              stroke="rgba(255,255,255,0.04)"
+              vertical={false}
+            />
             <XAxis
               dataKey={xKey}
-              tick={chartTheme.tick}
+              tick={tickStyle}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
-              tick={chartTheme.tick}
+              tick={tickStyle}
               axisLine={false}
               tickLine={false}
+              width={40}
             />
-            <Tooltip contentStyle={chartTheme.tooltip} />
-            <Bar dataKey={yKey} fill={brand.hex} radius={[4, 4, 0, 0]} />
+            <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
+            <Bar dataKey={yKey} fill={CHART_COLORS.primary} radius={[3, 3, 0, 0]} />
           </BarChart>
         );
       case "area":
         return (
           <AreaChart data={chart.data}>
             <defs>
-              <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor={brand.hex} stopOpacity={0.2} />
-                <stop offset="100%" stopColor={brand.hex} stopOpacity={0} />
+              <linearGradient id="metricAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor={CHART_COLORS.primary} stopOpacity={0.15} />
+                <stop offset="95%" stopColor={CHART_COLORS.primary} stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke={chartTheme.grid} />
+            <CartesianGrid
+              strokeDasharray="none"
+              stroke="rgba(255,255,255,0.04)"
+              vertical={false}
+            />
             <XAxis
               dataKey={xKey}
-              tick={chartTheme.tick}
+              tick={tickStyle}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
-              tick={chartTheme.tick}
+              tick={tickStyle}
               axisLine={false}
               tickLine={false}
+              width={40}
             />
-            <Tooltip contentStyle={chartTheme.tooltip} />
+            <Tooltip contentStyle={tooltipStyle} cursor={{ stroke: "rgba(255,255,255,0.08)" }} />
             <Area
               type="monotone"
               dataKey={yKey}
-              stroke={brand.hex}
-              fill="url(#areaGrad)"
-              strokeWidth={2}
+              stroke={CHART_COLORS.primary}
+              fill="url(#metricAreaGrad)"
+              strokeWidth={1.5}
             />
           </AreaChart>
         );
       default:
         return (
           <LineChart data={chart.data}>
-            <CartesianGrid strokeDasharray="3 3" stroke={chartTheme.grid} />
+            <CartesianGrid
+              strokeDasharray="none"
+              stroke="rgba(255,255,255,0.04)"
+              vertical={false}
+            />
             <XAxis
               dataKey={xKey}
-              tick={chartTheme.tick}
+              tick={tickStyle}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
-              tick={chartTheme.tick}
+              tick={tickStyle}
               axisLine={false}
               tickLine={false}
+              width={40}
             />
-            <Tooltip contentStyle={chartTheme.tooltip} />
+            <Tooltip contentStyle={tooltipStyle} cursor={{ stroke: "rgba(255,255,255,0.08)" }} />
             <Line
               type="monotone"
               dataKey={yKey}
-              stroke={brand.hex}
-              strokeWidth={2}
-              dot={{ fill: brand.hex, r: 3 }}
+              stroke={CHART_COLORS.primary}
+              strokeWidth={1.5}
+              dot={false}
+              activeDot={{ fill: CHART_COLORS.primary, r: 3, strokeWidth: 0 }}
             />
           </LineChart>
         );
@@ -317,16 +317,16 @@ function ChartSection({ chart }: { chart: ChartConfig }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.3 }}
+      transition={{ duration: 0.35, delay: 0.2 }}
       className="mt-6"
     >
-      <p className={cn(text.sectionLabel, "mb-4")}>
+      <p className="mb-3 text-[11px] font-semibold font-heading uppercase tracking-wider text-white/50">
         Trend
       </p>
-      <div className={cn(tpl.card, "p-5")}>
-        <ResponsiveContainer width="100%" height={220}>
+      <div className="rounded-lg border border-white/[0.08] bg-white/[0.02] p-4 pt-5">
+        <ResponsiveContainer width="100%" height={200}>
           {chartContent()}
         </ResponsiveContainer>
       </div>
@@ -335,40 +335,50 @@ function ChartSection({ chart }: { chart: ChartConfig }) {
 }
 
 function BreakdownSection({ breakdown }: { breakdown: BreakdownItem[] }) {
+  const maxPercentage = Math.max(
+    ...breakdown.map((b) => b.percentage ?? 0),
+    1,
+  );
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.35 }}
+      transition={{ duration: 0.35, delay: 0.25 }}
       className="mt-6"
     >
-      <p className={cn(text.sectionLabel, "mb-4")}>
+      <p className="mb-3 text-[11px] font-semibold font-heading uppercase tracking-wider text-white/50">
         Breakdown
       </p>
-      <div className="space-y-2">
+      <div className="rounded-lg border border-white/[0.08] bg-white/[0.02] divide-y divide-white/[0.06]">
         {breakdown.map((item, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -6 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 + i * 0.04 }}
-            className={cn(
-              tpl.card,
-              "flex items-center gap-4 px-4 py-3",
-            )}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 + i * 0.04 }}
+            className="flex items-center gap-3 px-4 py-3"
           >
-            <span className={cn(text.body, "flex-1 font-medium")}>{item.label}</span>
+            <span className="flex-1 text-[12px] font-medium font-body text-white/80">
+              {item.label}
+            </span>
             {item.percentage !== undefined && (
-              <div className="w-24 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+              <div className="w-20 h-1 rounded-full bg-white/[0.06] overflow-hidden">
                 <motion.div
-                  className={cn("h-full rounded-full", brand.bgSolid)}
+                  className="h-full rounded-full bg-[#DA4E24]/80"
                   initial={{ width: 0 }}
-                  animate={{ width: `${Math.min(item.percentage, 100)}%` }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 + i * 0.04 }}
+                  animate={{
+                    width: `${Math.min((item.percentage / maxPercentage) * 100, 100)}%`,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeOut",
+                    delay: 0.35 + i * 0.04,
+                  }}
                 />
               </div>
             )}
-            <span className={cn(text.detail, "font-semibold tabular-nums text-white/70")}>
+            <span className="text-[11px] font-semibold font-heading tabular-nums text-white/60 min-w-[48px] text-right">
               {item.value}
             </span>
           </motion.div>
@@ -377,10 +387,6 @@ function BreakdownSection({ breakdown }: { breakdown: BreakdownItem[] }) {
     </motion.div>
   );
 }
-
-// ---------------------------------------------------------------------------
-// Main component
-// ---------------------------------------------------------------------------
 
 export default function MetricsDashboard({
   title,
@@ -397,15 +403,17 @@ export default function MetricsDashboard({
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className={tpl.iconBox}>
-            <BarChart3 className={cn("h-4 w-4", brand.text)} />
+      <div className="mb-5 flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#DA4E24]/10 border border-[#DA4E24]/15">
+            <BarChart3 className="h-3.5 w-3.5 text-[#DA4E24]" />
           </div>
-          <h2 className={cn(text.title, "text-[15px]")}>{title}</h2>
+          <h2 className="text-[14px] font-semibold font-heading text-white tracking-tight">
+            {title}
+          </h2>
         </div>
         {period && (
-          <span className={cn(text.micro, "text-white/50 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1")}>
+          <span className="text-[10px] font-medium text-white/40 rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-0.5">
             {period}
           </span>
         )}
@@ -414,7 +422,7 @@ export default function MetricsDashboard({
       {/* KPI grid */}
       {safeKpis.length > 0 && (
         <div
-          className="grid gap-3"
+          className="grid gap-2.5"
           style={{
             gridTemplateColumns: `repeat(${Math.min(safeKpis.length, 3)}, minmax(0, 1fr))`,
           }}
