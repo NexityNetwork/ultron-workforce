@@ -359,28 +359,30 @@ function BreakdownSection({ breakdown }: { breakdown: BreakdownItem[] }) {
             transition={{ delay: 0.3 + i * 0.04 }}
             className="flex items-center gap-3 px-4 py-3"
           >
-            <span className="flex-1 text-[12px] font-medium font-body text-white/80">
+            <span className="flex-1 text-[12px] font-medium font-body text-white/80 leading-tight">
               {item.label}
             </span>
-            {item.percentage !== undefined && (
-              <div className="w-20 h-1 rounded-full bg-white/[0.06] overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full bg-[#DA4E24]/80"
-                  initial={{ width: 0 }}
-                  animate={{
-                    width: `${Math.min((item.percentage / maxPercentage) * 100, 100)}%`,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeOut",
-                    delay: 0.35 + i * 0.04,
-                  }}
-                />
-              </div>
-            )}
-            <span className="text-[11px] font-semibold font-heading tabular-nums text-white/60 min-w-[48px] text-right">
-              {item.value}
-            </span>
+            <div className="flex items-center gap-3 shrink-0">
+              {item.percentage !== undefined && (
+                <div className="w-16 h-1 rounded-full bg-white/[0.06] overflow-hidden">
+                  <motion.div
+                    className="h-full rounded-full bg-[#DA4E24]/80"
+                    initial={{ width: 0 }}
+                    animate={{
+                      width: `${Math.min((item.percentage / maxPercentage) * 100, 100)}%`,
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "easeOut",
+                      delay: 0.35 + i * 0.04,
+                    }}
+                  />
+                </div>
+              )}
+              <span className="text-[11px] font-semibold font-heading tabular-nums text-white/60 w-[60px] text-right">
+                {item.value}
+              </span>
+            </div>
           </motion.div>
         ))}
       </div>

@@ -395,7 +395,6 @@ export const CANVAS_TEMPLATES: CanvasTemplate[] = [
   revenueDashboard,
   icpBuilder,
   coldEmailCampaign,
-  competitorMap,
   leadPipeline,
   salesBattlecard,
   outreachSequence,
