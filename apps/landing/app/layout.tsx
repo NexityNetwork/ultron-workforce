@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import { martianMono } from '@/app/fonts/martian-mono'
 import './globals.css'
 
 export const viewport: Viewport = {
@@ -62,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel='icon' href='/favicon.ico' />
       </head>
       <body
-        className={`${martianMono.variable} font-body bg-[#0A0A0A] text-white antialiased min-h-screen`}
+        className='font-body bg-[#0A0A0A] text-white antialiased min-h-screen'
         suppressHydrationWarning
       >
         {children}

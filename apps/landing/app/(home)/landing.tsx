@@ -1,21 +1,20 @@
 import { Suspense } from 'react'
-import { martianMono } from '@/app/fonts/martian-mono'
 import { FooterCTA } from '@/app/(home)/components/footer/footer-cta'
 import {
   Collaboration,
   Enterprise,
   Features,
-  Hero,
   Navbar,
   Pricing,
   StructuredData,
   Templates,
 } from '@/app/(home)/components'
+import PersonalizedHero from '@/app/(home)/components/personalized-hero'
 
 export default async function Landing() {
   return (
     <div
-      className={`${martianMono.variable} min-h-screen bg-[var(--landing-bg)]`}
+      className='min-h-screen bg-[var(--landing-bg)]'
     >
       <a
         href='#main-content'
@@ -30,7 +29,7 @@ export default async function Landing() {
         </Suspense>
       </header>
       <main id='main-content'>
-        <Hero />
+        <PersonalizedHero />
         <Templates />
         <Features />
         <Collaboration />
