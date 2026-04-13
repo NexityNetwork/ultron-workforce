@@ -1,1 +1,1 @@
-export function track() {}
+export function track(_data?: any) {}
