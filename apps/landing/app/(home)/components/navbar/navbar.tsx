@@ -16,7 +16,7 @@ export default function Navbar({ logoOnly = false }: NavbarProps) {
   return (
     <nav
       aria-label='Primary navigation'
-      className='relative flex h-[52px] items-center justify-between bg-[var(--landing-bg)] px-5 font-[430] font-season text-[var(--landing-text)] text-sm lg:px-20'
+      className='relative z-50 flex h-[52px] items-center justify-between bg-transparent px-5 font-[430] font-season text-[var(--landing-text)] text-sm lg:px-20'
       itemScope
       itemType='https://schema.org/SiteNavigationElement'
     >

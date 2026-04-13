@@ -4,12 +4,17 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import {
   ChevronDown, ArrowUp, Plus,
-  Layers, Target, Cloud,
-  Megaphone, UserCheck, Briefcase, GitBranch,
+  Layers, Cloud,
 } from "lucide-react";
+import { PERSONA_OPTIONS } from "@/lib/qualification-state";
+import type { Persona } from "@/lib/qualification-state";
 
-/** Consistent text style used across the chatbox UI */
 const TEXT_BASE = "text-[13px] text-white leading-none";
+
+interface ChatInterfaceProps {
+  onPersonaSelect?: (persona: Persona) => void;
+  showPersonaPills?: boolean;
+}
 
 function UnlockModal({ onClose }: { onClose: () => void }) {
   return (
@@ -43,9 +48,8 @@ function UnlockModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-export default function ChatInterface() {
+export default function ChatInterface({ onPersonaSelect, showPersonaPills = false }: ChatInterfaceProps) {
   const [input, setInput] = useState("");
-  const [profileContextExpanded, setProfileContextExpanded] = useState(false);
   const [showUnlock, setShowUnlock] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -77,78 +81,22 @@ export default function ChatInterface() {
       {showUnlock && <UnlockModal onClose={() => setShowUnlock(false)} />}
 
       <div className="relative">
-        {/* Unified chatbox */}
-        <div className="border border-[rgba(255,255,255,0.15)] rounded-2xl transition-colors relative bg-[rgba(10,10,10,0.75)] backdrop-blur-xl">
-          {/* Collapsible Configurations - hidden on mobile */}
-          <button
-            type="button"
-            onClick={() => setProfileContextExpanded(!profileContextExpanded)}
-            className="hidden lg:flex w-full items-center gap-1.5 px-4 py-2.5 hover:bg-[rgba(255,255,255,0.02)] transition-colors group rounded-t-2xl"
-          >
-            <ChevronDown className={cn(
-              "w-3.5 h-3.5 text-white transition-transform flex-shrink-0",
-              !profileContextExpanded && "-rotate-90"
-            )} />
-            <span className={cn(TEXT_BASE, "group-hover:text-white transition-colors font-medium")}>
-              Configurations
-            </span>
-            <div className="flex-1" />
-            {profileContextExpanded && (
-              <span
-                className="text-[13px] text-[#DA4E24] hover:text-[#E8622C] transition-colors cursor-pointer font-medium leading-none"
-                onClick={(e) => { e.stopPropagation(); openUnlock(); }}
-              >
-                Edit Profile
-              </span>
-            )}
-          </button>
-
-          {/* Expanded configuration details */}
-          {profileContextExpanded && (
-            <div className="hidden lg:block px-5 pb-4 pt-1">
-              <div className="grid grid-cols-2 gap-x-8 gap-y-3">
-                <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <UserCheck className="w-3.5 h-3.5 text-white" />
-                    <span className={cn(TEXT_BASE, "font-medium")}>Founder-Led B2B SaaS</span>
-                  </div>
-                  <span className="text-[13px] text-[rgba(255,255,255,0.5)] pl-[22px] leading-none">Founder, CEO, Head of Growth</span>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <Megaphone className="w-3.5 h-3.5 text-white" />
-                    <span className={cn(TEXT_BASE, "font-medium")}>Thought Leader</span>
-                  </div>
-                  <span className="text-[13px] text-[rgba(255,255,255,0.5)] pl-[22px] leading-none">Authoritative, insight-led</span>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <Briefcase className="w-3.5 h-3.5 text-white" />
-                    <span className={cn(TEXT_BASE, "font-medium")}>SaaS / Software</span>
-                  </div>
-                  <span className="text-[13px] text-[rgba(255,255,255,0.5)] pl-[22px] leading-none">Cloud products, dev tools</span>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <Target className="w-3.5 h-3.5 text-white" />
-                    <span className={cn(TEXT_BASE, "font-medium")}>LinkedIn Authority Engine</span>
-                  </div>
-                  <span className="text-[13px] text-[rgba(255,255,255,0.5)] pl-[22px] leading-none">Thought leadership + DM CTA</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 mt-3 pt-3 border-t border-[rgba(255,255,255,0.06)]">
-                <button type="button" onClick={openUnlock} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  <Target className="w-3.5 h-3.5 text-white" />
-                  <span className={cn(TEXT_BASE, "font-medium")}>Sales Copilot</span>
-                </button>
-                <div className="w-7 h-4 rounded-full relative transition-colors bg-[rgba(255,255,255,0.15)] cursor-pointer" onClick={openUnlock}>
-                  <div className="absolute top-0.5 left-0.5 w-3 h-3 rounded-full bg-white transition-all" />
-                </div>
-                <div className="w-px h-4 bg-[rgba(255,255,255,0.08)] mx-1" />
-                <button type="button" onClick={openUnlock} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  <GitBranch className="w-3.5 h-3.5 text-white" />
-                  <span className={TEXT_BASE}>Connect GitHub</span>
-                </button>
+        <div className="border border-[rgba(255,255,255,0.12)] rounded-2xl transition-colors relative bg-[rgba(10,10,10,0.75)] backdrop-blur-xl">
+          {/* Persona pills — inline above textarea when in idle state */}
+          {showPersonaPills && onPersonaSelect && (
+            <div className="px-4 pt-3 pb-1">
+              <p className="text-[13px] text-[rgba(255,255,255,0.4)] mb-2 font-body">What brings you to Ultron?</p>
+              <div className="flex flex-wrap gap-1.5">
+                {PERSONA_OPTIONS.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => onPersonaSelect(option.id)}
+                    className="rounded-lg border border-[rgba(255,255,255,0.08)] px-3 py-1.5 text-[12px] font-medium text-white bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.18)] transition-all cursor-pointer font-body"
+                  >
+                    {option.label}
+                  </button>
+                ))}
               </div>
             </div>
           )}
@@ -162,14 +110,13 @@ export default function ChatInterface() {
               onKeyDown={handleKeyDown}
               placeholder="Message Ultron or type / to assign agents"
               rows={1}
-              className="w-full bg-transparent text-[14px] text-white placeholder-[rgba(255,255,255,0.5)] resize-none outline-none min-h-[36px] max-h-[160px] leading-relaxed font-body"
+              className="w-full bg-transparent text-[14px] text-white placeholder-[rgba(255,255,255,0.35)] resize-none outline-none min-h-[36px] max-h-[160px] leading-relaxed font-body"
             />
           </div>
 
           {/* Bottom toolbar */}
           <div className="flex items-center justify-between px-4 pb-3 pt-1">
             <div className="flex items-center gap-2">
-              {/* Integrations icon */}
               <button
                 type="button"
                 onClick={openUnlock}
@@ -178,7 +125,6 @@ export default function ChatInterface() {
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/></svg>
               </button>
 
-              {/* Templates button - hidden on mobile */}
               <button
                 type="button"
                 onClick={openUnlock}
@@ -190,7 +136,6 @@ export default function ChatInterface() {
             </div>
 
             <div className="flex items-center gap-2">
-              {/* All Projects dropdown - hidden on mobile */}
               <button
                 type="button"
                 onClick={openUnlock}
@@ -200,7 +145,6 @@ export default function ChatInterface() {
                 <ChevronDown className="w-3.5 h-3.5" />
               </button>
 
-              {/* Send button */}
               <button
                 type="button"
                 onClick={handleSend}
@@ -217,7 +161,7 @@ export default function ChatInterface() {
           </div>
         </div>
 
-        {/* Bottom row: company profile + new session */}
+        {/* Bottom row */}
         <div className="flex items-center justify-between mt-2 px-1">
           <button type="button" onClick={openUnlock} className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
             <Cloud className="w-3.5 h-3.5 text-white" />

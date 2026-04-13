@@ -24,7 +24,7 @@ export default async function Landing() {
       </a>
       <StructuredData />
       <header>
-        <Suspense fallback={<div className='h-[52px] border-[var(--landing-bg-elevated)] border-b bg-[var(--landing-bg)]' />}>
+        <Suspense fallback={<div className='h-[52px]' />}>
           <Navbar />
         </Suspense>
       </header>
