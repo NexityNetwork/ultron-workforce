@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Spotlight } from '@/components/ui/spotlight-new'
 import type { Persona, FocusArea, QualificationState } from '@/lib/qualification-state'
@@ -164,11 +164,37 @@ export default function PersonalizedHero() {
       aria-labelledby='hero-heading'
       className='relative overflow-hidden bg-[var(--landing-bg)]'
     >
-      <Spotlight />
-      <h1 id='hero-heading' className='sr-only'>
-        Ultron — Hire AI Employees. Scale GTM without scaling headcount.
-      </h1>
-      <SplitLayout isSplit={isSplit} left={leftPanel} right={rightPanel} />
+      {/* Video background — visible only in idle (centered) state */}
+      <AnimatePresence>
+        {!isSplit && (
+          <motion.div
+            key='hero-video'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className='absolute inset-0 z-0'
+          >
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className='h-full w-full object-cover'
+              src='/hero-bg.mp4'
+            />
+            <div className='absolute inset-0 bg-gradient-to-b from-[rgba(10,10,10,0.55)] via-[rgba(10,10,10,0.45)] to-[#0A0A0A]' />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className='relative z-10'>
+        <Spotlight />
+        <h1 id='hero-heading' className='sr-only'>
+          Ultron — Hire AI Employees. Scale GTM without scaling headcount.
+        </h1>
+        <SplitLayout isSplit={isSplit} left={leftPanel} right={rightPanel} />
+      </div>
     </section>
   )
 }

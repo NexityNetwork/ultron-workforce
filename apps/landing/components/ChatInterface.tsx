@@ -78,7 +78,7 @@ export default function ChatInterface() {
 
       <div className="relative">
         {/* Unified chatbox */}
-        <div className="border border-[rgba(255,255,255,0.15)] rounded-2xl transition-colors relative bg-[var(--landing-bg)]">
+        <div className="border border-[rgba(255,255,255,0.15)] rounded-2xl transition-colors relative bg-[rgba(10,10,10,0.75)] backdrop-blur-xl">
           {/* Collapsible Configurations - hidden on mobile */}
           <button
             type="button"
