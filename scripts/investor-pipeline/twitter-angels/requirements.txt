@@ -1,0 +1,4 @@
+apify < 3.0
+pydantic < 2.12
+browserforge == 1.2.3
+curl_cffi >= 0.7.0

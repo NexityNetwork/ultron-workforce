@@ -1,0 +1,26 @@
+{
+  "actorSpecification": 1,
+  "name": "ultron-twitter-angels",
+  "title": "Ultron Twitter Angel Scraper (Official API)",
+  "version": "1.0",
+  "input": {
+    "schemaVersion": 1,
+    "title": "Input",
+    "type": "object",
+    "properties": {
+      "consumer_key": {
+        "title": "Twitter Consumer Key",
+        "type": "string",
+        "description": "Twitter API Consumer Key from developer.x.com",
+        "editor": "textfield"
+      },
+      "consumer_secret": {
+        "title": "Twitter Consumer Secret",
+        "type": "string",
+        "description": "Twitter API Consumer Secret from developer.x.com",
+        "editor": "textfield"
+      }
+    },
+    "required": ["consumer_key", "consumer_secret"]
+  }
+}
