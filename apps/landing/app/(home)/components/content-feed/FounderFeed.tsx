@@ -10,12 +10,17 @@ interface FounderFeedProps {
 
 // ── Partner components imported directly from their repos ──────────────────
 const MiddayFeaturesGrid = dynamic(
-() => import('../../../../partners/midday/src/components/sections/features-grid-section').then((m: any) => ({ default: m.FeaturesGridSection })),
+  () => import('../../../../partners/midday/src/components/sections/features-grid-section').then((m: any) => ({ default: m.FeaturesGridSection })),
+  { ssr: false, loading: () => <PartnerSkeleton /> }
+)
+
+const MiddayTimeSavings = dynamic(
+  () => import('../../../../partners/midday/src/components/sections/time-savings-section').then((m: any) => ({ default: m.TimeSavingsSection })),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
 const MiddayFAQ = dynamic(
-() => import('../../../../partners/midday/src/components/sections/faq-section').then((m: any) => ({ default: m.FAQSection })),
+  () => import('../../../../partners/midday/src/components/sections/faq-section').then((m: any) => ({ default: m.FAQSection })),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
@@ -109,11 +114,24 @@ export default function FounderFeed({ focus }: FounderFeedProps) {
         </div>
       </motion.div>
 
-      {/* Midday — FAQ */}
+      {/* Midday — Time Savings */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35, duration: 0.4 }}
+        className='border-b border-[rgba(255,255,255,0.06)]'
+      >
+        <PartnerBadge name='Midday' url='https://midday.ai' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
+          <MiddayTimeSavings />
+        </div>
+      </motion.div>
+
+      {/* Midday — FAQ */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.4 }}
         className='border-b border-[rgba(255,255,255,0.06)]'
       >
         <PartnerBadge name='Midday' url='https://midday.ai' />
