@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import { martianMono } from '@/app/fonts/martian-mono'
 import { FooterCTA } from '@/app/(home)/components/footer/footer-cta'
 import {
   Collaboration,
@@ -15,7 +14,7 @@ import {
 export default async function Landing() {
   return (
     <div
-      className={`${martianMono.variable} min-h-screen bg-[var(--landing-bg)]`}
+      className='min-h-screen bg-[var(--landing-bg)]'
     >
       <a
         href='#main-content'
