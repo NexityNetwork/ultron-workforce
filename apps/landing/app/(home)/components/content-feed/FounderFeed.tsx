@@ -8,7 +8,7 @@ interface FounderFeedProps {
   focus: FocusArea | null
 }
 
-// ── Midday sections (full monorepo: apps/website/src/components/sections/) ──
+// ── Midday — Feature sections ──
 const MiddayFeaturesGrid = dynamic(
   () => import('../../../../partners/midday/apps/website/src/components/sections/features-grid-section').then((m: any) => ({ default: m.FeaturesGridSection })),
   { ssr: false, loading: () => <PartnerSkeleton /> }
@@ -19,25 +19,41 @@ const MiddayTimeSavings = dynamic(
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
-const MiddayFAQ = dynamic(
-  () => import('../../../../partners/midday/apps/website/src/components/sections/faq-section').then((m: any) => ({ default: m.FAQSection })),
+// ── Cap — Feature sections ──
+const CapFeatures = dynamic(
+  () => import('../../../../partners/cap/apps/web/components/pages/HomePage/Features'),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
-// ── Cap sections (full monorepo: apps/web/components/pages/HomePage/) ──
-const CapFAQ = dynamic(
-  () => import('../../../../partners/cap/apps/web/components/pages/HomePage/Faq'),
+// ── Inbox Zero — Feature sections ──
+const InboxZeroAiAssistant = dynamic(
+  () => import('../../../../partners/inboxzero/apps/web/app/(landing)/home/Features').then((m: any) => ({ default: m.FeaturesAiAssistant })),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
-// ── Supabase sections (full monorepo: packages/marketing/src/go/sections/) ──
-const SupabaseMetrics = dynamic(
-  () => import('../../../../partners/supabase/packages/marketing/src/go/sections/MetricsSection'),
+const InboxZeroColdEmailBlocker = dynamic(
+  () => import('../../../../partners/inboxzero/apps/web/app/(landing)/home/Features').then((m: any) => ({ default: m.FeaturesColdEmailBlocker })),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
-const SupabaseFAQ = dynamic(
-  () => import('../../../../partners/supabase/packages/marketing/src/go/sections/FaqSection'),
+const InboxZeroEmailAnalytics = dynamic(
+  () => import('../../../../partners/inboxzero/apps/web/app/(landing)/home/Features').then((m: any) => ({ default: m.FeaturesStats })),
+  { ssr: false, loading: () => <PartnerSkeleton /> }
+)
+
+const InboxZeroBulkUnsubscribe = dynamic(
+  () => import('../../../../partners/inboxzero/apps/web/app/(landing)/home/Features').then((m: any) => ({ default: m.FeaturesUnsubscribe })),
+  { ssr: false, loading: () => <PartnerSkeleton /> }
+)
+
+const InboxZeroReplyZero = dynamic(
+  () => import('../../../../partners/inboxzero/apps/web/app/(landing)/home/Features').then((m: any) => ({ default: m.FeaturesReplyZero })),
+  { ssr: false, loading: () => <PartnerSkeleton /> }
+)
+
+// ── Supabase — Feature sections ──
+const SupabaseFeatureGrid = dynamic(
+  () => import('../../../../partners/supabase/packages/marketing/src/go/sections/FeatureGridSection'),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
@@ -116,9 +132,9 @@ export default function FounderFeed({ focus }: FounderFeedProps) {
         </div>
       </div>
 
-      {/* ── Partner sections: real components from partner repos ── */}
+      {/* ── Partner FEATURE sections ── */}
 
-      {/* Midday — Features Grid */}
+      {/* Midday — Features Grid (icons + feature cards) */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -131,54 +147,59 @@ export default function FounderFeed({ focus }: FounderFeedProps) {
         </div>
       </motion.div>
 
-      {/* Cap — FAQ */}
+      {/* Inbox Zero — AI Email Assistant (feature showcase with screenshot) */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.4 }}
         className='border-b border-[rgba(255,255,255,0.06)]'
       >
-        <PartnerBadge name='Cap' url='https://cap.so' />
-        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden p-6'>
-          <CapFAQ />
+        <PartnerBadge name='Inbox Zero' url='https://getinboxzero.com' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
+          <InboxZeroAiAssistant />
         </div>
       </motion.div>
 
-      {/* Midday — Time Savings */}
+      {/* Supabase — Feature Grid (database capabilities) */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.4 }}
         className='border-b border-[rgba(255,255,255,0.06)]'
       >
-        <PartnerBadge name='Midday' url='https://midday.ai' />
-        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
-          <MiddayTimeSavings />
+        <PartnerBadge name='Supabase' url='https://supabase.com' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden p-6'>
+          <SupabaseFeatureGrid section={{
+            type: 'feature_grid' as any,
+            title: 'Everything you need to build',
+            description: 'An open source platform with all the backend services you need to build any application.',
+            columns: 3,
+            items: [
+              { title: 'Postgres Database', description: 'Every project gets a full Postgres database. 100% portable with built-in backups and point-in-time recovery.', icon: '🗄️' },
+              { title: 'Authentication', description: 'Add user sign ups and logins, securing your data with Row Level Security.', icon: '🔐' },
+              { title: 'Edge Functions', description: 'Write custom code without deploying or scaling servers. Run globally, close to your users.', icon: '⚡' },
+              { title: 'Realtime', description: 'Build multiplayer experiences with realtime syncing, presence, and broadcast messaging.', icon: '📡' },
+              { title: 'Storage', description: 'Store, organize, and serve large files. Any media including videos and images.', icon: '📁' },
+              { title: 'Vector Embeddings', description: 'Store and search vector embeddings alongside your data for AI-powered search and recommendations.', icon: '🧠' },
+            ],
+          }} />
         </div>
       </motion.div>
 
-      {/* Supabase — Metrics */}
+      {/* Inbox Zero — Cold Email Blocker (feature showcase with screenshot) */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.4 }}
         className='border-b border-[rgba(255,255,255,0.06)]'
       >
-        <PartnerBadge name='Supabase' url='https://supabase.com' />
-        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden p-6'>
-          <SupabaseMetrics section={{
-            type: 'metrics' as const,
-            items: [
-              { label: 'Database Projects', value: '1M+' },
-              { label: 'GitHub Stars', value: '75K+' },
-              { label: 'Auth Requests/mo', value: '2.5B+' },
-              { label: 'Storage Objects', value: '150M+' },
-            ],
-          }} />
+        <PartnerBadge name='Inbox Zero' url='https://getinboxzero.com' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
+          <InboxZeroColdEmailBlocker />
         </div>
       </motion.div>
 
-      {/* Midday — FAQ */}
+      {/* Midday — Time Savings (savings metrics + CTA) */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -187,28 +208,59 @@ export default function FounderFeed({ focus }: FounderFeedProps) {
       >
         <PartnerBadge name='Midday' url='https://midday.ai' />
         <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
-          <MiddayFAQ />
+          <MiddayTimeSavings />
         </div>
       </motion.div>
 
-      {/* Supabase — FAQ */}
+      {/* Cap — Features bento grid (product capabilities) */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 0.4 }}
         className='border-b border-[rgba(255,255,255,0.06)]'
       >
-        <PartnerBadge name='Supabase' url='https://supabase.com' />
-        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden p-6'>
-          <SupabaseFAQ section={{
-            type: 'faq' as const,
-            title: 'Frequently Asked Questions',
-            items: [
-              { question: 'What is Supabase?', answer: 'Supabase is an open source Firebase alternative. Start your project with a Postgres database, Authentication, instant APIs, Edge Functions, Realtime subscriptions, Storage, and Vector embeddings.' },
-              { question: 'How much does it cost?', answer: 'Supabase offers a generous free tier. The Pro plan starts at $25/month per project, and includes 8GB database space, 250GB bandwidth, and 100GB file storage.' },
-              { question: 'Can I self-host Supabase?', answer: 'Yes! Supabase is fully open source. You can self-host using Docker Compose or deploy to your own cloud infrastructure.' },
-            ],
-          }} />
+        <PartnerBadge name='Cap' url='https://cap.so' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
+          <CapFeatures />
+        </div>
+      </motion.div>
+
+      {/* Inbox Zero — Email Analytics (feature showcase with screenshot) */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.4 }}
+        className='border-b border-[rgba(255,255,255,0.06)]'
+      >
+        <PartnerBadge name='Inbox Zero' url='https://getinboxzero.com' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
+          <InboxZeroEmailAnalytics />
+        </div>
+      </motion.div>
+
+      {/* Inbox Zero — Bulk Unsubscribe (feature showcase with screenshot) */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.4 }}
+        className='border-b border-[rgba(255,255,255,0.06)]'
+      >
+        <PartnerBadge name='Inbox Zero' url='https://getinboxzero.com' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
+          <InboxZeroBulkUnsubscribe />
+        </div>
+      </motion.div>
+
+      {/* Inbox Zero — Reply Zero (pre-drafted replies) */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 0.4 }}
+        className='border-b border-[rgba(255,255,255,0.06)]'
+      >
+        <PartnerBadge name='Inbox Zero' url='https://getinboxzero.com' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
+          <InboxZeroReplyZero />
         </div>
       </motion.div>
 

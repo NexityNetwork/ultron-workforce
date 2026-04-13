@@ -9,6 +9,8 @@ export default {
     './partners/midday/apps/website/src/components/sections/**/*.{ts,tsx}',
     './partners/midday/apps/website/src/components/homepage/**/*.{ts,tsx}',
     './partners/cap/apps/web/components/pages/HomePage/**/*.{ts,tsx}',
+    './partners/cap/packages/ui/src/components/**/*.{ts,tsx}',
+    './partners/inboxzero/apps/web/app/(landing)/home/Features.tsx',
     './partners/supabase/packages/marketing/src/go/sections/**/*.{ts,tsx}',
     '!**/node_modules/**',
   ],
