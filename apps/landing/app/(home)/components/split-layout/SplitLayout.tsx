@@ -35,15 +35,15 @@ export default function SplitLayout({ isSplit, left, right }: SplitLayoutProps) 
             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             className='flex h-[calc(100vh-52px)]'
           >
-            {/* Left panel: sticky chat */}
+            {/* Left panel: sticky chat — true 50% */}
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.05 }}
               className={cn(
-                'hidden lg:flex w-[440px] min-w-[380px] shrink-0 flex-col',
+                'hidden lg:flex w-1/2 shrink-0 flex-col',
                 'border-r border-[rgba(255,255,255,0.06)]',
-                'overflow-y-auto px-5 py-6'
+                'overflow-y-auto px-6 py-6'
               )}
             >
               {left}
@@ -56,13 +56,13 @@ export default function SplitLayout({ isSplit, left, right }: SplitLayoutProps) 
               </div>
             </div>
 
-            {/* Right panel: scrollable content feed */}
+            {/* Right panel: scrollable content feed — true 50% */}
             <motion.div
               initial={{ x: 40, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
               className={cn(
-                'flex-1 overflow-y-auto',
+                'w-1/2 overflow-y-auto',
                 'lg:pb-0 pb-[120px]'
               )}
             >
