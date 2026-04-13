@@ -1,8 +1,0 @@
-{
-  "string": {
-    "PrintToPDF": "Tisk do PDF",
-    "PrintingDocumentOf": "Tisk dokumentu {current} z {total}",
-    "DownloadAll": "Stáhnout vše",
-    "PrintFailed": "Tisk se nezdařil"
-  }
-}

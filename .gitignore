@@ -81,7 +81,9 @@ i18n.cache
 .claude/launch.json
 .claude/worktrees/
 
-# Cloned partner repos (source kept in apps/landing/partners/)
+# Cloned partner repos (full monorepos, too large for git)
+# Only essential source files are force-added for the build
+apps/landing/partners/
 /cal.com/
 /cap/
 /dub/

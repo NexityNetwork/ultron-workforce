@@ -1,8 +1,0 @@
-{
-  "string": {
-    "PrintToPDF": "Печать в PDF",
-    "PrintingDocumentOf": "Печать документа {current} из {total}",
-    "DownloadAll": "Скачать все",
-    "PrintFailed": "Ошибка печати"
-  }
-}

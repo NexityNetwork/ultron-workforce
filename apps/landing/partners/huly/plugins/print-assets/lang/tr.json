@@ -1,8 +1,0 @@
-{
-  "string": {
-    "PrintToPDF": "PDF'e yazdır",
-    "PrintingDocumentOf": "Belge yazdırılıyor {current} / {total}",
-    "DownloadAll": "Tümünü indir",
-    "PrintFailed": "Yazdırma başarısız"
-  }
-}

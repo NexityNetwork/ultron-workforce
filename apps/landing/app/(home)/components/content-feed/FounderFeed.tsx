@@ -8,19 +8,36 @@ interface FounderFeedProps {
   focus: FocusArea | null
 }
 
-// ── Partner components imported directly from their repos ──────────────────
+// ── Midday sections (full monorepo: apps/website/src/components/sections/) ──
 const MiddayFeaturesGrid = dynamic(
-  () => import('../../../../partners/midday/src/components/sections/features-grid-section').then((m: any) => ({ default: m.FeaturesGridSection })),
+  () => import('../../../../partners/midday/apps/website/src/components/sections/features-grid-section').then((m: any) => ({ default: m.FeaturesGridSection })),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
 const MiddayTimeSavings = dynamic(
-  () => import('../../../../partners/midday/src/components/sections/time-savings-section').then((m: any) => ({ default: m.TimeSavingsSection })),
+  () => import('../../../../partners/midday/apps/website/src/components/sections/time-savings-section').then((m: any) => ({ default: m.TimeSavingsSection })),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
 const MiddayFAQ = dynamic(
-  () => import('../../../../partners/midday/src/components/sections/faq-section').then((m: any) => ({ default: m.FAQSection })),
+  () => import('../../../../partners/midday/apps/website/src/components/sections/faq-section').then((m: any) => ({ default: m.FAQSection })),
+  { ssr: false, loading: () => <PartnerSkeleton /> }
+)
+
+// ── Cap sections (full monorepo: apps/web/components/pages/HomePage/) ──
+const CapFAQ = dynamic(
+  () => import('../../../../partners/cap/apps/web/components/pages/HomePage/Faq'),
+  { ssr: false, loading: () => <PartnerSkeleton /> }
+)
+
+// ── Supabase sections (full monorepo: packages/marketing/src/go/sections/) ──
+const SupabaseMetrics = dynamic(
+  () => import('../../../../partners/supabase/packages/marketing/src/go/sections/MetricsSection'),
+  { ssr: false, loading: () => <PartnerSkeleton /> }
+)
+
+const SupabaseFAQ = dynamic(
+  () => import('../../../../partners/supabase/packages/marketing/src/go/sections/FaqSection'),
   { ssr: false, loading: () => <PartnerSkeleton /> }
 )
 
@@ -114,11 +131,24 @@ export default function FounderFeed({ focus }: FounderFeedProps) {
         </div>
       </motion.div>
 
+      {/* Cap — FAQ */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.4 }}
+        className='border-b border-[rgba(255,255,255,0.06)]'
+      >
+        <PartnerBadge name='Cap' url='https://cap.so' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden p-6'>
+          <CapFAQ />
+        </div>
+      </motion.div>
+
       {/* Midday — Time Savings */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.35, duration: 0.4 }}
+        transition={{ delay: 0.4, duration: 0.4 }}
         className='border-b border-[rgba(255,255,255,0.06)]'
       >
         <PartnerBadge name='Midday' url='https://midday.ai' />
@@ -127,16 +157,58 @@ export default function FounderFeed({ focus }: FounderFeedProps) {
         </div>
       </motion.div>
 
-      {/* Midday — FAQ */}
+      {/* Supabase — Metrics */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.4 }}
         className='border-b border-[rgba(255,255,255,0.06)]'
       >
+        <PartnerBadge name='Supabase' url='https://supabase.com' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden p-6'>
+          <SupabaseMetrics section={{
+            type: 'metrics' as const,
+            items: [
+              { label: 'Database Projects', value: '1M+' },
+              { label: 'GitHub Stars', value: '75K+' },
+              { label: 'Auth Requests/mo', value: '2.5B+' },
+              { label: 'Storage Objects', value: '150M+' },
+            ],
+          }} />
+        </div>
+      </motion.div>
+
+      {/* Midday — FAQ */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.4 }}
+        className='border-b border-[rgba(255,255,255,0.06)]'
+      >
         <PartnerBadge name='Midday' url='https://midday.ai' />
         <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden'>
           <MiddayFAQ />
+        </div>
+      </motion.div>
+
+      {/* Supabase — FAQ */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.4 }}
+        className='border-b border-[rgba(255,255,255,0.06)]'
+      >
+        <PartnerBadge name='Supabase' url='https://supabase.com' />
+        <div className='partner-section-light rounded-xl mx-4 my-4 lg:mx-6 overflow-hidden p-6'>
+          <SupabaseFAQ section={{
+            type: 'faq' as const,
+            title: 'Frequently Asked Questions',
+            items: [
+              { question: 'What is Supabase?', answer: 'Supabase is an open source Firebase alternative. Start your project with a Postgres database, Authentication, instant APIs, Edge Functions, Realtime subscriptions, Storage, and Vector embeddings.' },
+              { question: 'How much does it cost?', answer: 'Supabase offers a generous free tier. The Pro plan starts at $25/month per project, and includes 8GB database space, 250GB bandwidth, and 100GB file storage.' },
+              { question: 'Can I self-host Supabase?', answer: 'Yes! Supabase is fully open source. You can self-host using Docker Compose or deploy to your own cloud infrastructure.' },
+            ],
+          }} />
         </div>
       </motion.div>
 
