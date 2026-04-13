@@ -80,3 +80,21 @@ i18n.cache
 ## Claude Code
 .claude/launch.json
 .claude/worktrees/
+
+# Cloned partner repos (source kept in apps/landing/partners/)
+/cal.com/
+/cap/
+/dub/
+/huly-app/
+/inbox-zero/
+/medusa/
+/midday/
+/outline/
+/papermark/
+/plane/
+/remotion/
+/teable/
+/tegon/
+/tooljet/
+/twenty/
+/typebot.io/
