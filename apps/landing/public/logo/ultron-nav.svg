@@ -1,0 +1,9 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12c2.12 0 4.12-.55 5.86-1.51A9.5 9.5 0 0 1 8.5 14c0-4.58 3.24-8.4 7.55-9.29C15.39 2.93 14.37 2 14 2z" fill="url(#cresGrad)"/>
+  <defs>
+    <linearGradient id="cresGrad" x1="2" y1="14" x2="20" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E8E8E8"/>
+      <stop offset="100%" stop-color="#AAAAAA"/>
+    </linearGradient>
+  </defs>
+</svg>

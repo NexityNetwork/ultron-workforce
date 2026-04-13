@@ -1,16 +1,6 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
-import { DemoRequestModal } from '@/app/(home)/components/demo-request/demo-request-modal'
-import {
-  BlocksLeftAnimated,
-  BlocksRightAnimated,
-  BlocksRightSideAnimated,
-  BlocksTopLeftAnimated,
-  BlocksTopRightAnimated,
-  useBlockCycle,
-} from '@/app/(home)/components/hero/components/animated-blocks'
 
 const ChatInterface = dynamic(
   () => import('@/components/ChatInterface'),
@@ -20,13 +10,7 @@ const ChatInterface = dynamic(
   }
 )
 
-/** Shared base classes for CTA link buttons */
-const CTA_BASE =
-  'inline-flex items-center h-[32px] rounded-[5px] border px-2.5 font-[430] font-season text-sm'
-
 export default function Hero() {
-  const blockStates = useBlockCycle()
-
   return (
     <section
       id='hero'
@@ -39,20 +23,6 @@ export default function Hero() {
         research, outreach, content, operations, and intelligence. 250 plus integrations, 35 plus
         specialized skills, and a memory system that gets smarter every run.
       </p>
-
-      <div
-        aria-hidden='true'
-        className='pointer-events-none absolute top-[-0.7vw] left-[-2.8vw] z-0 aspect-[344/328] w-[23.9vw]'
-      >
-        <Image src='/landing/card-left.svg' alt='' fill className='object-contain' />
-      </div>
-
-      <div
-        aria-hidden='true'
-        className='pointer-events-none absolute top-[-2.8vw] right-[-4vw] z-0 aspect-[471/470] w-[32.7vw]'
-      >
-        <Image src='/landing/card-right.svg' alt='' fill className='object-contain' />
-      </div>
 
       <div className='relative z-10 flex flex-col items-center gap-3'>
         <h1
@@ -67,59 +37,12 @@ export default function Hero() {
           Your team is buried in tasks humans should not be doing anymore.
           Delegate 50% of GTM work to AI Agents within 6 months.
         </p>
-
-        <div className='mt-3 flex items-center gap-2'>
-          <DemoRequestModal>
-            <button
-              type='button'
-              className={`${CTA_BASE} gap-2 border-white bg-white text-black transition-colors hover:border-[#E0E0E0] hover:bg-[#E0E0E0]`}
-              aria-label='Get a demo'
-            >
-              Get a demo
-            </button>
-          </DemoRequestModal>
-        </div>
-      </div>
-
-      <div
-        aria-hidden='true'
-        className='pointer-events-none absolute top-0 right-[13.1vw] z-20 w-[calc(140px_+_10.76vw)] max-w-[295px]'
-      >
-        <BlocksTopRightAnimated animState={blockStates.topRight} />
-      </div>
-
-      <div
-        aria-hidden='true'
-        className='pointer-events-none absolute top-0 left-[16vw] z-20 w-[calc(140px_+_10.76vw)] max-w-[295px]'
-      >
-        <BlocksTopLeftAnimated animState={blockStates.topLeft} />
       </div>
 
       <div className='relative z-10 mx-auto mt-[3.2vw] w-[78.9vw] px-[1.4vw]'>
-        <div
-          aria-hidden='true'
-          className='-translate-y-1/2 pointer-events-none absolute top-[50%] right-[calc(100%-1.41vw)] z-20 w-[calc(16px_+_1.25vw)] max-w-[34px]'
-        >
-          <BlocksLeftAnimated animState={blockStates.left} />
-        </div>
-
-        <div
-          aria-hidden='true'
-          className='-translate-y-1/2 pointer-events-none absolute top-[50%] left-[calc(100%-1.41vw)] z-20 w-[calc(16px_+_1.25vw)] max-w-[34px] scale-x-[-1]'
-        >
-          <BlocksRightSideAnimated animState={blockStates.rightSide} />
-        </div>
-
         <div className='relative z-10 overflow-hidden rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[#0A0A0A] p-6 sm:p-8'>
           <ChatInterface />
         </div>
-      </div>
-
-      <div
-        aria-hidden='true'
-        className='-translate-y-1/2 pointer-events-none absolute top-[50%] right-0 z-20 w-[calc(16px_+_1.25vw)] max-w-[34px]'
-      >
-        <BlocksRightAnimated animState={blockStates.rightEdge} />
       </div>
     </section>
   )
