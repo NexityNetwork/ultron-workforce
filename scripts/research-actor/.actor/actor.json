@@ -1,0 +1,72 @@
+{
+  "actorSpecification": 1,
+  "name": "ultron-research",
+  "title": "Ultron 11-Layer Business Research",
+  "version": "1.0",
+  "input": {
+    "schemaVersion": 1,
+    "title": "Input",
+    "type": "object",
+    "properties": {
+      "company_url": {
+        "title": "Company Website URL",
+        "type": "string",
+        "description": "Primary URL of the company to research",
+        "editor": "textfield"
+      },
+      "company_name": {
+        "title": "Company Name (optional)",
+        "type": "string",
+        "description": "If omitted, will be extracted from the website",
+        "editor": "textfield"
+      },
+      "linkedin_url": {
+        "title": "LinkedIn Company URL (optional)",
+        "type": "string",
+        "description": "If omitted, will be auto-discovered via Brave search",
+        "editor": "textfield"
+      },
+      "brave_api_key": {
+        "title": "Brave Search API Key",
+        "type": "string",
+        "description": "Brave Search API key for discovery & SEO",
+        "editor": "textfield",
+        "isSecret": true
+      },
+      "browserbase_api_key": {
+        "title": "Browserbase API Key",
+        "type": "string",
+        "description": "Browserbase API key for heavy crawling (optional)",
+        "editor": "textfield",
+        "isSecret": true
+      },
+      "li_at": {
+        "title": "LinkedIn li_at cookie",
+        "type": "string",
+        "description": "LinkedIn authentication cookie for company + jobs scraping",
+        "editor": "textfield",
+        "isSecret": true
+      },
+      "apify_token": {
+        "title": "Apify Token (for chained scrapers)",
+        "type": "string",
+        "description": "Apify token for invoking child scrapers (Twitter, Reddit, Reviews)",
+        "editor": "textfield",
+        "isSecret": true
+      },
+      "include_competitors": {
+        "title": "Include competitor analysis",
+        "type": "boolean",
+        "description": "If true, runs abbreviated research on top 3 competitors",
+        "default": true
+      },
+      "max_pages_crawl": {
+        "title": "Max pages to crawl on company website",
+        "type": "integer",
+        "description": "Default 15",
+        "default": 15
+      }
+    },
+    "required": ["company_url"]
+  }
+}
