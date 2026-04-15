@@ -1,0 +1,848 @@
+[
+  {
+    "domain": "marcusmillichap.com",
+    "website": "https://marcusmillichap.com",
+    "company_name": "Commercial Real Estate in Montreal",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [
+      "research"
+    ],
+    "title_sample": "Commercial Real Estate in Montreal",
+    "_rank": 10
+  },
+  {
+    "domain": "greenhouse.com",
+    "website": "https://greenhouse.com",
+    "company_name": "Jobs at MANSCAPED",
+    "industries": [
+      "ecommerce"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [
+      "ops"
+    ],
+    "title_sample": "",
+    "_rank": 10
+  },
+  {
+    "domain": "cdn.ashbyprd.com",
+    "website": "https://cdn.ashbyprd.com",
+    "company_name": "Directive Jobs",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [
+      "content"
+    ],
+    "title_sample": "",
+    "_rank": 9
+  },
+  {
+    "domain": "netsurit.com",
+    "website": "https://netsurit.com",
+    "company_name": "IT Consulting Services in NYC, NY",
+    "industries": [
+      "b2b_services"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "IT Consulting Services in NYC, NY | Netsurit",
+    "_rank": 7
+  },
+  {
+    "domain": "itnyc.com",
+    "website": "https://itnyc.com",
+    "company_name": "IT Consulting NYC & Managed IT Services",
+    "industries": [
+      "b2b_services"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "IT Consulting NYC & Managed IT Services \u2013 ITNYC.com",
+    "_rank": 7
+  },
+  {
+    "domain": "etech7.com",
+    "website": "https://etech7.com",
+    "company_name": "IT Consulting New York",
+    "industries": [
+      "b2b_services"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "IT Consulting New York",
+    "_rank": 7
+  },
+  {
+    "domain": "robertwalters.ae",
+    "website": "https://robertwalters.ae",
+    "company_name": "Specialist Recruitment & Job Agency Dubai",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "UAE"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Specialist Recruitment & Job Agency Dubai | Robert Walters",
+    "_rank": 7
+  },
+  {
+    "domain": "michaelpage.ae",
+    "website": "https://michaelpage.ae",
+    "company_name": "Contact us Dubai",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "UAE"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Contact us Dubai | Michael Page",
+    "_rank": 7
+  },
+  {
+    "domain": "caliberly.com",
+    "website": "https://caliberly.com",
+    "company_name": "Recruitment Agency in Dubai, UAE",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "UAE"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Recruitment Agency in Dubai, UAE - Caliberly Talent Search",
+    "_rank": 7
+  },
+  {
+    "domain": "samlori.com",
+    "website": "https://samlori.com",
+    "company_name": "Sam & Lori",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Sam & Lori",
+    "_rank": 7
+  },
+  {
+    "domain": "personenyc.com",
+    "website": "https://personenyc.com",
+    "company_name": "PERSONE NYC",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "PERSONE NYC | Hospitality Recruiters for NYC Restaurants & Hotels",
+    "_rank": 7
+  },
+  {
+    "domain": "bettsrecruiting.com",
+    "website": "https://bettsrecruiting.com",
+    "company_name": "Recruiting Agencies NYC",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Recruiting Agencies NYC - New York Job Employment",
+    "_rank": 7
+  },
+  {
+    "domain": "morganmckinley.com",
+    "website": "https://morganmckinley.com",
+    "company_name": "Recruitment Agency Sydney",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Recruitment Agency Sydney | Morgan McKinley Recruitment",
+    "_rank": 7
+  },
+  {
+    "domain": "oomf-recruit.com",
+    "website": "https://oomf-recruit.com",
+    "company_name": "OOMF Recruitment",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "OOMF Recruitment",
+    "_rank": 7
+  },
+  {
+    "domain": "chandlermacleod.com",
+    "website": "https://chandlermacleod.com",
+    "company_name": "Recruitment Agency in Melbourne",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Recruitment Agency in Melbourne | Staffing & Workforce Solutions",
+    "_rank": 7
+  },
+  {
+    "domain": "iqpartners.com",
+    "website": "https://iqpartners.com",
+    "company_name": "Recruitment Agency Toronto",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Recruitment Agency Toronto | Recruiters & Headhunters | IQ PARTNERS",
+    "_rank": 7
+  },
+  {
+    "domain": "creativeniche.com",
+    "website": "https://creativeniche.com",
+    "company_name": "Creative Niche",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Creative Niche | Toronto Recruitment Agency",
+    "_rank": 7
+  },
+  {
+    "domain": "tdspersonnel.com",
+    "website": "https://tdspersonnel.com",
+    "company_name": "Recruitment Agency Toronto",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Recruitment Agency Toronto | Staffing Solutions & Temp Agency",
+    "_rank": 7
+  },
+  {
+    "domain": "builtinsydney.au",
+    "website": "https://builtinsydney.au",
+    "company_name": "21 Top Consulting Companies in Sydney",
+    "industries": [
+      "b2b_services"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "21 Top Consulting Companies in Sydney | Built In Sydney",
+    "_rank": 7
+  },
+  {
+    "domain": "mytechcs.com",
+    "website": "https://mytechcs.com",
+    "company_name": "IT Consulting Services in Sydney by MYtech Consulting Services",
+    "industries": [
+      "b2b_services"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "IT Consulting Services in Sydney by MYtech Consulting Services",
+    "_rank": 7
+  },
+  {
+    "domain": "bges.co",
+    "website": "https://bges.co",
+    "company_name": "Boutique Consulting Firms Sydney",
+    "industries": [
+      "b2b_services"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Boutique Consulting Firms Sydney - BGES",
+    "_rank": 7
+  },
+  {
+    "domain": "group8a.com",
+    "website": "https://group8a.com",
+    "company_name": "A Boutique Digital Marketing Agency",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "A Boutique Digital Marketing Agency | New York City | Group 8A",
+    "_rank": 7
+  },
+  {
+    "domain": "hudsoncreative.com",
+    "website": "https://hudsoncreative.com",
+    "company_name": "Hudson Creative",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Hudson Creative | Boutique Digital Marketing Agency in New York, NY",
+    "_rank": 7
+  },
+  {
+    "domain": "boucherco.com",
+    "website": "https://boucherco.com",
+    "company_name": "Boucher + Co.",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Boucher + Co. | An NYC Digital Agency - Social Media Marketing & Advertising Agency",
+    "_rank": 7
+  },
+  {
+    "domain": "wernewyork.com",
+    "website": "https://wernewyork.com",
+    "company_name": "Join Our Team",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Join Our Team - R New York",
+    "_rank": 7
+  },
+  {
+    "domain": "housingwire.com",
+    "website": "https://housingwire.com",
+    "company_name": "Largest NYC Coldwell Banker affiliate goes independent",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Largest NYC Coldwell Banker affiliate goes independent",
+    "_rank": 7
+  },
+  {
+    "domain": "kwnyc.com",
+    "website": "https://kwnyc.com",
+    "company_name": "Keller Williams NYC",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Keller Williams NYC | New York City Real Estate Agents",
+    "_rank": 7
+  },
+  {
+    "domain": "bainandgray.com",
+    "website": "https://bainandgray.com",
+    "company_name": "Bain and Gray",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Bain and Gray | Business Support and PA Recruitment Agency London",
+    "_rank": 7
+  },
+  {
+    "domain": "artisanpeople.com",
+    "website": "https://artisanpeople.com",
+    "company_name": "Finding Your Ideal Talent with a Boutique London Recruitment Agency",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Finding Your Ideal Talent with a Boutique London Recruitment Agency | Artisan People",
+    "_rank": 7
+  },
+  {
+    "domain": "placedbyleon.com",
+    "website": "https://placedbyleon.com",
+    "company_name": "Placed by Leon: Your inclusive boutique Recruitment Agency",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Placed by Leon: Your inclusive boutique Recruitment Agency",
+    "_rank": 7
+  },
+  {
+    "domain": "jdimi.com",
+    "website": "https://jdimi.com",
+    "company_name": "Independent Insurance Brokerage",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Independent Insurance Brokerage | Jones DesLauriers",
+    "_rank": 7
+  },
+  {
+    "domain": "merit-insurance.com",
+    "website": "https://merit-insurance.com",
+    "company_name": "Auto & Business Insurance",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Auto & Business Insurance | Merit Insurance Brokers, Toronto, Waterdown",
+    "_rank": 7
+  },
+  {
+    "domain": "thinkinsure.ca",
+    "website": "https://thinkinsure.ca",
+    "company_name": "Insurance Broker Toronto",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Insurance Broker Toronto | Best Car & Home Insurance Brokers",
+    "_rank": 7
+  },
+  {
+    "domain": "wrightrealestate.ca",
+    "website": "https://wrightrealestate.ca",
+    "company_name": "Toronto Realtors",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Toronto Realtors | Wright Real Estate",
+    "_rank": 7
+  },
+  {
+    "domain": "homeward.info",
+    "website": "https://homeward.info",
+    "company_name": "Real Estate Homeward, Brokerage*",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Real Estate Homeward, Brokerage* | Toronto Real Estate Agent: Houses, Condos and Homes",
+    "_rank": 7
+  },
+  {
+    "domain": "thelondonbroker.com",
+    "website": "https://thelondonbroker.com",
+    "company_name": "The London Broker",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "The London Broker - Property Brokers - Houses for Sale in London",
+    "_rank": 7
+  },
+  {
+    "domain": "luxuryportfolio.com",
+    "website": "https://luxuryportfolio.com",
+    "company_name": "The London Broker",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "The London Broker",
+    "_rank": 7
+  },
+  {
+    "domain": "black-brick.com",
+    "website": "https://black-brick.com",
+    "company_name": "London Property Broker",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "London Property Broker | UK Buyer's Broker | Black Brick",
+    "_rank": 7
+  },
+  {
+    "domain": "cstproperties.com",
+    "website": "https://cstproperties.com",
+    "company_name": "Commercial Real Estate Agents Sydney",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Commercial Real Estate Agents Sydney | CST Properties",
+    "_rank": 7
+  },
+  {
+    "domain": "inspirerealty.com",
+    "website": "https://inspirerealty.com",
+    "company_name": "Property Buyers Agent",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Property Buyers Agent - Buyers Advocate Brisbane | Inspire Realty",
+    "_rank": 7
+  },
+  {
+    "domain": "drewlindsaysir.com",
+    "website": "https://drewlindsaysir.com",
+    "company_name": "Drew Lindsay Sotheby's International Realty",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Drew Lindsay Sotheby's International Realty - Southern Highlands Real Estate",
+    "_rank": 7
+  },
+  {
+    "domain": "knightfrank.ae",
+    "website": "https://knightfrank.ae",
+    "company_name": "Real Estate Agents in Dubai for Commercial & Residential",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "UAE"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Real Estate Agents in Dubai for Commercial & Residential | Knight Frank UAE",
+    "_rank": 7
+  },
+  {
+    "domain": "imexre.com",
+    "website": "https://imexre.com",
+    "company_name": "IMEX Real Estate. Dubai Realty Specialists. Property Brokerage Services",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "UAE"
+    ],
+    "hiring_roles": [],
+    "title_sample": "IMEX Real Estate. Dubai Realty Specialists. Property Brokerage Services",
+    "_rank": 7
+  },
+  {
+    "domain": "whiteandcogroup.com",
+    "website": "https://whiteandcogroup.com",
+    "company_name": "Real Estate Brokers in Dubai",
+    "industries": [
+      "real_estate"
+    ],
+    "geos": [
+      "UAE"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Real Estate Brokers in Dubai | White & Co Real Estate | White and Co Real Estate",
+    "_rank": 7
+  },
+  {
+    "domain": "biginy.org",
+    "website": "https://biginy.org",
+    "company_name": "Home",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Home | Big I New York",
+    "_rank": 7
+  },
+  {
+    "domain": "honigconte.com",
+    "website": "https://honigconte.com",
+    "company_name": "Trusted New York Insurance Company",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Trusted New York Insurance Company | Insurance Agents in NYC | HCP Insurance",
+    "_rank": 7
+  },
+  {
+    "domain": "jhryan.com",
+    "website": "https://jhryan.com",
+    "company_name": "J.H. Ryan and Company",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "J.H. Ryan and Company - Seaford, NY Auto, Home & Business Agency",
+    "_rank": 7
+  },
+  {
+    "domain": "tysers.com",
+    "website": "https://tysers.com",
+    "company_name": "Insurance Brokers & Cover",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Insurance Brokers & Cover - Tysers Insurance Brokers",
+    "_rank": 7
+  },
+  {
+    "domain": "priceforbes.com",
+    "website": "https://priceforbes.com",
+    "company_name": "Price Forbes",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Price Forbes | Global Specialty Broker - London",
+    "_rank": 7
+  },
+  {
+    "domain": "anderson-health.com",
+    "website": "https://anderson-health.com",
+    "company_name": "Health Insurance Brokers in London",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Health Insurance Brokers in London | Anderson Health",
+    "_rank": 7
+  },
+  {
+    "domain": "mga.com",
+    "website": "https://mga.com",
+    "company_name": "Sydney Insurance Broker",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Sydney Insurance Broker | MGA Insurance Group",
+    "_rank": 7
+  },
+  {
+    "domain": "deshretcapital.com",
+    "website": "https://deshretcapital.com",
+    "company_name": "The Right Business Insurance Broker in Australia and Sydney",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "The Right Business Insurance Broker in Australia and Sydney",
+    "_rank": 7
+  },
+  {
+    "domain": "ipbrevard.com",
+    "website": "https://ipbrevard.com",
+    "company_name": "Home",
+    "industries": [
+      "insurance_finance"
+    ],
+    "geos": [
+      "AU"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Home - Insurance Professionals of Brevard",
+    "_rank": 7
+  },
+  {
+    "domain": "marketiu.com",
+    "website": "https://marketiu.com",
+    "company_name": "Digital Marketing & Social Media Agency in London",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Digital Marketing & Social Media Agency in London | Marketiu",
+    "_rank": 7
+  },
+  {
+    "domain": "influence.digital",
+    "website": "https://influence.digital",
+    "company_name": "Social Media & Digital Marketing Agency London based",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Social Media & Digital Marketing Agency London based",
+    "_rank": 7
+  },
+  {
+    "domain": "passion.digital",
+    "website": "https://passion.digital",
+    "company_name": "Digital Marketing Agency London, UK",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "UK"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Digital Marketing Agency London, UK | Passion Digital",
+    "_rank": 7
+  },
+  {
+    "domain": "harmonymarketing.ca",
+    "website": "https://harmonymarketing.ca",
+    "company_name": "Harmony Marketing",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Harmony Marketing - Boutique Toronto Marketing Agency",
+    "_rank": 7
+  },
+  {
+    "domain": "cedarcreative.ca",
+    "website": "https://cedarcreative.ca",
+    "company_name": "Boutique Marketing Agency Toronto",
+    "industries": [
+      "marketing_agency"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "hiring_roles": [],
+    "title_sample": "Boutique Marketing Agency Toronto - Cedar Creative",
+    "_rank": 7
+  },
+  {
+    "domain": "wisepops.com",
+    "website": "https://wisepops.com",
+    "company_name": "40+ Best Shopify Stores 2026 [+Revenue Data]",
+    "industries": [
+      "ecommerce"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "40+ Best Shopify Stores 2026 [+Revenue Data]",
+    "_rank": 7
+  },
+  {
+    "domain": "producthabits.com",
+    "website": "https://producthabits.com",
+    "company_name": "How Shopify Grew From a Snowboard Shop to a $10B Commerce Ecosystem",
+    "industries": [
+      "ecommerce"
+    ],
+    "geos": [
+      "US"
+    ],
+    "hiring_roles": [],
+    "title_sample": "How Shopify Grew From a Snowboard Shop to a $10B Commerce Ecosystem | Product Habits",
+    "_rank": 7
+  }
+]

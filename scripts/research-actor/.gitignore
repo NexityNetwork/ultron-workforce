@@ -1,3 +1,7 @@
 latest_report.json
 *.pyc
 __pycache__/
+
+# Sourcing artifacts (large + re-generable) — keep only leads.csv + picks.json
+data/brave_direct_targets.json
+data/research_results.jsonl

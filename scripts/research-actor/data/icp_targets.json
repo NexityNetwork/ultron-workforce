@@ -1,0 +1,76 @@
+[
+  {
+    "slug": "directive",
+    "company_name": "Directive Jobs",
+    "website": "https://cdn.ashbyprd.com",
+    "domain": "cdn.ashbyprd.com",
+    "industries": [
+      "marketing_agency"
+    ],
+    "hiring_roles": [
+      "content"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "job_urls": [
+      "https://jobs.ashbyhq.com/directive/b2c191a7-0ce9-4738-8c92-eedbcc3e8d14/application"
+    ],
+    "job_title_sample": "Content Manager (Remote Canada) @ Directive Consulting"
+  },
+  {
+    "slug": "marcusmillichap",
+    "company_name": "Marcus &amp; Millichap",
+    "website": "https://marcusmillichap.com",
+    "domain": "marcusmillichap.com",
+    "industries": [
+      "real_estate"
+    ],
+    "hiring_roles": [
+      "research"
+    ],
+    "geos": [
+      "CA"
+    ],
+    "job_urls": [
+      "https://jobs.lever.co/marcusmillichap/0db58aaa-fcd4-4d50-945d-4bcf64081157"
+    ],
+    "job_title_sample": "Marcus & Millichap - Research Analyst"
+  },
+  {
+    "slug": "manscaped",
+    "company_name": "Jobs at MANSCAPED",
+    "website": "https://greenhouse.com",
+    "domain": "greenhouse.com",
+    "industries": [
+      "ecommerce"
+    ],
+    "hiring_roles": [
+      "ops"
+    ],
+    "geos": [
+      "US"
+    ],
+    "job_urls": [
+      "https://boards.greenhouse.io/manscaped/jobs/4051507008"
+    ],
+    "job_title_sample": "Job Application for Operations Coordinator, Supply Chain at MANSCAPED"
+  },
+  {
+    "slug": "australianstaffingagency",
+    "company_name": "Australian Staffing Agency",
+    "website": "https://austaff.com.au",
+    "domain": "austaff.com.au",
+    "industries": [
+      "recruitment_staffing"
+    ],
+    "hiring_roles": [],
+    "geos": [
+      "AU"
+    ],
+    "job_urls": [
+      "https://au.indeed.com/cmp/Australian-Staffing-Agency"
+    ],
+    "job_title_sample": "Australian Staffing Agency Careers and Employment | Indeed.com"
+  }
+]

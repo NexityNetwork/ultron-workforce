@@ -229,7 +229,7 @@ def aggregate_pain_signals(report: dict) -> list:
 
     # From website
     w = report.get('layer_2_website', {})
-    if not w.get('pricing', {}).get('has_pricing_page'):
+    if not w.get('pricing', {}).get('exists'):
         signals.append('No public pricing page — likely all sales-led, slow')
 
     # From SEO

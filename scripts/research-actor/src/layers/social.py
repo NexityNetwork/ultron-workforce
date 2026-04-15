@@ -46,17 +46,47 @@ def fetch_linkedin_company(url: str, li_at: str) -> dict:
         return {}
     vanity = m.group(1)
 
-    # Voyager API endpoint
-    csrf_token = li_at.split('-')[-1] if '-' in li_at else 'ajax:0000000000000000000'
-    api_url = f'https://www.linkedin.com/voyager/api/organization/companies?decoration=(%2A%2Celements%2A(%2A%2Cschool~(%2A%2CschoolV2~(%2A))))&q=universalName&universalName={vanity}'
-
     from src.utils import http_get
+
+    # Warmup: hit /feed/ to get a valid JSESSIONID in the Set-Cookie.
+    _, _, warmup_headers = http_get(
+        'https://www.linkedin.com/feed/',
+        {
+            'Cookie': f'li_at={li_at}',
+            'User-Agent': (
+                'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
+                'AppleWebKit/537.36 (KHTML, like Gecko) '
+                'Chrome/131.0.0.0 Safari/537.36'
+            ),
+            'Accept': 'text/html,application/xhtml+xml',
+        },
+        timeout=15,
+    )
+    set_cookie = ''
+    for k, v in warmup_headers.items():
+        if k.lower() == 'set-cookie':
+            set_cookie = v
+            break
+    jsm = re.search(r'JSESSIONID=["\']?(ajax:\d+)["\']?', set_cookie)
+    jsessionid = jsm.group(1) if jsm else 'ajax:0000000000000000000'
+
+    api_url = (
+        f'https://www.linkedin.com/voyager/api/organization/companies'
+        f'?decoration=(%2A%2Celements%2A(%2A%2Cschool~(%2A%2CschoolV2~(%2A))))'
+        f'&q=universalName&universalName={vanity}'
+    )
     status, body, _ = http_get(api_url, {
-        'Cookie': f'li_at={li_at}; JSESSIONID="{csrf_token}"',
-        'csrf-token': csrf_token,
-        'User-Agent': 'Mozilla/5.0',
+        'Cookie': f'li_at={li_at}; JSESSIONID="{jsessionid}"',
+        'csrf-token': jsessionid,
+        'User-Agent': (
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
+            'AppleWebKit/537.36 (KHTML, like Gecko) '
+            'Chrome/131.0.0.0 Safari/537.36'
+        ),
         'Accept': 'application/json',
         'x-restli-protocol-version': '2.0.0',
+        'x-li-lang': 'en_US',
+        'Referer': f'https://www.linkedin.com/company/{vanity}/',
     }, timeout=15)
 
     if status != 200:
